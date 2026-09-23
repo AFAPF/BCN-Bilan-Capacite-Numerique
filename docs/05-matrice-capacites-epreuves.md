@@ -53,7 +53,17 @@ L’épreuve comporte trois tâches :
 2. corriger des erreurs déjà présentes ;
 3. copier puis coller un passage.
 
-Elle s’arrête lorsque toutes les tâches sont terminées ou lorsque le temps maximal est atteint. La durée maximale, les mesures et les variantes selon le matériel restent à fixer.
+Elle s’arrête lorsque toutes les tâches sont terminées ou après cinq minutes.
+
+Pour chaque tâche, BCN affiche :
+
+- réussite ou échec ;
+- temps de réalisation ;
+- temps total de l’épreuve ;
+- erreurs ou actions incorrectes ;
+- aides apportées par le professionnel.
+
+Les variantes selon le matériel et les critères détaillés de réussite restent à fixer.
 
 ### Dictée audio
 
@@ -75,7 +85,7 @@ Si le jeune prend du retard, le professionnel peut arrêter l’épreuve. BCN en
 
 Le bilan affiche les résultats calculés jusqu’au moment de l’arrêt et la mention « épreuve arrêtée en raison du retard pris sur la dictée ».
 
-Le résultat partiel est ramené à une valeur par minute et peut être comparé aux références. Le pilote devra vérifier si une durée minimale est nécessaire et si les différentes portions de la dictée sont suffisamment équivalentes pour permettre cette comparaison.
+Le résultat partiel est ramené à une valeur par minute et peut être comparé aux références. La durée minimale autorisant cette comparaison sera déterminée pendant l’étude pilote. Le pilote devra aussi vérifier si les différentes portions de la dictée sont suffisamment équivalentes.
 
 Toute interruption technique doit être distinguée d’un arrêt professionnel et signalée comme incident de passation.
 
