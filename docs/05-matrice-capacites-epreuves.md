@@ -172,7 +172,9 @@ Les résultats restent associés à la tâche, à l’item, au dispositif et à 
 
 Chaque tâche comporte dix cibles, quel que soit l’âge.
 
-Chaque tirage mélange des cibles petites, moyennes et grandes. Les dimensions précises de ces trois catégories et leur mode d’adaptation aux écrans restent à définir.
+Chaque tirage mélange des cibles petites, moyennes et grandes.
+
+Avant l’épreuve, BCN impose une calibration de l’écran afin de viser des dimensions physiques comparables entre appareils. La méthode de calibration et les dimensions précises des trois catégories restent à définir.
 
 ### Banque d’items
 
@@ -186,17 +188,26 @@ Pour chaque passation, BCN enregistre :
 - identifiants des items tirés ;
 - ordre de présentation ;
 - variante matérielle ;
-- paramètres d’affichage nécessaires à la reproduction.
+- paramètres d’affichage nécessaires à la reproduction ;
+- zone de départ tirée pour chaque cible.
 
 L’équivalence des items et des tirages devra être vérifiée pendant le pilote avant toute comparaison normative.
 
+### Départ et délai
+
+Avant chaque cible, la zone de départ est tirée aléatoirement. BCN enregistre ce tirage afin de permettre l’analyse et la reproduction de la séquence.
+
+Le délai maximal accordé pour atteindre une cible sera déterminé pendant l’étude pilote, puis figé dans la version correspondante de l’épreuve.
+
 ### Éléments restant à définir
 
-- dimensions physiques des cibles petites, moyennes et grandes, et méthode d’adaptation aux écrans ;
-- position de départ et positions des cibles ;
+- dimensions physiques des cibles petites, moyennes et grandes ;
+- méthode opérationnelle de calibration de l’écran ;
+- répartition des trois tailles parmi les dix cibles ;
+- règles de tirage des zones de départ et des positions des cibles ;
 - distances de déplacement ;
 - critères de réussite du double-clic et du glisser-déposer ;
-- délai maximal par cible et règles d’arrêt ;
+- valeur du délai maximal, à établir pendant le pilote, et règles d’arrêt ;
 - comportement en cas de changement d’orientation ou de taille d’écran.
 
 
