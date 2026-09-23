@@ -119,6 +119,14 @@ Dans la première version, les bilans sont **conservés sur l’appareil**, avec
 - durée de conservation ;
 - procédure d’effacement.
 
+### Protection locale validée
+
+L’accès aux bilans locaux est protégé par un **code d’accès BCN**, sans chiffrement dédié des données par l’application.
+
+Ce code constitue un contrôle d’accès dans l’interface. Il ne doit pas être présenté comme une protection cryptographique des fichiers. La sécurité du système, le verrouillage de l’appareil et la gestion des accès au profil utilisateur restent nécessaires.
+
+Restent à définir : le nombre de profils professionnels, le verrouillage automatique et la procédure en cas d’oubli du code.
+
 ## 6. Recommandations sans blocage
 
 BCN recommande des épreuves pertinentes, mais **ne bloque jamais le choix du professionnel**.
@@ -176,7 +184,7 @@ Le rapport devra distinguer les mesures, les observations professionnelles, les 
 
 ### Tableau CSV
 
-Le CSV peut contenir le nom et le prénom lorsqu’ils ont été renseignés. Il constitue alors un export de données personnelles et ne doit pas être présenté comme anonymisé.
+Le CSV est **anonymisé par défaut**. Une version identifiable contenant le nom et le prénom, lorsqu’ils ont été renseignés, peut être créée uniquement à la demande explicite du professionnel. Cette version identifiable constitue un export de données personnelles et ne doit pas être présentée comme anonymisée.
 
 Le CSV ne doit pas transformer une observation libre en mesure quantitative ni mélanger des variantes matérielles non comparables.
 
@@ -188,7 +196,7 @@ Le CSV ne doit pas transformer une observation libre en mesure quantitative ni m
 - définir une durée de conservation ;
 - étudier une protection ou un chiffrement de l’export.
 
-L’existence éventuelle d’un second export statistique sans nom ni prénom reste à décider.
+Avant un export identifiable, BCN doit avertir clairement le professionnel et demander une confirmation. Le choix d’un export identifiable ne doit pas devenir automatiquement le nouveau réglage par défaut.
 
 ## 9. Sauvegarde automatique et reprise
 
