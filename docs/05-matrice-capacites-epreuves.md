@@ -33,14 +33,28 @@ La liste technique définitive reste à établir selon le matériel.
 Les trois familles d’indicateurs ne doivent pas être fusionnées en une note unique avant justification et validation :
 
 1. **Débit brut** — mots saisis par minute, un mot saisi étant un groupe séparé par des espaces.
-2. **Débit exact** — mots corrects par minute ; définition exacte et alignement à établir.
+2. **Débit exact** — mots corrects par minute ; la règle d’exactitude est choisie par le professionnel avant l’épreuve et apparaît dans le bilan.
 3. **Actions de correction** — opérations effectuées pendant la tâche, séparées par type.
 4. **Erreurs finales** — erreurs encore présentes à l’arrêt, séparées des actions de correction.
 
+### Alignement du texte
+
+Après un ajout ou une omission, BCN utilise un alignement automatique entre la saisie et le texte modèle. Le professionnel peut vérifier cet alignement. Toute correction manuelle de l’alignement doit être tracée et le score recalculé.
+
+### Supports textuels
+
+Les supports de BCN seront :
+
+- des textes originaux créés spécifiquement pour BCN ;
+- ou des textes dont la réutilisation est juridiquement autorisée.
+
+Les textes historiques transmis restent des références méthodologiques et ne sont pas intégrés automatiquement. Chaque support devra être versionné et évalué pour sa longueur, sa difficulté, son vocabulaire, sa ponctuation et sa lisibilité.
+
 ### Décisions restant à prendre
 
-- définition exacte d’un mot correct ;
-- algorithme d’alignement après ajout ou omission ;
+- liste des règles d’exactitude proposées au professionnel ;
+- règle à appliquer si aucun choix n’est effectué ;
+- validation technique de l’alignement automatique après ajout ou omission ;
 - liste des actions de correction enregistrées ;
 - classification des erreurs ;
 - règles opérationnelles séparant erreurs orthographiques et erreurs de frappe ;
