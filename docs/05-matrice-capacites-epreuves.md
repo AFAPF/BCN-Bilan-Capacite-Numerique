@@ -42,8 +42,20 @@ Trois règles de cotation sont disponibles :
 - **Mode orthographique** : l’orthographe et les accents doivent être exacts, tandis que la ponctuation est évaluée séparément.
 
 BCN ne peut pas démarrer l’épreuve tant qu’une règle n’a pas été sélectionnée.
-3. **Actions de correction** — opérations effectuées pendant la tâche, séparées par type.
+3. **Actions de correction** — uniquement les activations de Retour arrière et Supprimer, comptées séparément.
 4. **Erreurs finales** — erreurs encore présentes à l’arrêt, séparées des actions de correction.
+
+### Dictée audio
+
+L’épreuve notée utilise une lecture fixe :
+
+- aucun réglage de vitesse pendant la lecture ;
+- aucune pause ;
+- aucune répétition ;
+- aucun entraînement préalable ;
+- démarrage direct de l’épreuve notée.
+
+Toute interruption technique doit être distinguée d’une pause volontaire et signalée comme incident de passation.
 
 ### Alignement du texte
 
@@ -63,7 +75,8 @@ Les textes historiques transmis restent des références méthodologiques et ne 
 ### Décisions restant à prendre
 
 - validation technique de l’alignement automatique après ajout ou omission ;
-- liste des actions de correction enregistrées ;
+- correspondance technique des touches Retour arrière et Supprimer selon chaque appareil ;
+- traitement des corrections effectuées par sélection, remplacement ou fonction Annuler, qui ne sont pas comptées dans l’indicateur validé ;
 - classification des erreurs ;
 - règles opérationnelles séparant erreurs orthographiques et erreurs de frappe ;
 - comportement des touches de correction ;
