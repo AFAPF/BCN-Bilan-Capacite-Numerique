@@ -53,9 +53,14 @@ L’épreuve notée utilise une lecture fixe :
 - aucune pause ;
 - aucune répétition ;
 - aucun entraînement préalable ;
-- démarrage direct de l’épreuve notée.
+- démarrage direct de l’épreuve notée ;
+- durée totale de trois minutes pour chacune des trois tranches d’âge ;
+- phrases séparées par des pauses fixes adaptées à la tranche d’âge ;
+- enregistrement et rythme propres à chaque variante d’âge.
 
-Toute interruption technique doit être distinguée d’une pause volontaire et signalée comme incident de passation.
+Si le jeune prend du retard, le professionnel peut arrêter l’épreuve. BCN enregistre l’auteur de l’arrêt, le moment de l’arrêt et le statut « arrêt professionnel ».
+
+Toute interruption technique doit être distinguée d’un arrêt professionnel et signalée comme incident de passation.
 
 ### Alignement du texte
 
