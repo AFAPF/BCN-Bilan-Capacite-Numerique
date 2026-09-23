@@ -277,7 +277,41 @@ Le niveau scolaire est **obligatoire** pour créer une passation.
 - établissement scolaire : non décidé ;
 - redoublement ou saut de classe : non décidé.
 
-## 12. Principe de non-invention
+## 12. Première version pilote
+
+### Organisation du développement
+
+BCN est construit à partir d’un **moteur commun**, puis décliné en **trois variantes d’âge**. Les limites exactes de ces trois variantes restent à décider.
+
+Le moteur commun regroupe notamment :
+
+- gestion des profils et passations ;
+- catalogue et sélection des épreuves ;
+- chronométrage et événements ;
+- sauvegarde et reprise ;
+- cotation brute ;
+- observations professionnelles ;
+- exports PDF et CSV ;
+- historique et droits d’accès.
+
+### Modules obligatoires du premier prototype
+
+Le premier prototype fonctionnel comprend les quatre modules suivants :
+
+1. frappe au clavier ;
+2. pointage et manipulation ;
+3. repérage visuel ;
+4. compréhension et navigation.
+
+Le contenu exact, les consignes et les règles de cotation de chaque module restent à spécifier et à valider.
+
+### Durée cible
+
+Une passation complète recommandée vise une durée maximale comprise entre **45 et 60 minutes**.
+
+Cette durée ne rend pas toutes les épreuves obligatoires : le professionnel conserve le libre choix des épreuves. La gestion des pauses et la possibilité de répartir la passation sur plusieurs séances restent à décider.
+
+## 13. Principe de non-invention
 
 Toute décision ayant un effet sur les objectifs, les utilisateurs, les données, les épreuves, la cotation, la restitution ou l’architecture doit être :
 
