@@ -227,7 +227,25 @@ L’âge est enregistré en **années et mois**, sans conserver la date de naiss
 - caractère obligatoire ou facultatif ;
 - traitement des âges inconnus ou approximatifs.
 
-## 11. Principe de non-invention
+## 11. Niveau scolaire
+
+Le niveau scolaire est **obligatoire** pour créer une passation.
+
+### Conséquences
+
+- le niveau doit être enregistré avec la date de passation ;
+- les recommandations d’épreuves peuvent en tenir compte ;
+- les futures analyses peuvent distinguer âge chronologique et niveau de scolarisation ;
+- l’absence de niveau doit empêcher de finaliser la création de la passation, tout en prévoyant le traitement des situations de scolarisation particulières.
+
+### Points restant à définir
+
+- nomenclature des niveaux ;
+- classes spécialisées, scolarité adaptée, instruction hors établissement ou niveau non déterminé ;
+- établissement scolaire : non décidé ;
+- redoublement ou saut de classe : non décidé.
+
+## 12. Principe de non-invention
 
 Toute décision ayant un effet sur les objectifs, les utilisateurs, les données, les épreuves, la cotation, la restitution ou l’architecture doit être :
 
