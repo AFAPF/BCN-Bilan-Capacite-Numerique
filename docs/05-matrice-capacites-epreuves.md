@@ -149,12 +149,28 @@ Le défilement de page n’est pas retenu dans le premier prototype de ce module
 
 ### Variantes matérielles
 
-Deux variantes distinctes sont prévues :
+Trois variantes distinctes sont prévues :
 
 - souris ;
-- écran tactile.
+- écran tactile ;
+- pavé tactile.
 
-Le pavé tactile et les dispositifs adaptés ne sont pas inclus à ce stade. Leur comportement dans l’application reste à décider.
+Les dispositifs adaptés ne sont pas inclus à ce stade. Leur comportement dans l’application reste à décider.
+
+### Mesures par cible
+
+BCN enregistre pour chaque cible :
+
+- temps de réponse ;
+- réussite ou échec ;
+- clics ou touchers incorrects ;
+- précision du dépôt pour le glisser-déposer.
+
+Les résultats restent associés à la tâche, à l’item, au dispositif et à la variante utilisés.
+
+### Nombre d’items
+
+Chaque tranche d’âge reçoit le même nombre de cibles pour une tâche donnée. Le nombre exact reste à fixer.
 
 ### Banque d’items
 
@@ -172,13 +188,12 @@ L’équivalence des items et des tirages devra être vérifiée pendant le pilo
 
 ### Éléments restant à définir
 
-- nombre d’items par tâche et par âge ;
+- nombre fixe d’items par tâche ;
 - dimensions et positions des cibles ;
 - distances de déplacement ;
 - critères de réussite du double-clic et du glisser-déposer ;
 - mesures enregistrées ;
 - durée et règles d’arrêt ;
-- traitement du pavé tactile ;
 - comportement en cas de changement d’orientation ou de taille d’écran.
 
 
