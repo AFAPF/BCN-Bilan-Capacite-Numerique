@@ -138,7 +138,64 @@ BCN recommande des épreuves pertinentes, mais **ne bloque jamais le choix du pr
 - traçabilité éventuelle d’un choix contraire à une recommandation ;
 - personnalisation de modèles de passation.
 
-## 7. Principe de non-invention
+## 7. Identification du jeune
+
+Chaque dossier comporte un **code obligatoire**. L’identité est **facultative**.
+
+### Règles
+
+- le code permet d’utiliser BCN sans saisir de nom ou de prénom ;
+- les champs d’identité ne doivent jamais être nécessaires au calcul ;
+- l’application doit distinguer clairement le code des données d’identité ;
+- les doublons de code doivent être détectés ou signalés localement ;
+- la suppression des informations facultatives ne doit pas altérer les résultats.
+
+### Points restant à définir
+
+- composition ou génération du code ;
+- champs d’identité proposés ;
+- affichage de l’identité dans le PDF ;
+- présence éventuelle de l’identité dans le CSV ;
+- données d’âge et de scolarité nécessaires.
+
+## 8. Exports de la première version
+
+Deux exports sont validés :
+
+1. un **rapport PDF lisible** ;
+2. un **tableau CSV destiné aux statistiques**.
+
+Aucun export JSON réimportable ni archive complète protégée n’est retenu pour la première version à ce stade.
+
+### Rapport PDF
+
+Le rapport devra distinguer les mesures, les observations professionnelles, les conditions de passation et les limites d’interprétation.
+
+### Tableau CSV
+
+Les colonnes, le niveau d’anonymisation et l’export d’une ou plusieurs passations restent à définir. Le CSV ne doit pas transformer une observation libre en mesure quantitative ni mélanger des variantes matérielles non comparables.
+
+## 9. Sauvegarde automatique et reprise
+
+BCN sauvegarde automatiquement la passation et permet sa reprise après interruption.
+
+### Règles
+
+- l’état de progression est conservé localement ;
+- une épreuve interrompue est identifiée comme telle ;
+- un résultat incomplet ne doit pas être présenté comme terminé ;
+- le professionnel choisit le moment de la reprise ;
+- la date, l’heure et la durée réelle de l’interruption doivent pouvoir être tracées si elles influencent l’interprétation.
+
+### Points restant à définir
+
+- fréquence de sauvegarde ;
+- reprise à l’étape exacte ou au début de l’épreuve ;
+- délai maximal avant reprise ;
+- conduite à tenir si le matériel change ;
+- distinction entre pause volontaire, incident et abandon.
+
+## 10. Principe de non-invention
 
 Toute décision ayant un effet sur les objectifs, les utilisateurs, les données, les épreuves, la cotation, la restitution ou l’architecture doit être :
 
