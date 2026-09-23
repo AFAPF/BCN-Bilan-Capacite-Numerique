@@ -56,9 +56,14 @@ L’épreuve notée utilise une lecture fixe :
 - démarrage direct de l’épreuve notée ;
 - durée totale de trois minutes pour chacune des trois tranches d’âge ;
 - phrases séparées par des pauses fixes adaptées à la tranche d’âge ;
-- enregistrement et rythme propres à chaque variante d’âge.
+- enregistrement et rythme propres à chaque variante d’âge ;
+- voix de synthèse identique pour toutes les diffusions ;
+- fichiers audio générés à l’avance, intégrés et versionnés afin d’éviter les différences entre appareils ;
+- durées des pauses testées pendant l’étude pilote puis figées dans chaque version de l’épreuve.
 
 Si le jeune prend du retard, le professionnel peut arrêter l’épreuve. BCN enregistre l’auteur de l’arrêt, le moment de l’arrêt et le statut « arrêt professionnel ».
+
+Le bilan affiche les résultats calculés jusqu’au moment de l’arrêt et la mention « épreuve arrêtée en raison du retard pris sur la dictée ». La possibilité de comparer ce résultat partiel à des références reste à décider.
 
 Toute interruption technique doit être distinguée d’un arrêt professionnel et signalée comme incident de passation.
 
