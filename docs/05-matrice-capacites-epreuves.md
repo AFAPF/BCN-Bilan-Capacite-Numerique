@@ -168,13 +168,17 @@ BCN enregistre pour chaque cible :
 
 Les résultats restent associés à la tâche, à l’item, au dispositif et à la variante utilisés.
 
-### Nombre d’items
+### Nombre et taille des cibles
 
-Chaque tranche d’âge reçoit le même nombre de cibles pour une tâche donnée. Le nombre exact reste à fixer.
+Chaque tâche comporte dix cibles, quel que soit l’âge.
+
+Chaque tirage mélange des cibles petites, moyennes et grandes. Les dimensions précises de ces trois catégories et leur mode d’adaptation aux écrans restent à définir.
 
 ### Banque d’items
 
 Les cibles sont présentées dans un ordre aléatoire à partir d’une banque d’items équivalents.
+
+Lors d’une nouvelle passation, BCN réalise un nouveau tirage équivalent et enregistre la séquence effectivement utilisée.
 
 Pour chaque passation, BCN enregistre :
 
@@ -188,12 +192,11 @@ L’équivalence des items et des tirages devra être vérifiée pendant le pilo
 
 ### Éléments restant à définir
 
-- nombre fixe d’items par tâche ;
-- dimensions et positions des cibles ;
+- dimensions physiques des cibles petites, moyennes et grandes, et méthode d’adaptation aux écrans ;
+- position de départ et positions des cibles ;
 - distances de déplacement ;
 - critères de réussite du double-clic et du glisser-déposer ;
-- mesures enregistrées ;
-- durée et règles d’arrêt ;
+- délai maximal par cible et règles d’arrêt ;
 - comportement en cas de changement d’orientation ou de taille d’écran.
 
 
