@@ -125,7 +125,21 @@ L’accès aux bilans locaux est protégé par un **code d’accès BCN**, sans 
 
 Ce code constitue un contrôle d’accès dans l’interface. Il ne doit pas être présenté comme une protection cryptographique des fichiers. La sécurité du système, le verrouillage de l’appareil et la gestion des accès au profil utilisateur restent nécessaires.
 
-Restent à définir : le nombre de profils professionnels, le verrouillage automatique et la procédure en cas d’oubli du code.
+### Profils et verrouillage validés
+
+- chaque professionnel possède son propre profil local et son propre code ;
+- BCN se verrouille après 30 minutes d’inactivité ;
+- un administrateur local peut réinitialiser le code oublié d’un professionnel ;
+- la réinitialisation doit être tracée sans enregistrer l’ancien ou le nouveau code.
+
+### Points restant à définir
+
+- création et désignation du premier administrateur ;
+- nombre d’administrateurs autorisés ;
+- droit ou non de l’administrateur à consulter les bilans des autres profils ;
+- partage ou séparation des bilans entre professionnels ;
+- comportement du verrouillage pendant une épreuve active ;
+- exigences minimales du code d’accès.
 
 ## 6. Recommandations sans blocage
 
