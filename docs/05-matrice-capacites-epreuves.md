@@ -24,22 +24,24 @@ La liste technique définitive reste à établir selon le matériel.
 
 | Épreuve validée | Capacité fonctionnelle observée | Résultats validés | Consigne | Durée | Règles d’erreur | Variantes d’âge |
 |---|---|---|---|---|---|---|
-| Copie d’un texte | Transcrire un texte affiché avec un clavier | Mots corrects par minute, précision et corrections séparées | À définir | Texte terminé ou durée maximale de 5 minutes atteinte | À définir | 8–10, 11–14, 15–18 |
-| Dictée audio standardisée | Saisir un texte présenté par un enregistrement identique pour tous | Mots corrects par minute, précision et corrections séparées | À définir | À définir | Erreurs de frappe et erreurs orthographiques séparées | 8–10, 11–14, 15–18 |
-| Sélection, correction et copier-coller | Manipuler et modifier un texte numérique | Mots corrects par minute si pertinent, précision et corrections séparées | À définir | À définir | À définir | 8–10, 11–14, 15–18 |
+| Copie d’un texte | Transcrire un texte affiché avec un clavier | Mots saisis/minute, mots corrects/minute, actions de correction et erreurs finales séparées | À définir | Texte terminé ou durée maximale de 5 minutes atteinte | À définir | 8–10, 11–14, 15–18 |
+| Dictée audio standardisée | Saisir un texte présenté par un enregistrement identique pour tous | Mots saisis/minute, mots corrects/minute, actions de correction et erreurs finales séparées | À définir | À définir | Erreurs de frappe et erreurs orthographiques séparées | 8–10, 11–14, 15–18 |
+| Sélection, correction et copier-coller | Manipuler et modifier un texte numérique | Temps, exactitude, actions de correction et erreurs finales séparées | À définir | À définir | À définir | 8–10, 11–14, 15–18 |
 
 ### Indicateurs séparés
 
 Les trois familles d’indicateurs ne doivent pas être fusionnées en une note unique avant justification et validation :
 
-1. **Vitesse** — exprimée principalement en mots corrects par minute ; définition exacte d’un mot correct à établir.
-2. **Précision** — définition et dénominateur à établir.
-3. **Corrections** — événements inclus et règle de comptage à établir.
+1. **Débit brut** — mots saisis par minute, un mot saisi étant un groupe séparé par des espaces.
+2. **Débit exact** — mots corrects par minute ; définition exacte et alignement à établir.
+3. **Actions de correction** — opérations effectuées pendant la tâche, séparées par type.
+4. **Erreurs finales** — erreurs encore présentes à l’arrêt, séparées des actions de correction.
 
 ### Décisions restant à prendre
 
-- choix définitif entre mots saisis et mots corrects ;
-- distinction entre actions de correction et erreurs résiduelles ;
+- définition exacte d’un mot correct ;
+- algorithme d’alignement après ajout ou omission ;
+- liste des actions de correction enregistrées ;
 - classification des erreurs ;
 - règles opérationnelles séparant erreurs orthographiques et erreurs de frappe ;
 - comportement des touches de correction ;
