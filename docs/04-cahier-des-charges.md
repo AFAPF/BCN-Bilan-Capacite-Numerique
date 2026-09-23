@@ -154,9 +154,12 @@ Chaque dossier comporte un **code obligatoire**. L’identité est **facultative
 
 - composition ou génération du code ;
 - champs d’identité proposés ;
-- affichage de l’identité dans le PDF ;
-- présence éventuelle de l’identité dans le CSV ;
-- données d’âge et de scolarité nécessaires.
+- données d’identité facultatives exactes à proposer ;
+- données de scolarité nécessaires.
+
+### Affichage validé
+
+Lorsque l’identité facultative est renseignée, elle est toujours affichée dans le rapport PDF.
 
 ## 8. Exports de la première version
 
@@ -173,7 +176,19 @@ Le rapport devra distinguer les mesures, les observations professionnelles, les 
 
 ### Tableau CSV
 
-Les colonnes, le niveau d’anonymisation et l’export d’une ou plusieurs passations restent à définir. Le CSV ne doit pas transformer une observation libre en mesure quantitative ni mélanger des variantes matérielles non comparables.
+Le CSV peut contenir le nom et le prénom lorsqu’ils ont été renseignés. Il constitue alors un export de données personnelles et ne doit pas être présenté comme anonymisé.
+
+Le CSV ne doit pas transformer une observation libre en mesure quantitative ni mélanger des variantes matérielles non comparables.
+
+### Protection à prévoir
+
+- signaler clairement la présence de données identifiantes avant l’export ;
+- rappeler au professionnel sa responsabilité concernant le stockage et la transmission du fichier ;
+- limiter les colonnes aux données nécessaires à la finalité choisie ;
+- définir une durée de conservation ;
+- étudier une protection ou un chiffrement de l’export.
+
+L’existence éventuelle d’un second export statistique sans nom ni prénom reste à décider.
 
 ## 9. Sauvegarde automatique et reprise
 
@@ -195,7 +210,24 @@ BCN sauvegarde automatiquement la passation et permet sa reprise après interrup
 - conduite à tenir si le matériel change ;
 - distinction entre pause volontaire, incident et abandon.
 
-## 10. Principe de non-invention
+## 10. Âge
+
+L’âge est enregistré en **années et mois**, sans conserver la date de naissance complète.
+
+### Règles
+
+- l’âge est enregistré à la date de la passation ;
+- la valeur sert à choisir ou recommander des épreuves et à décrire les résultats ;
+- la date de naissance complète n’est pas nécessaire au fonctionnement prévu ;
+- la méthode de calcul ou de saisie doit éviter les ambiguïtés.
+
+### Points restant à définir
+
+- saisie directe par le professionnel ou calcul temporaire sans conservation de la date ;
+- caractère obligatoire ou facultatif ;
+- traitement des âges inconnus ou approximatifs.
+
+## 11. Principe de non-invention
 
 Toute décision ayant un effet sur les objectifs, les utilisateurs, les données, les épreuves, la cotation, la restitution ou l’architecture doit être :
 
@@ -205,3 +237,9 @@ Toute décision ayant un effet sur les objectifs, les utilisateurs, les données
 4. enregistrée dans ce document.
 
 Les choix purement techniques, réversibles et sans effet fonctionnel pourront être documentés puis proposés à la validation avant publication d’une version stable.
+## Références de protection des données
+
+- [CNIL — Minimisation](https://www.cnil.fr/fr/definition/minimisation)
+- [CNIL — Minimiser les données collectées](https://www.cnil.fr/fr/minimiser-les-donnees-collectees)
+- [CNIL — Sécuriser les échanges avec l’extérieur](https://www.cnil.fr/fr/securite-securiser-les-echanges-avec-lexterieur)
+- [CNIL — Droits numériques des mineurs](https://www.cnil.fr/fr/enjeux-numeriques/les-droits-numeriques-des-mineurs)
