@@ -33,13 +33,23 @@ La liste technique définitive reste à établir selon le matériel.
 Les trois familles d’indicateurs ne doivent pas être fusionnées en une note unique avant justification et validation :
 
 1. **Débit brut** — mots saisis par minute, un mot saisi étant un groupe séparé par des espaces.
-2. **Débit exact** — mots corrects par minute ; la règle d’exactitude est choisie par le professionnel avant l’épreuve et apparaît dans le bilan.
+2. **Débit exact** — mots corrects par minute ; la règle d’exactitude est choisie obligatoirement par le professionnel avant l’épreuve et apparaît dans le bilan.
+
+Trois règles de cotation sont disponibles :
+
+- **Mode tolérant** : le mot est reconnu malgré les accents, les majuscules ou la ponctuation ;
+- **Mode strict intégral** : tout doit être identique, y compris la ponctuation et les majuscules ;
+- **Mode orthographique** : l’orthographe et les accents doivent être exacts, tandis que la ponctuation est évaluée séparément.
+
+BCN ne peut pas démarrer l’épreuve tant qu’une règle n’a pas été sélectionnée.
 3. **Actions de correction** — opérations effectuées pendant la tâche, séparées par type.
 4. **Erreurs finales** — erreurs encore présentes à l’arrêt, séparées des actions de correction.
 
 ### Alignement du texte
 
 Après un ajout ou une omission, BCN utilise un alignement automatique entre la saisie et le texte modèle. Le professionnel peut vérifier cet alignement. Toute correction manuelle de l’alignement doit être tracée et le score recalculé.
+
+Le bilan indique si l’alignement a été vérifié ou corrigé manuellement, ainsi que l’auteur de cette intervention.
 
 ### Supports textuels
 
@@ -52,8 +62,6 @@ Les textes historiques transmis restent des références méthodologiques et ne 
 
 ### Décisions restant à prendre
 
-- liste des règles d’exactitude proposées au professionnel ;
-- règle à appliquer si aucun choix n’est effectué ;
 - validation technique de l’alignement automatique après ajout ou omission ;
 - liste des actions de correction enregistrées ;
 - classification des erreurs ;
