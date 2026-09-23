@@ -26,7 +26,7 @@ La liste technique définitive reste à établir selon le matériel.
 |---|---|---|---|---|---|---|
 | Copie d’un texte | Transcrire un texte affiché avec un clavier | Mots saisis/minute, mots corrects/minute, actions de correction et erreurs finales séparées | À définir | Texte terminé ou durée maximale de 5 minutes atteinte | À définir | 8–10, 11–14, 15–18 |
 | Dictée audio standardisée | Saisir un texte présenté par un enregistrement identique pour tous | Mots saisis/minute, mots corrects/minute, actions de correction et erreurs finales séparées | À définir | À définir | Erreurs de frappe et erreurs orthographiques séparées | 8–10, 11–14, 15–18 |
-| Sélection, correction et copier-coller | Manipuler et modifier un texte numérique | Temps, exactitude, actions de correction et erreurs finales séparées | À définir | À définir | À définir | 8–10, 11–14, 15–18 |
+| Sélection, correction et copier-coller | Sélectionner un mot ou une phrase, corriger des erreurs présentes, copier puis coller un passage | Temps, exactitude et erreurs à définir | À définir | Toutes les tâches terminées ou temps maximal atteint | À définir | 8–10, 11–14, 15–18 |
 
 ### Indicateurs séparés
 
@@ -44,6 +44,16 @@ Trois règles de cotation sont disponibles :
 BCN ne peut pas démarrer l’épreuve tant qu’une règle n’a pas été sélectionnée.
 3. **Actions de correction** — uniquement les activations de Retour arrière et Supprimer, comptées séparément.
 4. **Erreurs finales** — erreurs encore présentes à l’arrêt, séparées des actions de correction.
+
+### Manipulation de texte
+
+L’épreuve comporte trois tâches :
+
+1. sélectionner un mot ou une phrase ;
+2. corriger des erreurs déjà présentes ;
+3. copier puis coller un passage.
+
+Elle s’arrête lorsque toutes les tâches sont terminées ou lorsque le temps maximal est atteint. La durée maximale, les mesures et les variantes selon le matériel restent à fixer.
 
 ### Dictée audio
 
@@ -63,7 +73,9 @@ L’épreuve notée utilise une lecture fixe :
 
 Si le jeune prend du retard, le professionnel peut arrêter l’épreuve. BCN enregistre l’auteur de l’arrêt, le moment de l’arrêt et le statut « arrêt professionnel ».
 
-Le bilan affiche les résultats calculés jusqu’au moment de l’arrêt et la mention « épreuve arrêtée en raison du retard pris sur la dictée ». La possibilité de comparer ce résultat partiel à des références reste à décider.
+Le bilan affiche les résultats calculés jusqu’au moment de l’arrêt et la mention « épreuve arrêtée en raison du retard pris sur la dictée ».
+
+Le résultat partiel est ramené à une valeur par minute et peut être comparé aux références. Le pilote devra vérifier si une durée minimale est nécessaire et si les différentes portions de la dictée sont suffisamment équivalentes pour permettre cette comparaison.
 
 Toute interruption technique doit être distinguée d’un arrêt professionnel et signalée comme incident de passation.
 
