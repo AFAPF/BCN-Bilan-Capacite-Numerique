@@ -95,6 +95,25 @@ Après un ajout ou une omission, BCN utilise un alignement automatique entre la 
 
 Le bilan indique si l’alignement a été vérifié ou corrigé manuellement, ainsi que l’auteur de cette intervention.
 
+### Observations de la méthode de frappe
+
+L’observateur sélectionne une méthode parmi les catégories suivantes :
+
+- un doigt, une main ;
+- plusieurs doigts, une main ;
+- un doigt, deux mains ;
+- plusieurs doigts, deux mains.
+
+Il indique aussi où le jeune regarde principalement :
+
+- clavier ;
+- écran ;
+- alternance entre clavier et écran.
+
+Le caractère habituel ou non du matériel utilisé est une information obligatoire.
+
+Ces observations sont descriptives. Elles restent séparées des mesures automatiques et ne produisent pas à elles seules une conclusion sur la cause des performances.
+
 ### Supports textuels
 
 Les supports de BCN seront :
