@@ -130,6 +130,9 @@ Ce code constitue un contrôle d’accès dans l’interface. Il ne doit pas êt
 - chaque professionnel possède son propre profil local et son propre code ;
 - le premier professionnel qui configure BCN devient le premier administrateur local ;
 - tous les profils professionnels peuvent consulter tous les bilans présents sur l’appareil ;
+- un bilan peut être modifié uniquement par son créateur ou par un administrateur ;
+- un bilan peut être supprimé définitivement uniquement par un administrateur ;
+- chaque modification conserve un historique complet indiquant l’auteur, la date, l’heure et les éléments modifiés ;
 - BCN se verrouille après 30 minutes d’inactivité ;
 - le verrouillage automatique est suspendu pendant une épreuve active ;
 - un administrateur local peut réinitialiser le code oublié d’un professionnel ;
@@ -138,11 +141,15 @@ Ce code constitue un contrôle d’accès dans l’interface. Il ne doit pas êt
 ### Points restant à définir
 
 - nombre d’administrateurs autorisés ;
-- droit de modification des bilans créés par un autre profil ;
-- droit de suppression ;
-- traçabilité des consultations et modifications ;
+- procédure et confirmation avant suppression définitive ;
+- durée de conservation de l’historique ;
+- traçabilité ou non des simples consultations ;
 - définition exacte d’une « épreuve active » ;
 - exigences minimales du code d’accès.
+
+### Principe de journalisation
+
+L’historique doit permettre l’audit des changements sans dupliquer inutilement les noms, observations ou autres données personnelles dans des journaux techniques. Les codes d’accès ne doivent jamais être enregistrés dans l’historique.
 
 ## 6. Recommandations sans blocage
 
