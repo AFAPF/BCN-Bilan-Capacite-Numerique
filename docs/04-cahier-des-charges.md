@@ -128,17 +128,20 @@ Ce code constitue un contrôle d’accès dans l’interface. Il ne doit pas êt
 ### Profils et verrouillage validés
 
 - chaque professionnel possède son propre profil local et son propre code ;
+- le premier professionnel qui configure BCN devient le premier administrateur local ;
+- tous les profils professionnels peuvent consulter tous les bilans présents sur l’appareil ;
 - BCN se verrouille après 30 minutes d’inactivité ;
+- le verrouillage automatique est suspendu pendant une épreuve active ;
 - un administrateur local peut réinitialiser le code oublié d’un professionnel ;
 - la réinitialisation doit être tracée sans enregistrer l’ancien ou le nouveau code.
 
 ### Points restant à définir
 
-- création et désignation du premier administrateur ;
 - nombre d’administrateurs autorisés ;
-- droit ou non de l’administrateur à consulter les bilans des autres profils ;
-- partage ou séparation des bilans entre professionnels ;
-- comportement du verrouillage pendant une épreuve active ;
+- droit de modification des bilans créés par un autre profil ;
+- droit de suppression ;
+- traçabilité des consultations et modifications ;
+- définition exacte d’une « épreuve active » ;
 - exigences minimales du code d’accès.
 
 ## 6. Recommandations sans blocage
