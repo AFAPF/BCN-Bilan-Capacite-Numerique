@@ -281,7 +281,11 @@ Le niveau scolaire est **obligatoire** pour créer une passation.
 
 ### Organisation du développement
 
-BCN est construit à partir d’un **moteur commun**, puis décliné en **trois variantes d’âge**. Les limites exactes de ces trois variantes restent à décider.
+BCN est construit à partir d’un **moteur commun**, puis décliné selon trois variantes d’âge validées :
+
+- 8 à 10 ans ;
+- 11 à 14 ans ;
+- 15 à 18 ans.
 
 Le moteur commun regroupe notamment :
 
@@ -309,7 +313,18 @@ Le contenu exact, les consignes et les règles de cotation de chaque module rest
 
 Une passation complète recommandée vise une durée maximale comprise entre **45 et 60 minutes**.
 
-Cette durée ne rend pas toutes les épreuves obligatoires : le professionnel conserve le libre choix des épreuves. La gestion des pauses et la possibilité de répartir la passation sur plusieurs séances restent à décider.
+Cette durée ne rend pas toutes les épreuves obligatoires : le professionnel conserve le libre choix des épreuves.
+
+### Pauses et séances multiples
+
+- les pauses sont entièrement libres ;
+- le temps de pause ne doit pas être inclus dans le temps d’exécution d’une épreuve ;
+- la durée et le moment des pauses peuvent être conservés comme conditions de passation ;
+- une passation peut être répartie sur plusieurs jours ;
+- la date de réalisation est enregistrée séparément pour chaque module ;
+- le rapport doit rendre visible qu’une évaluation a été réalisée en plusieurs séances.
+
+Restent à définir : la durée maximale entre la première et la dernière séance, ainsi que les règles applicables en cas de changement de matériel.
 
 ## 13. Principe de non-invention
 
