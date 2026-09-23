@@ -139,7 +139,48 @@ Les textes historiques transmis restent des références méthodologiques et ne 
 
 ## Module 2 — Pointage et manipulation
 
-Épreuves, mesures et règles à définir.
+### Tâches validées
+
+1. Cliquer avec une souris ou toucher une cible.
+2. Réaliser un double-clic sur un matériel compatible.
+3. Effectuer un glisser-déposer.
+
+Le défilement de page n’est pas retenu dans le premier prototype de ce module.
+
+### Variantes matérielles
+
+Deux variantes distinctes sont prévues :
+
+- souris ;
+- écran tactile.
+
+Le pavé tactile et les dispositifs adaptés ne sont pas inclus à ce stade. Leur comportement dans l’application reste à décider.
+
+### Banque d’items
+
+Les cibles sont présentées dans un ordre aléatoire à partir d’une banque d’items équivalents.
+
+Pour chaque passation, BCN enregistre :
+
+- version de la banque ;
+- identifiants des items tirés ;
+- ordre de présentation ;
+- variante matérielle ;
+- paramètres d’affichage nécessaires à la reproduction.
+
+L’équivalence des items et des tirages devra être vérifiée pendant le pilote avant toute comparaison normative.
+
+### Éléments restant à définir
+
+- nombre d’items par tâche et par âge ;
+- dimensions et positions des cibles ;
+- distances de déplacement ;
+- critères de réussite du double-clic et du glisser-déposer ;
+- mesures enregistrées ;
+- durée et règles d’arrêt ;
+- traitement du pavé tactile ;
+- comportement en cas de changement d’orientation ou de taille d’écran.
+
 
 ## Module 3 — Repérage visuel
 
