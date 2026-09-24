@@ -184,7 +184,9 @@ Chaque série de dix cibles comprend :
 - **3 cibles moyennes** ;
 - **3 grandes cibles**.
 
-Avant l’épreuve, BCN utilise automatiquement les données déclarées par l’écran et l’appareil afin de convertir ces dimensions physiques en dimensions d’affichage. La fiabilité de cette calibration automatique devra être vérifiée sur la matrice d’appareils du pilote. Le comportement à adopter lorsque les données de l’écran sont absentes, incohérentes ou insuffisantes reste à définir.
+Avant l’épreuve, BCN utilise automatiquement les données déclarées par l’écran et l’appareil afin de convertir ces dimensions physiques en dimensions d’affichage. La fiabilité de cette calibration automatique devra être vérifiée sur la matrice d’appareils du pilote.
+
+Si les données nécessaires sont absentes, incohérentes ou insuffisantes, BCN propose une **calibration manuelle guidée**. Le bilan conserve le mode de calibration utilisé, sa date, son auteur et les paramètres obtenus. Le support physique et la procédure exacte de cette calibration manuelle restent à définir.
 
 ### Double-clic et double-toucher
 
@@ -209,6 +211,14 @@ Un dépôt est considéré comme réussi lorsque le **centre de l’objet dépla
 BCN enregistre la position finale du centre de l’objet et la position du centre de la cible afin de calculer la précision du dépôt.
 
 Si le centre de l’objet est relâché hors de la cible, BCN enregistre un **échec** et passe immédiatement à la cible suivante. Aucun second essai n’est autorisé pour cet item.
+
+### Présentation visuelle et retour entre les items
+
+Les cibles de pointage sont des **cercles pleins, visuellement identiques et fortement contrastés** par rapport au fond. Seule leur dimension varie selon les trois catégories prévues.
+
+Après chaque item noté, BCN affiche une transition neutre vers l’item suivant. Aucun message, couleur ou son ne révèle immédiatement au jeune si l’item est réussi ou échoué.
+
+Le contraste exact, les couleurs, la durée de transition et l’affichage particulier du glisser-déposer restent à définir et devront respecter les exigences d’accessibilité retenues pour BCN.
 
 ### Banque d’items
 
@@ -266,7 +276,7 @@ Si la taille utile de l’écran ou son orientation change pendant une tâche, B
 
 - validation pendant le pilote des dimensions provisoires de 8, 16 et 24 mm ;
 - méthode technique de lecture et de contrôle des données déclarées par l’écran ;
-- comportement lorsque ces données sont absentes, incohérentes ou insuffisantes ;
+- support physique, étapes et contrôles de la calibration manuelle guidée ;
 - dimensions et marges exactes des cinq zones de départ ;
 - règles de positionnement des cibles sans chevauchement ni sortie de zone ;
 - validation pendant le pilote des distances provisoires de 50, 100 et 150 mm ;
