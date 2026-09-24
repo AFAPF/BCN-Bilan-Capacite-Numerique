@@ -241,7 +241,11 @@ Les distances physiques provisoires entre la zone de départ et la cible sont de
 
 Les directions de déplacement font l’objet d’un tirage aléatoire équilibré. BCN enregistre pour chaque item la zone de départ, la position de la cible, la distance physique calculée, la direction et l’ordre de présentation. Les catégories exactes de direction et leurs quotas parmi les dix cibles restent à définir.
 
-Le délai maximal accordé pour atteindre une cible sera déterminé pendant l’étude pilote, puis figé dans la version correspondante de l’épreuve.
+Pour chaque item, BCN vérifie d’abord que le départ est validé dans la zone prévue. La cible apparaît ensuite et le chronomètre démarre exactement au moment de cette apparition.
+
+Une activation incorrecte est un clic ou un toucher **terminé hors de la cible**. Elle est enregistrée séparément du temps de réponse et du résultat de l’item.
+
+Le délai maximal accordé pour atteindre une cible sera déterminé pendant l’étude pilote, puis figé dans la version correspondante de l’épreuve. Si ce délai est dépassé, BCN enregistre un **échec par dépassement de délai** et passe à la cible suivante sans nouvel essai.
 
 ### Éléments restant à définir
 
