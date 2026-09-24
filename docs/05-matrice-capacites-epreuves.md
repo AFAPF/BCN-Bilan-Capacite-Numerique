@@ -172,9 +172,19 @@ Les résultats restent associés à la tâche, à l’item, au dispositif et à 
 
 Chaque tâche comporte dix cibles, quel que soit l’âge.
 
-Chaque tirage mélange des cibles petites, moyennes et grandes.
+Les dimensions physiques provisoires sont :
 
-Avant l’épreuve, BCN impose une calibration de l’écran afin de viser des dimensions physiques comparables entre appareils. La méthode de calibration et les dimensions précises des trois catégories restent à définir.
+- petite cible : **8 mm** ;
+- cible moyenne : **16 mm** ;
+- grande cible : **24 mm**.
+
+Chaque série de dix cibles comprend :
+
+- **4 petites cibles** ;
+- **3 cibles moyennes** ;
+- **3 grandes cibles**.
+
+Avant l’épreuve, BCN utilise automatiquement les données déclarées par l’écran et l’appareil afin de convertir ces dimensions physiques en dimensions d’affichage. La fiabilité de cette calibration automatique devra être vérifiée sur la matrice d’appareils du pilote. Le comportement à adopter lorsque les données de l’écran sont absentes, incohérentes ou insuffisantes reste à définir.
 
 ### Banque d’items
 
@@ -201,9 +211,9 @@ Le délai maximal accordé pour atteindre une cible sera déterminé pendant l�
 
 ### Éléments restant à définir
 
-- dimensions physiques des cibles petites, moyennes et grandes ;
-- méthode opérationnelle de calibration de l’écran ;
-- répartition des trois tailles parmi les dix cibles ;
+- validation pendant le pilote des dimensions provisoires de 8, 16 et 24 mm ;
+- méthode technique de lecture et de contrôle des données déclarées par l’écran ;
+- comportement lorsque ces données sont absentes, incohérentes ou insuffisantes ;
 - règles de tirage des zones de départ et des positions des cibles ;
 - distances de déplacement ;
 - critères de réussite du double-clic et du glisser-déposer ;
