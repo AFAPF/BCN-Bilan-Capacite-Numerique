@@ -203,9 +203,19 @@ Pour chaque passation, BCN enregistre :
 
 L’équivalence des items et des tirages devra être vérifiée pendant le pilote avant toute comparaison normative.
 
-### Départ et délai
+### Départ, distance, direction et délai
 
-Avant chaque cible, la zone de départ est tirée aléatoirement. BCN enregistre ce tirage afin de permettre l’analyse et la reproduction de la séquence.
+Avant chaque cible, la zone de départ est tirée aléatoirement parmi cinq zones prédéfinies :
+
+- centre ;
+- coin supérieur gauche ;
+- coin supérieur droit ;
+- coin inférieur gauche ;
+- coin inférieur droit.
+
+Les distances physiques provisoires entre la zone de départ et la cible sont de **50 mm, 100 mm et 150 mm**. Leur faisabilité et leur équivalence devront être vérifiées pendant le pilote selon la surface d’affichage disponible.
+
+Les directions de déplacement font l’objet d’un tirage aléatoire équilibré. BCN enregistre pour chaque item la zone de départ, la position de la cible, la distance physique calculée, la direction et l’ordre de présentation. Les catégories exactes de direction et leurs quotas parmi les dix cibles restent à définir.
 
 Le délai maximal accordé pour atteindre une cible sera déterminé pendant l’étude pilote, puis figé dans la version correspondante de l’épreuve.
 
@@ -214,8 +224,10 @@ Le délai maximal accordé pour atteindre une cible sera déterminé pendant l�
 - validation pendant le pilote des dimensions provisoires de 8, 16 et 24 mm ;
 - méthode technique de lecture et de contrôle des données déclarées par l’écran ;
 - comportement lorsque ces données sont absentes, incohérentes ou insuffisantes ;
-- règles de tirage des zones de départ et des positions des cibles ;
-- distances de déplacement ;
+- dimensions et marges exactes des cinq zones de départ ;
+- règles de positionnement des cibles sans chevauchement ni sortie de zone ;
+- validation pendant le pilote des distances provisoires de 50, 100 et 150 mm ;
+- catégories de direction et quotas nécessaires à l’équilibrage ;
 - critères de réussite du double-clic et du glisser-déposer ;
 - valeur du délai maximal, à établir pendant le pilote, et règles d’arrêt ;
 - comportement en cas de changement d’orientation ou de taille d’écran.
