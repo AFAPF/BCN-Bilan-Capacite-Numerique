@@ -196,15 +196,19 @@ L’épreuve de double activation est proposée avec :
 
 BCN s’appuie sur la reconnaissance du double-clic ou du double-toucher par le système et le navigateur utilisés. Le seuil temporel n’est pas fixé par BCN. La configuration exacte peut varier selon l’environnement et n’est pas nécessairement exposée à l’application.
 
+BCN enregistre l’**intervalle brut entre les deux activations**, en plus du statut reconnu ou non reconnu par l’environnement.
+
 Les résultats restent donc associés au dispositif, au système et au navigateur. L’équivalence entre souris, pavé tactile et écran tactile ne peut pas être supposée avant validation technique et étude pilote.
 
-La faisabilité du double-toucher devra être vérifiée sans déclencher involontairement le zoom ou un autre geste du navigateur. Le traitement des environnements qui ne reconnaissent pas ce geste et l’enregistrement éventuel de l’intervalle brut entre activations restent à définir.
+La faisabilité du double-toucher devra être vérifiée sans déclencher involontairement le zoom ou un autre geste du navigateur. Si le double-toucher n’est pas reconnu par l’appareil ou le navigateur, l’épreuve est déclarée **incompatible** et n’est pas notée. Cette incompatibilité apparaît dans le bilan et ne doit pas être comptée comme un échec du jeune.
 
 ### Glisser-déposer
 
 Un dépôt est considéré comme réussi lorsque le **centre de l’objet déplacé se trouve à l’intérieur de la cible** au moment du relâchement.
 
-BCN enregistre la position finale du centre de l’objet et la position du centre de la cible afin de calculer la précision du dépôt. Le traitement des relâchements hors cible, le nombre d’essais autorisés et les critères d’arrêt restent à définir.
+BCN enregistre la position finale du centre de l’objet et la position du centre de la cible afin de calculer la précision du dépôt.
+
+Si le centre de l’objet est relâché hors de la cible, BCN enregistre un **échec** et passe immédiatement à la cible suivante. Aucun second essai n’est autorisé pour cet item.
 
 ### Banque d’items
 
@@ -249,9 +253,8 @@ Le délai maximal accordé pour atteindre une cible sera déterminé pendant l�
 - validation pendant le pilote des distances provisoires de 50, 100 et 150 mm ;
 - catégories de direction et quotas nécessaires à l’équilibrage ;
 - validation technique de la reconnaissance système du double-clic et du double-toucher ;
-- traitement des appareils ou navigateurs ne reconnaissant pas le double-toucher ;
-- décision sur l’enregistrement de l’intervalle brut entre activations ;
-- traitement des relâchements hors cible et nombre d’essais autorisés ;
+- méthode technique fiable de mesure de l’intervalle brut entre activations ;
+- critères de détection et de déclaration d’une incompatibilité tactile ;
 - valeur du délai maximal, à établir pendant le pilote, et règles d’arrêt ;
 - comportement en cas de changement d’orientation ou de taille d’écran.
 
