@@ -247,6 +247,21 @@ Une activation incorrecte est un clic ou un toucher **terminé hors de la cible*
 
 Le délai maximal accordé pour atteindre une cible sera déterminé pendant l’étude pilote, puis figé dans la version correspondante de l’épreuve. Si ce délai est dépassé, BCN enregistre un **échec par dépassement de délai** et passe à la cible suivante sans nouvel essai.
 
+### Entraînement, aides et changement d’affichage
+
+Avant chacune des trois tâches, le jeune réalise **un item d’entraînement non noté** avec le dispositif utilisé. Cet item ne fait pas partie des dix cibles notées.
+
+Pendant un item noté, le professionnel ne doit apporter ni aide verbale ni aide physique. Si le jeune a besoin d’aide, le professionnel arrête l’item. BCN enregistre :
+
+- le statut « item arrêté pour besoin d’aide » ;
+- l’auteur de l’arrêt ;
+- le moment de l’arrêt ;
+- la nature de l’aide nécessaire dans l’observation professionnelle.
+
+Cet arrêt ne doit pas être confondu avec un échec moteur, une activation incorrecte ou un dépassement de délai.
+
+Si la taille utile de l’écran ou son orientation change pendant une tâche, BCN interrompt la tâche, impose une nouvelle calibration et recommence toute la tâche avec un nouveau tirage versionné. La tentative interrompue reste conservée comme incident de passation et n’est pas utilisée comme résultat noté.
+
 ### Éléments restant à définir
 
 - validation pendant le pilote des dimensions provisoires de 8, 16 et 24 mm ;
@@ -260,7 +275,8 @@ Le délai maximal accordé pour atteindre une cible sera déterminé pendant l�
 - méthode technique fiable de mesure de l’intervalle brut entre activations ;
 - critères de détection et de déclaration d’une incompatibilité tactile ;
 - valeur du délai maximal, à établir pendant le pilote, et règles d’arrêt ;
-- comportement en cas de changement d’orientation ou de taille d’écran.
+- contenu exact et consigne de chaque item d’entraînement ;
+- catégories proposées pour décrire la nature de l’aide nécessaire.
 
 
 ## Module 3 — Repérage visuel
