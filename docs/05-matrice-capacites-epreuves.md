@@ -352,9 +352,28 @@ Cette épreuve ne constitue pas un bilan de la vision et ne permet pas, à elle 
 
 ### Tâche retenue
 
-Le jeune doit repérer une information ou une icône demandée dans une interface numérique présentée par BCN.
+Le jeune doit repérer une information ou une icône demandée dans une interface numérique statique présentée par BCN.
 
-À ce stade, les tâches abstraites de recherche parmi des symboles, d’appariement avec un modèle et de suivi d’une suite visuelle ne sont pas retenues dans ce module.
+Deux environnements sont retenus :
+
+1. bureau et gestionnaire de fichiers ;
+2. document et barre d’outils.
+
+Les pages web, navigateurs, messageries et plateformes scolaires ne sont pas retenus dans ce module à ce stade. Les tâches abstraites de recherche parmi des symboles, d’appariement avec un modèle et de suivi d’une suite visuelle ne sont pas retenues non plus.
+
+### Banque d’items et variantes d’âge
+
+L’épreuve comporte **dix items au total**.
+
+Trois banques distinctes sont prévues :
+
+- 8–10 ans ;
+- 11–14 ans ;
+- 15–18 ans.
+
+Chaque banque adapte les contenus à l’âge tout en visant une difficulté et une structure équivalentes. Cette équivalence ne peut pas être supposée : elle devra être vérifiée pendant le pilote avant toute comparaison entre tranches.
+
+La répartition des dix items entre les deux environnements, le mode de tirage et les paramètres de difficulté restent à définir.
 
 ### Mode de réponse
 
@@ -375,9 +394,9 @@ Le temps de réponse, les omissions et les fausses sélections ne sont pas reten
 
 ### Éléments restant à définir
 
-- types d’interfaces et situations présentées ;
-- variantes selon l’âge et le matériel ;
-- banque d’items et nombre d’items ;
+- répartition des dix items entre les deux environnements ;
+- construction, versionnement et équivalence des trois banques d’âge ;
+- variantes selon le matériel ;
 - consigne exacte ;
 - entraînement ;
 - critères précis de réussite et d’erreur ;
