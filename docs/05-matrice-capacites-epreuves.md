@@ -5,45 +5,89 @@
 
 ## Module 1 — Frappe au clavier
 
+**Statut fonctionnel : cadré.** Les supports, consignes verbatim, règles techniques de capture et seuils issus du pilote restent à produire ou vérifier.
+
 ### Finalité générale
 
 Observer la performance fonctionnelle de frappe et de manipulation d’un texte numérique lorsque les outils de compensation sont désactivés.
 
 Cette finalité ne permet pas, à elle seule, de conclure à une cause motrice, cognitive, linguistique ou psychologique.
 
+### Épreuves et ordre
+
+Les trois épreuves peuvent être sélectionnées indépendamment. Lorsque plusieurs épreuves sont choisies, l’ordre recommandé et imposé est :
+
+1. copie d’un texte ;
+2. dictée audio standardisée ;
+3. sélection, correction et copier-coller.
+
+| Épreuve | Résultats principaux | Durée et arrêt | Variantes d’âge |
+|---|---|---|---|
+| Copie d’un texte | Mots saisis/minute, mots corrects/minute, Retour arrière, Supprimer, erreurs finales | Texte terminé ou 5 minutes | 8–10, 11–14, 15–18 |
+| Dictée audio standardisée | Mots saisis/minute, mots corrects/minute, corrections, erreurs finales, classification professionnelle des erreurs | Audio de 3 minutes ou arrêt professionnel | 8–10, 11–14, 15–18 |
+| Manipulation de texte | Réussite par tâche, temps par tâche et total, actions incorrectes, aides | Tâches terminées ou 5 minutes | 8–10, 11–14, 15–18 |
+
 ### Outils désactivés
 
-Dans toutes les épreuves de ce module, les outils de compensation sont désactivés, notamment lorsqu’ils sont disponibles :
+Dans toutes les épreuves de ce module, les outils de compensation sont désactivés lorsqu’ils sont disponibles :
 
 - prédiction de mots ;
 - dictée vocale ;
 - correction automatique susceptible de modifier le texte ;
+- suggestions ou complétions automatiques ;
 - autre assistance automatisée à la production.
 
-La liste technique définitive reste à établir selon le matériel.
+BCN vérifie autant que possible cette configuration avant l’épreuve et demande au professionnel de la confirmer. Toute fonction impossible à désactiver est enregistrée comme incident et comme limite d’interprétation.
 
-| Épreuve validée | Capacité fonctionnelle observée | Résultats validés | Consigne | Durée | Règles d’erreur | Variantes d’âge |
-|---|---|---|---|---|---|---|
-| Copie d’un texte | Transcrire un texte affiché avec un clavier | Mots saisis/minute, mots corrects/minute, actions de correction et erreurs finales séparées | À définir | Texte terminé ou durée maximale de 5 minutes atteinte | À définir | 8–10, 11–14, 15–18 |
-| Dictée audio standardisée | Saisir un texte présenté par un enregistrement identique pour tous | Mots saisis/minute, mots corrects/minute, actions de correction et erreurs finales séparées | À définir | À définir | Erreurs de frappe et erreurs orthographiques séparées | 8–10, 11–14, 15–18 |
-| Sélection, correction et copier-coller | Sélectionner un mot ou une phrase, corriger des erreurs présentes, copier puis coller un passage | Temps, exactitude et erreurs à définir | À définir | Toutes les tâches terminées ou temps maximal atteint | À définir | 8–10, 11–14, 15–18 |
+### Variantes matérielles
 
-### Indicateurs séparés
+Deux familles de clavier sont distinguées :
 
-Les trois familles d’indicateurs ne doivent pas être fusionnées en une note unique avant justification et validation :
+- clavier physique intégré ou externe ;
+- clavier virtuel tactile.
 
-1. **Débit brut** — mots saisis par minute, un mot saisi étant un groupe séparé par des espaces.
-2. **Débit exact** — mots corrects par minute ; la règle d’exactitude est choisie obligatoirement par le professionnel avant l’épreuve et apparaît dans le bilan.
+BCN enregistre le type de clavier, sa disposition, sa langue, le système, l’appareil et le caractère habituel ou non du matériel. Les résultats obtenus avec un clavier virtuel ne sont pas comparés aux références d’un clavier physique tant que leur équivalence n’est pas validée.
 
-Trois règles de cotation sont disponibles :
+### Copie de texte
 
-- **Mode tolérant** : le mot est reconnu malgré les accents, les majuscules ou la ponctuation ;
-- **Mode strict intégral** : tout doit être identique, y compris la ponctuation et les majuscules ;
-- **Mode orthographique** : l’orthographe et les accents doivent être exacts, tandis que la ponctuation est évaluée séparément.
+L’épreuve s’arrête lorsque le texte est terminé ou après cinq minutes.
 
-BCN ne peut pas démarrer l’épreuve tant qu’une règle n’a pas été sélectionnée.
-3. **Actions de correction** — uniquement les activations de Retour arrière et Supprimer, comptées séparément.
-4. **Erreurs finales** — erreurs encore présentes à l’arrêt, séparées des actions de correction.
+Avant la copie notée, un court exemple non noté permet de vérifier la compréhension et le fonctionnement du clavier. Le contenu de cet exemple est distinct du texte noté.
+
+BCN calcule séparément :
+
+1. **Mots saisis par minute** — nombre de groupes séparés par des espaces, rapporté à la durée.
+2. **Mots corrects par minute** — nombre de mots considérés corrects selon le mode choisi, rapporté à la durée.
+3. **Actions de correction** — activations de Retour arrière et Supprimer, comptées séparément.
+4. **Erreurs finales** — différences restant entre le texte produit et le texte modèle.
+
+### Modes de cotation
+
+Le professionnel choisit obligatoirement un mode avant la copie ou la dictée. Ce choix apparaît dans le bilan.
+
+- **Mode tolérant** : le mot est reconnu malgré les accents, les majuscules ou la ponctuation.
+- **Mode strict intégral** : tout doit être identique, y compris ponctuation et majuscules.
+- **Mode orthographique** : orthographe et accents exacts ; ponctuation évaluée séparément.
+
+BCN ne peut pas démarrer l’épreuve tant qu’un mode n’a pas été sélectionné.
+
+### Dictée audio
+
+L’épreuve utilise un fichier audio généré à l’avance, intégré et versionné :
+
+- durée totale de trois minutes pour chaque tranche d’âge ;
+- voix de synthèse identique ;
+- rythme et pauses fixes propres à la variante d’âge ;
+- aucun réglage de vitesse ;
+- aucune pause ;
+- aucune répétition ;
+- aucun entraînement préalable.
+
+Les durées des pauses seront testées pendant le pilote puis figées.
+
+Si le jeune prend du retard, le professionnel peut arrêter l’épreuve. BCN enregistre l’auteur, le moment et le motif. Le bilan affiche les résultats calculés jusqu’à l’arrêt et la mention **« épreuve arrêtée en raison du retard pris sur la dictée »**.
+
+Le résultat partiel est rapporté à une valeur par minute et peut être comparé aux références. La durée minimale autorisant cette comparaison et l’équivalence des différentes portions seront déterminées pendant le pilote.
 
 ### Manipulation de texte
 
@@ -53,51 +97,53 @@ L’épreuve comporte trois tâches :
 2. corriger des erreurs déjà présentes ;
 3. copier puis coller un passage.
 
-Elle s’arrête lorsque toutes les tâches sont terminées ou après cinq minutes.
+Un exemple non noté précède l’épreuve. Elle s’arrête lorsque les tâches sont terminées ou après cinq minutes.
 
 Pour chaque tâche, BCN affiche :
 
 - réussite ou échec ;
 - temps de réalisation ;
-- temps total de l’épreuve ;
+- temps total ;
 - erreurs ou actions incorrectes ;
 - aides apportées par le professionnel.
 
-Les variantes selon le matériel et les critères détaillés de réussite restent à fixer.
+Les critères exacts de réussite et les variantes selon le matériel seront décrits dans les fiches d’épreuve.
 
-### Dictée audio
+### Alignement et erreurs finales
 
-L’épreuve notée utilise une lecture fixe :
+Après un ajout ou une omission, BCN utilise un alignement automatique entre la saisie et le texte modèle.
 
-- aucun réglage de vitesse pendant la lecture ;
-- aucune pause ;
-- aucune répétition ;
-- aucun entraînement préalable ;
-- démarrage direct de l’épreuve notée ;
-- durée totale de trois minutes pour chacune des trois tranches d’âge ;
-- phrases séparées par des pauses fixes adaptées à la tranche d’âge ;
-- enregistrement et rythme propres à chaque variante d’âge ;
-- voix de synthèse identique pour toutes les diffusions ;
-- fichiers audio générés à l’avance, intégrés et versionnés afin d’éviter les différences entre appareils ;
-- durées des pauses testées pendant l’étude pilote puis figées dans chaque version de l’épreuve.
+Les différences finales sont classées automatiquement selon leur forme observable :
 
-Si le jeune prend du retard, le professionnel peut arrêter l’épreuve. BCN enregistre l’auteur de l’arrêt, le moment de l’arrêt et le statut « arrêt professionnel ».
+- omission ;
+- ajout ;
+- substitution ;
+- inversion ou transposition ;
+- accent ;
+- majuscule ;
+- ponctuation.
 
-Le bilan affiche les résultats calculés jusqu’au moment de l’arrêt et la mention « épreuve arrêtée en raison du retard pris sur la dictée ».
+BCN ne doit pas déduire automatiquement la cause d’une différence. Pour la dictée, le professionnel classe une erreur comme :
 
-Le résultat partiel est ramené à une valeur par minute et peut être comparé aux références. La durée minimale autorisant cette comparaison sera déterminée pendant l’étude pilote. Le pilote devra aussi vérifier si les différentes portions de la dictée sont suffisamment équivalentes.
+- erreur de frappe ;
+- erreur orthographique ;
+- indéterminée.
 
-Toute interruption technique doit être distinguée d’un arrêt professionnel et signalée comme incident de passation.
+Cette classification professionnelle est obligatoire pour toute erreur ambiguë et apparaît séparément du calcul automatique.
 
-### Alignement du texte
+Le professionnel peut vérifier ou corriger l’alignement. BCN trace l’auteur et la modification, puis recalcule les indicateurs. Le bilan indique si l’alignement a été vérifié ou corrigé.
 
-Après un ajout ou une omission, BCN utilise un alignement automatique entre la saisie et le texte modèle. Le professionnel peut vérifier cet alignement. Toute correction manuelle de l’alignement doit être tracée et le score recalculé.
+### Actions de correction
 
-Le bilan indique si l’alignement a été vérifié ou corrigé manuellement, ainsi que l’auteur de cette intervention.
+Seules les suppressions arrière et avant — Retour arrière et Supprimer — alimentent le compteur validé.
+
+Une correction réalisée par sélection-remplacement, collage ou fonction Annuler peut modifier le texte final, mais n’est pas ajoutée au compteur « actions de correction ». BCN conserve ces événements techniques lorsqu’ils sont détectables, sans les présenter comme corrections validées.
+
+La correspondance technique entre événements de saisie, touches physiques et claviers virtuels devra être testée sur chaque environnement pris en charge.
 
 ### Observations de la méthode de frappe
 
-L’observateur sélectionne une méthode parmi les catégories suivantes :
+L’observateur sélectionne une méthode :
 
 - un doigt, une main ;
 - plusieurs doigts, une main ;
@@ -110,32 +156,59 @@ Il indique aussi où le jeune regarde principalement :
 - écran ;
 - alternance entre clavier et écran.
 
-Le caractère habituel ou non du matériel utilisé est une information obligatoire.
-
-Ces observations sont descriptives. Elles restent séparées des mesures automatiques et ne produisent pas à elles seules une conclusion sur la cause des performances.
+Ces observations sont descriptives, séparées des mesures automatiques et sans conclusion causale.
 
 ### Supports textuels
 
-Les supports de BCN seront :
+Les supports sont :
 
-- des textes originaux créés spécifiquement pour BCN ;
+- des textes originaux créés pour BCN ;
 - ou des textes dont la réutilisation est juridiquement autorisée.
 
-Les textes historiques transmis restent des références méthodologiques et ne sont pas intégrés automatiquement. Chaque support devra être versionné et évalué pour sa longueur, sa difficulté, son vocabulaire, sa ponctuation et sa lisibilité.
+Trois banques versionnées sont prévues pour 8–10, 11–14 et 15–18 ans. Chaque support sera analysé pour sa longueur, son vocabulaire, sa ponctuation, sa lisibilité et sa difficulté. L’équivalence devra être vérifiée au pilote.
 
-### Décisions restant à prendre
+Les documents historiques transmis servent uniquement de références méthodologiques et ne sont pas intégrés automatiquement.
 
-- validation technique de l’alignement automatique après ajout ou omission ;
-- correspondance technique des touches Retour arrière et Supprimer selon chaque appareil ;
-- traitement des corrections effectuées par sélection, remplacement ou fonction Annuler, qui ne sont pas comptées dans l’indicateur validé ;
-- classification des erreurs ;
-- règles opérationnelles séparant erreurs orthographiques et erreurs de frappe ;
-- comportement des touches de correction ;
-- contenu et difficulté des supports ;
-- consigne audio, rythme et répétitions ;
-- appareils et claviers compatibles ;
-- observation de la méthode de frappe ;
-- critères d’interruption ou d’invalidation.
+### Aides, interruption et reprise
+
+Pendant une épreuve notée, le professionnel ne doit pas corriger le texte, indiquer les touches à utiliser ni guider physiquement la saisie.
+
+Toute aide nécessaire est enregistrée avec sa catégorie, son auteur et une observation libre. Le résultat concerné est signalé comme assisté et n’est pas présenté comme une performance autonome.
+
+Une interruption technique est distinguée d’un arrêt professionnel. BCN conserve l’état, l’horodatage et le motif. La reprise n’est autorisée que si le texte, le temps actif et la configuration peuvent être restaurés exactement ; sinon l’épreuve recommence avec un support équivalent.
+
+Les pauses libres entre les épreuves ne sont pas comptées dans le temps actif.
+
+### Restitution dans le bilan
+
+Le bilan utilise un tableau compact distinct pour chaque épreuve.
+
+Il présente notamment :
+
+- durée active et statut de complétion ;
+- mots saisis/minute et mots corrects/minute ;
+- mode de cotation ;
+- Retour arrière et Supprimer ;
+- erreurs finales par catégorie observable ;
+- classification professionnelle des erreurs de dictée ;
+- résultats des trois tâches de manipulation ;
+- méthode de frappe, orientation du regard et matériel habituel ou non ;
+- aides, incidents, arrêts et réserves ;
+- statut de l’alignement automatique ou corrigé.
+
+Aucune note unique ne fusionne les résultats du module.
+
+### Éléments restant à produire ou vérifier
+
+- textes originaux et consignes verbatim des trois banques ;
+- fichiers audio et pauses de dictée ;
+- validation technique de l’alignement automatique ;
+- jeux d’exemples avec résultats attendus pour chaque mode de cotation ;
+- critères détaillés de réussite de la manipulation de texte ;
+- compatibilité des claviers, dispositions et événements de saisie ;
+- équivalence des supports et variantes matérielles ;
+- durée minimale de comparaison d’une dictée arrêtée ;
+- règles techniques exactes de sauvegarde et reprise.
 
 ## Module 2 — Pointage et manipulation
 
