@@ -27,7 +27,7 @@ Document lisible destiné à être conservé ou communiqué selon les règles du
 
 ### CSV de travail
 
-Données structurées d’une ou plusieurs passations, pseudonymisées.
+Données structurées nominatives d’une ou plusieurs passations.
 
 ### CSV d’étude
 
@@ -43,7 +43,7 @@ L’en-tête contient :
 
 - titre « BCN — Bilan de Capacité Numérique » ;
 - mention « version expérimentale non étalonnée » ;
-- code du jeune ;
+- nom et prénom du jeune ;
 - âge en années et mois ;
 - niveau scolaire ;
 - date ou période de passation ;
@@ -51,7 +51,7 @@ L’en-tête contient :
 - version BCN ;
 - statut : complet, partiel ou interrompu.
 
-Aucun nom ni prénom n’est prévu dans BCN v1.
+Le bilan professionnel est nominatif. Le nom et le prénom proviennent du dossier local chiffré.
 
 ## 4. Structure du PDF
 
@@ -238,6 +238,8 @@ Une ligne par passation :
 
 - assessment_id ;
 - participant_code ;
+- last_name ;
+- first_name ;
 - age_years ;
 - age_months_remainder ;
 - age_band ;
@@ -324,7 +326,7 @@ Fichier distinct, jamais inclus par défaut :
 
 Un avertissement rappelle que le texte libre peut contenir des informations indirectement identifiantes.
 
-## 12. CSV d’étude
+## 12. Export d’étude distinct
 
 Le paquet d’étude contient uniquement :
 
@@ -406,13 +408,14 @@ Le bouton final indique l’action exacte : « Enregistrer le PDF » ou « Enreg
 
 ## 17. Critères d’acceptation
 
-- le PDF ne contient aucun nom ni prénom ;
+- le PDF contient le nom et le prénom exacts du dossier local ;
 - chaque chiffre du PDF est reproductible depuis les données brutes ;
 - une tâche incompatible n’affiche pas zéro ;
 - les aides restent séparées des réussites autonomes ;
 - aucun classement ou seuil non validé ;
 - le PDF reste lisible sans couleur ;
 - les CSV respectent les types et en-têtes définis ;
-- le CSV d’étude ne contient aucun identifiant local ni texte libre ;
+- le CSV de travail est nominatif ;
+- l’export d’étude distinct ne contient aucun identifiant local ni texte libre ;
 - l’export reste local ;
 - l’empreinte enregistrée correspond au fichier produit.
