@@ -145,6 +145,14 @@ Les textes historiques transmis restent des références méthodologiques et ne 
 2. Réaliser un double-clic sur un matériel compatible.
 3. Effectuer un glisser-déposer.
 
+Chaque tâche peut être sélectionnée indépendamment par le professionnel.
+
+Lorsque plusieurs tâches sont sélectionnées, BCN les présente dans un ordre fixe :
+
+1. clic simple ou toucher ;
+2. double-clic ou double-toucher ;
+3. glisser-déposer.
+
 Le défilement de page n’est pas retenu dans le premier prototype de ce module.
 
 ### Variantes matérielles
