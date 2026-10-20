@@ -74,14 +74,14 @@ Pour les quatre modules — frappe, pointage, repérage visuel, compréhension e
 ### E. Données et protection des mineurs
 
 - [ ] Dictionnaire complet des données rédigé.
-- [ ] Données obligatoires, facultatives, calculées et interdites distinguées.
-- [ ] Modèle de données logique validé.
-- [ ] Durées de conservation définies.
-- [ ] Suppression, restauration et sauvegarde définies.
-- [ ] Journalisation et historique définis.
+- [x] Données obligatoires, facultatives, calculées et interdites distinguées.
+- [x] Modèle de données logique validé au niveau fonctionnel.
+- [x] Durées de conservation recommandées définies, sous réserve de validation par l’organisme et son DPO.
+- [x] Suppression, restauration et sauvegarde définies.
+- [x] Journalisation et historique définis.
 - [ ] Information des jeunes et représentants légaux préparée.
-- [ ] Base légale, responsabilités et besoin éventuel d’AIPD examinés.
-- [ ] Séparation entre bilan individuel et données d’étude garantie.
+- [x] Base légale, responsabilités et besoin éventuel d’AIPD examinés ; validation locale encore requise.
+- [x] Séparation entre bilan individuel et données d’étude spécifiée.
 
 ### F. Sécurité
 
