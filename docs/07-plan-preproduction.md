@@ -35,12 +35,12 @@ Une décision ayant un effet sur l’utilisateur, les données, les mesures, l�
 
 ### B. Parcours utilisateurs
 
-- [ ] Création et administration des profils décrites.
+- [x] Création et administration des profils décrites.
 - [x] Création, préparation, démarrage, pause, reprise et clôture d’une passation décrits.
 - [ ] Consultation, modification, suppression et archivage d’un bilan décrits.
 - [ ] Export PDF et CSV décrit de bout en bout.
 - [x] Tous les cas d’interruption, d’abandon, d’incident et de changement de matériel traités.
-- [ ] Droits de chaque rôle définis dans une matrice d’autorisations.
+- [x] Droits de chaque rôle définis dans une matrice d’autorisations.
 
 ### C. Épreuves et modules
 
