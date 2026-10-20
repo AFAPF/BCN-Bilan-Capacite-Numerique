@@ -64,6 +64,8 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 - [Données et protection des mineurs](docs/10-donnees-protection-mineurs.md)
 - [Sécurité et modèle de menaces](docs/11-securite-modele-menaces.md)
 - [Architecture technique](docs/12-architecture-technique.md)
+- [Interface, ergonomie et accessibilité](docs/13-interface-accessibilite.md)
+- [Arborescence des écrans et parcours](docs/14-arborescence-parcours.md)
 - [Feuille de route](ROADMAP.md)
 - [Contribuer au projet](CONTRIBUTING.md)
 - [Politique de sécurité](SECURITY.md)
