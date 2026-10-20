@@ -2,7 +2,7 @@
 
 **Statut : spécification fonctionnelle figée pour la production**
 **Version de schéma initiale :** 1
-**Règle :** aucune identité civile dans BCN v1.
+**Règle :** les bilans professionnels BCN v1 sont nominatifs. L’identité reste chiffrée et stockée uniquement sur l’appareil.
 
 ## 1. Conventions
 
@@ -19,12 +19,12 @@
 
 Chaque enregistrement possède au minimum id, created_at, updated_at, schema_version et record_version.
 
-## 2. Champs interdits en v1
+## 2. Identité et champs interdits
+
+Le nom et le prénom sont enregistrés pour produire un bilan nominatif. Ils ne sont jamais envoyés en ligne.
 
 Aucune table ne contient :
 
-- nom ;
-- prénom ;
 - date de naissance complète ;
 - photographie ;
 - adresse ;
@@ -71,12 +71,14 @@ Les textes libres affichent un rappel de ne pas ajouter ces informations.
 
 Le pilote initial utilise un seul profil administrateur-professionnel, mais le format reste compatible avec plusieurs profils.
 
-## 5. Dossier jeune pseudonymisé
+## 5. Dossier jeune nominatif
 
 | Champ | Type | Obligatoire | Règle |
 |---|---|---:|---|
 | id | UUID | oui | identifiant interne |
-| participant_code | chaîne 3–32 | oui | ne dérive pas de l’identité |
+| participant_code | chaîne 3–32 | oui | identifiant technique interne, non utilisé pour remplacer le nom dans le bilan |
+| last_name | chaîne 1–80 | oui | nom de famille, affichage professionnel uniquement |
+| first_name | chaîne 1–80 | oui | prénom, affichage professionnel uniquement |
 | school_level | enum | oui | CM1, CM2, 6E, 5E, 4E, 3E pour le pilote |
 | age_years | entier 8–18 | oui | âge à la première passation |
 | age_months_remainder | entier 0–11 | oui | mois supplémentaires |
@@ -87,14 +89,14 @@ Le pilote initial utilise un seul profil administrateur-professionnel, mais le f
 | created_by | UUID | oui | profil |
 | notes | chaîne nullable | non | 1 000 caractères, rappel de minimisation |
 
-L’âge est saisi directement en années et mois. BCN n’a pas besoin de conserver la date de naissance.
+L’âge est saisi directement en années et mois. BCN n’a pas besoin de conserver la date de naissance. Le rapport affiche le nom et le prénom ; l’identifiant technique reste invisible.
 
 ## 6. Passation
 
 | Champ | Type | Obligatoire | Règle |
 |---|---|---:|---|
 | id | UUID | oui | stable |
-| participant_id | UUID | oui | référence pseudonymisée |
+| participant_id | UUID | oui | référence technique au dossier nominatif |
 | created_by | UUID | oui | propriétaire fonctionnel |
 | status | enum | oui | draft, ready, active, paused, completed, partial, abandoned, trashed |
 | condition | enum | oui | standard, adapted |
@@ -385,5 +387,5 @@ Avant écriture ou import :
 - énumérations validées ;
 - ordre des événements contrôlé ;
 - duplication d’identifiant refusée ;
-- données en clair sensibles refusées ;
+- données nominatives refusées hors des champs chiffrés prévus ;
 - fichier incompatible rejeté sans modifier le coffre.
