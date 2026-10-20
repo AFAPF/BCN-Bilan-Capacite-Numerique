@@ -27,18 +27,18 @@ Une décision ayant un effet sur l’utilisateur, les données, les mesures, l�
 
 ### A. Finalité et périmètre
 
-- [ ] Finalité, limites d’usage et vocabulaire stabilisés.
-- [ ] Public, professionnels autorisés et prérequis de formation définis.
-- [ ] Périmètre exact de la première version fixé.
-- [ ] Éléments explicitement exclus de la première version listés.
-- [ ] Critères de succès et d’échec de la première version définis.
+- [x] Finalité, limites d’usage et vocabulaire stabilisés.
+- [x] Public, utilisateur initial et prérequis définis.
+- [x] Périmètre exact de la première version fixé.
+- [x] Éléments explicitement exclus de la première version listés.
+- [x] Critères de succès et d’échec de la première version définis.
 
 ### B. Parcours utilisateurs
 
 - [x] Création et administration des profils décrites.
 - [x] Création, préparation, démarrage, pause, reprise et clôture d’une passation décrits.
 - [x] Consultation, modification, suppression et archivage d’un bilan décrits.
-- [x] Parcours d’export PDF et CSV décrit de bout en bout ; formats détaillés restant à définir.
+- [x] Parcours et formats détaillés des exports PDF et CSV définis.
 - [x] Tous les cas d’interruption, d’abandon, d’incident et de changement de matériel traités.
 - [x] Droits de chaque rôle définis dans une matrice d’autorisations.
 
@@ -46,34 +46,34 @@ Une décision ayant un effet sur l’utilisateur, les données, les mesures, l�
 
 Pour les quatre modules — frappe, pointage, repérage visuel, compréhension et navigation :
 
-- [ ] capacité observée définie ;
-- [ ] population et variantes d’âge définies ;
-- [ ] matériel et variantes matérielles définis ;
-- [ ] supports et banque d’items définis ;
-- [ ] consigne exacte définie ;
-- [ ] entraînement éventuel défini ;
-- [ ] durée, pauses, arrêt et reprise définis ;
-- [ ] aides autorisées et interdites définies ;
-- [ ] événements et mesures enregistrés définis ;
-- [ ] règles de réussite, d’erreur et de cotation définies ;
-- [ ] incidents et limites d’interprétation définis ;
-- [ ] contenu du rapport défini ;
-- [ ] éléments restant à confirmer pendant le pilote identifiés.
+- [x] capacité observée définie ;
+- [x] population et variantes d’âge définies ;
+- [x] matériel et variantes matérielles définis ;
+- [x] supports et banque d’items initiale définis ;
+- [x] consigne exacte initiale définie ;
+- [x] entraînement défini ;
+- [x] durée, pauses, arrêt et reprise définis ;
+- [x] aides autorisées et interdites définies ;
+- [x] événements et mesures enregistrés définis ;
+- [x] règles de réussite, d’erreur et de cotation définies ;
+- [x] incidents et limites d’interprétation définis ;
+- [x] contenu du rapport défini ;
+- [x] éléments restant à confirmer pendant le pilote identifiés.
 
 ### D. Cotation et restitution
 
-- [ ] Formule exacte de chaque indicateur documentée.
-- [ ] Jeux d’exemples avec résultats attendus préparés.
-- [ ] Traitement des données manquantes et résultats partiels défini.
-- [ ] Comparaisons autorisées et interdites définies.
-- [ ] Séparation entre mesure, observation et interprétation garantie.
-- [ ] Règles de génération du rapport PDF définies.
-- [ ] Colonnes, types et règles d’anonymisation du CSV définis.
-- [ ] Aucune référence ou norme non validée intégrée.
+- [x] Formule exacte de chaque indicateur documentée.
+- [x] Jeux d’exemples avec résultats attendus préparés.
+- [x] Traitement des données manquantes et résultats partiels défini.
+- [x] Comparaisons autorisées et interdites définies.
+- [x] Séparation entre mesure, observation et interprétation garantie.
+- [x] Règles de génération du rapport PDF nominatif définies.
+- [x] Colonnes et types du CSV nominatif, ainsi que l’export d’étude distinct, définis.
+- [x] Aucune référence ou norme non validée intégrée.
 
 ### E. Données et protection des mineurs
 
-- [ ] Dictionnaire complet des données rédigé.
+- [x] Dictionnaire complet des données rédigé.
 - [x] Données obligatoires, facultatives, calculées et interdites distinguées.
 - [x] Modèle de données logique validé au niveau fonctionnel.
 - [x] Durées de conservation recommandées définies, sous réserve de validation par l’organisme et son DPO.
@@ -100,7 +100,7 @@ Pour les quatre modules — frappe, pointage, repérage visuel, compréhension e
 - [x] Architecture applicative choisie et justifiée.
 - [x] Stratégie de stockage local choisie.
 - [x] Gestion des versions, migrations et compatibilité décidée.
-- [ ] Format interne des sessions et résultats défini.
+- [x] Format interne des sessions et résultats défini.
 - [x] Gestion des contenus versionnés et fichiers audio définie.
 - [x] Dépendances externes cibles et politique de mise à jour définies ; versions à auditer au lancement.
 - [x] Sauvegarde, restauration et portabilité décidées.
@@ -108,42 +108,42 @@ Pour les quatre modules — frappe, pointage, repérage visuel, compréhension e
 ### H. Interface et accessibilité
 
 - [x] Arborescence des écrans définie.
-- [ ] Maquettes des parcours principaux validées.
+- [x] Maquettes fonctionnelles basse fidélité des parcours principaux validées.
 - [x] États d’erreur, de chargement, de verrouillage et de reprise prévus.
 - [x] Niveau d’accessibilité cible défini : RGAA 4.1.2 et WCAG 2.2 AA.
 - [x] Navigation clavier, lecteur d’écran, contraste, zoom et tactile spécifiés.
 - [x] Adaptations susceptibles de modifier une mesure identifiées et séparées des conditions standard.
-- [ ] Langage et lisibilité spécifiés ; compréhension à vérifier auprès des trois tranches d’âge.
+- [x] Langage et lisibilité spécifiés ; compréhension classée à vérifier au pilote.
 
 ### I. Qualité et tests
 
-- [ ] Critères d’acceptation de chaque fonction rédigés.
-- [ ] Stratégie de tests unitaires, d’intégration et de bout en bout définie.
-- [ ] Matrice appareils–systèmes–navigateurs préparée.
-- [ ] Tolérances de chronométrage et de précision définies.
-- [ ] Tests de reprise après interruption et perte d’énergie prévus.
-- [ ] Tests de calcul fondés sur des cas connus préparés.
-- [ ] Procédure de qualification d’une version candidate définie.
+- [x] Critères d’acceptation de chaque fonction rédigés.
+- [x] Stratégie de tests unitaires, d’intégration et de bout en bout définie.
+- [x] Matrice appareils–systèmes–navigateurs préparée.
+- [x] Tolérances de chronométrage et de précision définies.
+- [x] Tests de reprise après interruption et perte d’énergie prévus.
+- [x] Tests de calcul fondés sur des cas connus préparés.
+- [x] Procédure de qualification d’une version candidate définie.
 
 ### J. Cadre scientifique, juridique et gouvernance
 
 - [ ] Comité de suivi constitué.
-- [ ] Responsabilités de décision et de validation définies.
+- [x] Responsabilités de décision produit et de validation technique définies pour la version personnelle.
 - [ ] Licence du projet choisie.
 - [ ] Droits de tous les textes, sons, visuels et contenus vérifiés.
 - [ ] Protocole pilote et documents d’information préparés.
-- [ ] Méthode d’analyse et critères de modification après pilote définis.
-- [ ] Conditions d’emploi des termes « standardisé », « étalonné » et « normé » respectées.
+- [x] Méthode d’analyse et critères de modification après pilote définis.
+- [x] Conditions d’emploi des termes « standardisé », « étalonné » et « normé » définies et respectées.
 
 ### K. Préparation de la production
 
-- [ ] Backlog de production découpé en tâches vérifiables.
-- [ ] Ordre de développement et dépendances définis.
-- [ ] Chaque tâche possède des critères d’acceptation.
-- [ ] Risques techniques et fonctionnels prioritaires documentés.
-- [ ] Stratégie de versionnement et de publication décidée.
-- [ ] Documentation à produire pendant le développement planifiée.
-- [ ] Revue finale de la porte d’entrée effectuée et consignée.
+- [x] Backlog de production découpé en tâches vérifiables.
+- [x] Ordre de développement et dépendances définis.
+- [x] Chaque tâche possède des critères d’acceptation.
+- [x] Risques techniques et fonctionnels prioritaires documentés.
+- [x] Stratégie de versionnement et de publication expérimentale décidée.
+- [x] Documentation à produire pendant le développement planifiée.
+- [x] Revue finale de la porte d’entrée effectuée et consignée ; lancement volontairement non autorisé.
 
 ## 4. Conditions d’ouverture de la phase de production
 
