@@ -4,9 +4,9 @@
 
 ## Statut du projet
 
-**Phase : cadrage et conception — version préliminaire non validée.**
+**Phase : préproduction technique finalisée — production non lancée.**
 
-BCN est actuellement un **projet personnel**. Son auteur prévoit d’abord des essais avec données fictives, puis, uniquement après autorisation de sa structure, une expérimentation professionnelle limitée et plusieurs mois d’usage individuel. Aucune diffusion opérationnelle n’est encore décidée.
+BCN est actuellement un **projet personnel expérimental**. Son périmètre, son architecture, ses règles, ses contenus initiaux, ses maquettes, ses tests et son backlog sont définis. Les données et bilans restent localement sur l’appareil. Aucune diffusion à d’autres utilisateurs n’est encore décidée.
 
 BCN est en cours de développement. Il ne s’agit actuellement ni d’un test étalonné, ni d’un outil diagnostique, ni d’un dispositif médical. Les scores, seuils et interprétations ne devront être présentés comme « normés » qu’après une validation méthodologique, une étude pilote et un étalonnage sur un échantillon approprié.
 
@@ -42,7 +42,7 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 3. Aucune conclusion psychologique ou diagnostique automatique.
 4. Comparaison possible sans adaptation / avec adaptation.
 5. Protection des données dès la conception.
-6. Accessibilité et fonctionnement local privilégiés.
+6. Accessibilité et fonctionnement local sans cloud.
 7. Validation scientifique progressive et transparente.
 
 ## Architecture prévue
@@ -69,6 +69,15 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 - [Interface, ergonomie et accessibilité](docs/13-interface-accessibilite.md)
 - [Arborescence des écrans et parcours](docs/14-arborescence-parcours.md)
 - [Stratégie d’essai personnel et d’expérimentation](docs/15-strategie-experimentation.md)
+- [Cotation et indicateurs](docs/16-cotation-indicateurs.md)
+- [Dictionnaire des données](docs/17-dictionnaire-donnees.md)
+- [Rapport PDF et exports CSV](docs/18-rapports-exports.md)
+- [Maquettes fonctionnelles](docs/19-maquettes-fonctionnelles.md)
+- [Stratégie de tests et qualification](docs/20-strategie-tests-qualification.md)
+- [Consignes et banques d’items](docs/21-consignes-banques-items.md)
+- [Périmètre v1 et registre des risques](docs/22-perimetre-v1-risques.md)
+- [Backlog de production](docs/23-backlog-production.md)
+- [Revue de la porte d’entrée](docs/24-revue-porte-entree.md)
 - [Feuille de route](ROADMAP.md)
 - [Contribuer au projet](CONTRIBUTING.md)
 - [Politique de sécurité](SECURITY.md)
