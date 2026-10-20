@@ -253,7 +253,14 @@ Avant chaque cible, la zone de départ est tirée aléatoirement parmi cinq zone
 
 Les distances physiques provisoires entre la zone de départ et la cible sont de **50 mm, 100 mm et 150 mm**. Leur faisabilité et leur équivalence devront être vérifiées pendant le pilote selon la surface d’affichage disponible.
 
-Les directions de déplacement font l’objet d’un tirage aléatoire équilibré. BCN enregistre pour chaque item la zone de départ, la position de la cible, la distance physique calculée, la direction et l’ordre de présentation. Les catégories exactes de direction et leurs quotas parmi les dix cibles restent à définir.
+Les directions de déplacement font l’objet d’un tirage aléatoire équilibré selon quatre catégories principales :
+
+- haut ;
+- bas ;
+- gauche ;
+- droite.
+
+Sur les dix items, deux directions apparaissent trois fois et deux directions apparaissent deux fois. Les directions recevant trois items varient aléatoirement d’un tirage à l’autre. BCN enregistre pour chaque item la zone de départ, la position de la cible, la distance physique calculée, la direction exacte, la catégorie de direction et l’ordre de présentation.
 
 Pour chaque item, BCN vérifie d’abord que le départ est validé dans la zone prévue. La cible apparaît ensuite et le chronomètre démarre exactement au moment de cette apparition.
 
@@ -265,7 +272,9 @@ Le délai maximal accordé pour atteindre une cible sera déterminé pendant l�
 
 Avant chacune des trois tâches, le jeune réalise **un item d’entraînement non noté** avec le dispositif utilisé. Cet item ne fait pas partie des dix cibles notées.
 
-À l’issue de cet item, BCN indique et explique le résultat. Un nouvel essai d’entraînement est possible. Les deux tentatives restent séparées des données notées. La conduite à tenir si le second essai montre encore une incompréhension reste à définir.
+À l’issue de cet item, BCN indique et explique le résultat. Un nouvel essai d’entraînement est possible. Les deux tentatives restent séparées des données notées.
+
+Si le second essai montre encore une incompréhension, la tâche notée est tout de même lancée. BCN ajoute automatiquement une réserve au résultat : **« tâche réalisée malgré une difficulté persistante de compréhension pendant l’entraînement »**. Cette réserve apparaît dans le bilan et doit être prise en compte dans l’interprétation.
 
 Pendant un item noté, le professionnel ne doit apporter ni aide verbale ni aide physique. Si le jeune a besoin d’aide, le professionnel arrête l’item. BCN enregistre :
 
@@ -278,6 +287,19 @@ Cet arrêt ne doit pas être confondu avec un échec moteur, une activation inco
 
 Si la taille utile de l’écran ou son orientation change pendant une tâche, BCN interrompt la tâche, impose une nouvelle calibration et recommence toute la tâche avec un nouveau tirage versionné. La tentative interrompue reste conservée comme incident de passation et n’est pas utilisée comme résultat noté.
 
+### Restitution dans le bilan
+
+Pour chacune des tâches du module Pointage, le bilan principal affiche :
+
+- le nombre de réussites sur 10 ;
+- le nombre d’échecs, séparés par motif ;
+- le nombre d’activations incorrectes ;
+- pour le glisser-déposer, la précision du dépôt.
+
+Les temps de réponse restent enregistrés dans les données de passation, mais ne sont pas affichés comme temps médians dans le bilan principal à ce stade. Le détail de chaque item n’est pas intégré au bilan principal.
+
+La formule exacte de l’indicateur de précision du dépôt et la présentation graphique ou numérique de ces résultats restent à définir.
+
 ### Éléments restant à définir
 
 - validation pendant le pilote des dimensions provisoires de 8, 16 et 24 mm ;
@@ -286,13 +308,11 @@ Si la taille utile de l’écran ou son orientation change pendant une tâche, B
 - dimensions et marges exactes des cinq zones de départ ;
 - règles de positionnement des cibles sans chevauchement ni sortie de zone ;
 - validation pendant le pilote des distances provisoires de 50, 100 et 150 mm ;
-- catégories de direction et quotas nécessaires à l’équilibrage ;
 - validation technique de la reconnaissance système du double-clic et du double-toucher ;
 - méthode technique fiable de mesure de l’intervalle brut entre activations ;
 - critères de détection et de déclaration d’une incompatibilité tactile ;
 - valeur du délai maximal, à établir pendant le pilote, et règles d’arrêt ;
 - contenu exact et consigne de chaque item d’entraînement ;
-- conduite à tenir après l’échec ou l’incompréhension du second essai d’entraînement ;
 - catégories proposées pour décrire la nature de l’aide nécessaire.
 
 
