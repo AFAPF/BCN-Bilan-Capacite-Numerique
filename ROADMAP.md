@@ -1,6 +1,8 @@
 # Feuille de route BCN
 
-Cette feuille de route est complétée par le [plan de préproduction et la porte d’entrée en production](docs/07-plan-preproduction.md).
+Cette feuille de route est complétée par le [plan de préproduction et la porte d’entrée en production](docs/07-plan-preproduction.md) et par la [stratégie d’essai personnel et d’expérimentation](docs/15-strategie-experimentation.md).
+
+BCN est actuellement un projet personnel. Une éventuelle licence et une diffusion à d’autres utilisateurs seront étudiées seulement après qualification, autorisation d’une expérimentation professionnelle et plusieurs mois d’usage par le porteur.
 
 ## Règle de passage en production
 
@@ -16,7 +18,7 @@ Une expérimentation technique jetable ne peut être envisagée que pour lever u
 - [x] Définir le nom et le positionnement.
 - [x] Publier le cadrage initial et les limites d’usage.
 - [ ] Constituer le comité de suivi.
-- [ ] Choisir la gouvernance et la licence.
+- [ ] Choisir la gouvernance et la licence — décision volontairement différée jusqu’au retour d’usage.
 
 ## Phase 1 — Préproduction et cahier des charges
 
@@ -71,11 +73,11 @@ Fonctions transversales :
 - [ ] Produire le manuel de passation.
 - [ ] Former plusieurs évaluateurs pour les essais.
 
-## Phase 4 — Étude pilote
+## Phase 4 — Expérimentation personnelle autorisée et étude pilote
 
 - [ ] Finaliser le protocole et les documents d’information.
-- [ ] Obtenir les accords nécessaires.
-- [ ] Tester compréhension, faisabilité et stabilité technique.
+- [ ] Obtenir l’accord de la structure, identifier le responsable du traitement et obtenir les validations nécessaires.
+- [ ] Tester d’abord avec des données fictives, puis tester compréhension, faisabilité et stabilité dans le périmètre autorisé.
 - [ ] Analyser les retours et modifier les épreuves.
 - [ ] Geler une version candidate.
 
