@@ -100,7 +100,7 @@ Chaque action reste attribuée au profil qui l’a réalisée.
 | Réouvrir un bilan clôturé | Non | Oui, avec motif |
 | Générer un PDF identifiable de son bilan | Oui | Oui |
 | Générer un PDF identifiable d’un autre bilan | Non | Oui |
-| Exporter un CSV anonymisé | Ses passations | Toutes les passations |
+| Exporter un CSV professionnel nominatif | Ses passations | Toutes les passations |
 | Exporter des données identifiantes | Ses passations, après avertissement | Toutes, après avertissement |
 | Archiver sa passation | Oui | Oui |
 | Placer un bilan à la corbeille | Créateur uniquement | Oui |
@@ -157,7 +157,9 @@ Une réouverture ne permet jamais de modifier rétroactivement les mesures brute
 
 ## 10. Export
 
-L’export anonymisé est le choix par défaut.
+Les bilans et exports de travail ne sont ni pseudonymisés ni anonymisés.
+
+Le PDF et le CSV professionnels sont nominatifs. Un export anonymisé n’existe que comme export d’étude distinct, déclenché explicitement.
 
 Un export identifiable exige :
 
