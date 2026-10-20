@@ -4,9 +4,9 @@
 
 ## Statut du projet
 
-**Phase : préproduction technique finalisée — production non lancée.**
+**Phase : production — incrément 01 (socle local sécurisé).**
 
-BCN est actuellement un **projet personnel expérimental**. Son périmètre, son architecture, ses règles, ses contenus initiaux, ses maquettes, ses tests et son backlog sont définis. Les données et bilans restent localement sur l’appareil. Aucune diffusion à d’autres utilisateurs n’est encore décidée.
+BCN est actuellement un **projet personnel expérimental**. Son périmètre, son architecture, ses règles, ses contenus initiaux, ses maquettes, ses tests et son backlog sont définis. La production a commencé par le socle local chiffré. Les données et bilans restent localement sur l’appareil. Aucune diffusion à d’autres utilisateurs n’est encore décidée.
 
 BCN est en cours de développement. Il ne s’agit actuellement ni d’un test étalonné, ni d’un outil diagnostique, ni d’un dispositif médical. Les scores, seuils et interprétations ne devront être présentés comme « normés » qu’après une validation méthodologique, une étude pilote et un étalonnage sur un échantillon approprié.
 
@@ -45,7 +45,33 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 6. Accessibilité et fonctionnement local sans cloud.
 7. Validation scientifique progressive et transparente.
 
-## Architecture prévue
+## Premier incrément disponible
+
+- application React + TypeScript + Vite en mode strict ;
+- PWA installable et interface mise en cache hors connexion ;
+- coffre IndexedDB chiffré en AES-256-GCM ;
+- clé de données enveloppée par PBKDF2-SHA-256 (600 000 itérations) ;
+- verrouillage automatique après 30 minutes ;
+- ralentissement des tentatives après cinq échecs ;
+- sauvegarde locale chiffrée, contrôle d’intégrité et restauration confirmée ;
+- pipeline GitHub Actions : lint, tests, build et GitHub Pages.
+
+Ce premier incrément ne contient volontairement encore aucune épreuve utilisable avec un jeune et doit être testé uniquement avec des données fictives.
+
+### Développement local
+
+```bash
+npm ci
+npm run dev
+```
+
+Contrôle complet avant intégration :
+
+```bash
+npm run check
+```
+
+## Architecture cible
 
 - **Application de passation** : épreuves et chronométrage.
 - **Espace professionnel** : contexte, matériel, aides et observations.
@@ -78,6 +104,7 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 - [Périmètre v1 et registre des risques](docs/22-perimetre-v1-risques.md)
 - [Backlog de production](docs/23-backlog-production.md)
 - [Revue de la porte d’entrée](docs/24-revue-porte-entree.md)
+- [Journal de production](docs/25-journal-production.md)
 - [Feuille de route](ROADMAP.md)
 - [Contribuer au projet](CONTRIBUTING.md)
 - [Politique de sécurité](SECURITY.md)
