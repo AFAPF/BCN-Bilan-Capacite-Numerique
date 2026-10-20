@@ -155,7 +155,9 @@ Trois variantes distinctes sont prévues :
 - écran tactile ;
 - pavé tactile.
 
-Les dispositifs adaptés ne sont pas inclus à ce stade. Leur comportement dans l’application reste à décider.
+Un dispositif adapté, comme une trackball ou un autre matériel de pointage spécialisé, peut être utilisé. BCN conserve alors les résultats bruts et l’identification du dispositif, mais n’affiche aucune comparaison avec des références établies pour la souris, le pavé tactile ou l’écran tactile.
+
+Le bilan porte clairement la mention **« dispositif adapté — résultats bruts non comparables »**. Les caractéristiques techniques et réglages obligatoires à enregistrer seront définis dans le dictionnaire des données.
 
 ### Mesures par cible
 
@@ -283,20 +285,23 @@ Pendant un item noté, le professionnel ne doit apporter ni aide verbale ni aide
 - le statut « item arrêté pour besoin d’aide » ;
 - l’auteur de l’arrêt ;
 - le moment de l’arrêt ;
-- la nature de l’aide nécessaire dans l’observation professionnelle.
+- une catégorie structurée décrivant le besoin d’aide ;
+- une zone de texte libre permettant au professionnel de préciser son observation.
 
-Cet arrêt ne doit pas être confondu avec un échec moteur, une activation incorrecte ou un dépassement de délai.
+Les catégories exactes restent à valider. Cet arrêt ne doit pas être confondu avec un échec moteur, une activation incorrecte ou un dépassement de délai.
 
 Si la taille utile de l’écran ou son orientation change pendant une tâche, BCN interrompt la tâche, impose une nouvelle calibration et recommence toute la tâche avec un nouveau tirage versionné. La tentative interrompue reste conservée comme incident de passation et n’est pas utilisée comme résultat noté.
 
 ### Restitution dans le bilan
 
-Pour chacune des tâches du module Pointage, le bilan principal affiche :
+Le bilan principal utilise un **tableau compact**, avec une ligne distincte pour chaque tâche réalisée. Il affiche :
 
+- la tâche et le dispositif utilisés ;
 - le nombre de réussites sur 10 ;
 - le nombre d’échecs, séparés par motif ;
 - le nombre d’activations incorrectes ;
-- pour le glisser-déposer, la précision du dépôt, calculée comme la **distance en millimètres entre le centre de l’objet relâché et le centre de la cible**.
+- pour le glisser-déposer, la précision du dépôt, calculée comme la **distance en millimètres entre le centre de l’objet relâché et le centre de la cible** ;
+- les éventuelles mentions de réserve, d’incompatibilité ou de non-comparabilité.
 
 Les temps de réponse restent enregistrés dans les données internes de passation. Ils ne sont affichés ni dans le bilan principal ni dans les exports PDF ou CSV. Le détail de chaque item n’est pas intégré au bilan principal.
 
@@ -315,7 +320,7 @@ La présentation graphique ou numérique des résultats reste à définir.
 - critères de détection et de déclaration d’une incompatibilité tactile ;
 - valeur du délai maximal, à établir pendant le pilote, et règles d’arrêt ;
 - contenu exact et consigne de chaque item d’entraînement ;
-- catégories proposées pour décrire la nature de l’aide nécessaire.
+- catégories structurées proposées pour décrire la nature du besoin d’aide.
 
 
 ## Module 3 — Repérage visuel
