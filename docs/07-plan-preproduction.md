@@ -37,8 +37,8 @@ Une décision ayant un effet sur l’utilisateur, les données, les mesures, l�
 
 - [x] Création et administration des profils décrites.
 - [x] Création, préparation, démarrage, pause, reprise et clôture d’une passation décrits.
-- [ ] Consultation, modification, suppression et archivage d’un bilan décrits.
-- [ ] Export PDF et CSV décrit de bout en bout.
+- [x] Consultation, modification, suppression et archivage d’un bilan décrits.
+- [x] Parcours d’export PDF et CSV décrit de bout en bout ; formats détaillés restant à définir.
 - [x] Tous les cas d’interruption, d’abandon, d’incident et de changement de matériel traités.
 - [x] Droits de chaque rôle définis dans une matrice d’autorisations.
 
@@ -107,13 +107,13 @@ Pour les quatre modules — frappe, pointage, repérage visuel, compréhension e
 
 ### H. Interface et accessibilité
 
-- [ ] Arborescence des écrans définie.
+- [x] Arborescence des écrans définie.
 - [ ] Maquettes des parcours principaux validées.
-- [ ] États d’erreur, de chargement, de verrouillage et de reprise prévus.
-- [ ] Niveau d’accessibilité cible défini.
-- [ ] Navigation clavier, lecteur d’écran, contraste, zoom et tactile spécifiés.
-- [ ] Adaptations susceptibles de modifier une mesure identifiées.
-- [ ] Langage, lisibilité et compréhension des consignes vérifiés.
+- [x] États d’erreur, de chargement, de verrouillage et de reprise prévus.
+- [x] Niveau d’accessibilité cible défini : RGAA 4.1.2 et WCAG 2.2 AA.
+- [x] Navigation clavier, lecteur d’écran, contraste, zoom et tactile spécifiés.
+- [x] Adaptations susceptibles de modifier une mesure identifiées et séparées des conditions standard.
+- [ ] Langage et lisibilité spécifiés ; compréhension à vérifier auprès des trois tranches d’âge.
 
 ### I. Qualité et tests
 
