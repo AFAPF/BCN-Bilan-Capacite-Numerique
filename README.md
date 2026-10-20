@@ -6,6 +6,8 @@
 
 **Phase : cadrage et conception — version préliminaire non validée.**
 
+BCN est actuellement un **projet personnel**. Son auteur prévoit d’abord des essais avec données fictives, puis, uniquement après autorisation de sa structure, une expérimentation professionnelle limitée et plusieurs mois d’usage individuel. Aucune diffusion opérationnelle n’est encore décidée.
+
 BCN est en cours de développement. Il ne s’agit actuellement ni d’un test étalonné, ni d’un outil diagnostique, ni d’un dispositif médical. Les scores, seuils et interprétations ne devront être présentés comme « normés » qu’après une validation méthodologique, une étude pilote et un étalonnage sur un échantillon approprié.
 
 ## Objectif
@@ -66,6 +68,7 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 - [Architecture technique](docs/12-architecture-technique.md)
 - [Interface, ergonomie et accessibilité](docs/13-interface-accessibilite.md)
 - [Arborescence des écrans et parcours](docs/14-arborescence-parcours.md)
+- [Stratégie d’essai personnel et d’expérimentation](docs/15-strategie-experimentation.md)
 - [Feuille de route](ROADMAP.md)
 - [Contribuer au projet](CONTRIBUTING.md)
 - [Politique de sécurité](SECURITY.md)
@@ -80,4 +83,4 @@ BCN est un projet distinct d’EViC-Adapt. Son dépôt, son code, ses versions e
 
 ## Licence
 
-Aucune licence de réutilisation n’est encore attribuée. En l’absence de fichier de licence, tous les droits restent réservés au titulaire du projet. Le choix d’une licence interviendra après clarification des conditions de diffusion, de contribution et d’utilisation professionnelle.
+Aucune licence de réutilisation n’est encore attribuée. En l’absence de fichier de licence, tous les droits restent réservés au titulaire du projet. Ce choix est volontairement différé : il sera réexaminé seulement après plusieurs mois d’usage personnel autorisé et une décision sur l’éventuelle diffusion.
