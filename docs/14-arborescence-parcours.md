@@ -74,7 +74,7 @@ Il n’affiche pas de classement de jeunes, moyenne générale ou comparaison no
 
 Étapes :
 
-1. sélectionner ou créer le dossier pseudonymisé ;
+1. sélectionner ou créer le dossier nominatif ;
 2. vérifier âge et niveau scolaire ;
 3. sélectionner les modules et tâches indépendantes ;
 4. renseigner matériel, dispositifs et adaptations ;
@@ -167,7 +167,7 @@ L’item est arrêté et traité selon la règle du module. Aucune aide n’est 
 
 Le professionnel voit :
 
-- jeune pseudonymisé ;
+- nom et prénom du jeune ;
 - séance, module et tâche ;
 - dernier événement complet ;
 - raison de l’arrêt ;
@@ -223,7 +223,7 @@ Après clôture :
 Parcours :
 
 1. choisir PDF individuel, CSV de travail ou jeu d’étude ;
-2. choisir anonymisé par défaut ;
+2. conserver le bilan nominatif ; choisir un export d’étude anonymisé uniquement dans le parcours d’étude distinct ;
 3. afficher les champs inclus ;
 4. signaler les données identifiantes ;
 5. choisir protection et destination ;
