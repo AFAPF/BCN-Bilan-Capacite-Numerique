@@ -390,7 +390,9 @@ Les critères objectifs définissant les densités faible, moyenne et forte rest
 
 Avant chaque item, BCN diffuse une consigne avec une **voix de synthèse fixe et versionnée**. Le même texte reste affiché à l’écran.
 
-La formulation, la voix, le débit et le fichier audio utilisés sont identiques pour tous les jeunes d’une même variante. Les textes exacts et les règles de répétition restent à définir.
+La formulation, la voix, le débit et le fichier audio utilisés sont identiques pour tous les jeunes d’une même variante.
+
+Une seule répétition audio est autorisée pour chaque item. BCN enregistre si cette répétition a été utilisée. Le texte reste affiché sans modification. L’effet de cette répétition sur l’interprétation ou la comparaison reste à définir.
 
 ### Entraînement
 
@@ -407,9 +409,11 @@ Le jeune répond directement en cliquant ou en touchant l’élément choisi.
 
 Une seule sélection est autorisée pour chaque item noté. La sélection termine immédiatement l’item et BCN passe au suivant, sans possibilité de correction.
 
-Comme cette réponse implique un geste de pointage, BCN doit conserver le dispositif utilisé et distinguer, autant que possible, une erreur de repérage d’un incident de pointage. Les règles opérationnelles de cette distinction restent à définir.
+Comme cette réponse implique un geste de pointage, BCN conserve le dispositif utilisé.
 
-Un délai maximal par item sera déterminé pendant l’étude pilote, puis figé dans chaque version. Le traitement précis d’un dépassement de délai reste à définir.
+Le professionnel peut reclasser une sélection comme **incident de pointage**. Cette intervention exige une justification, et BCN enregistre son auteur, sa date et l’item concerné. L’item original est conservé dans l’historique mais exclu de la cotation. Il est remplacé par un nouvel item de la même tranche d’âge, du même environnement et du même niveau de densité.
+
+Un délai maximal par item sera déterminé pendant l’étude pilote, puis figé dans chaque version. Si le délai est dépassé, BCN enregistre une **erreur par dépassement de délai** et passe à l’item suivant.
 
 ### Mesures retenues
 
@@ -428,9 +432,8 @@ Le temps de réponse, les omissions et les fausses sélections ne sont pas reten
 - variantes selon le matériel ;
 - consigne exacte ;
 - critères précis de réussite et d’erreur ;
-- distinction entre erreur de repérage et incident de pointage ;
 - aides autorisées et traçabilité ;
-- valeur du délai maximal à établir au pilote et traitement de son dépassement ;
+- valeur du délai maximal à établir pendant le pilote ;
 - arrêt, interruption et reprise de l’épreuve ;
 - contenu du bilan et limites d’interprétation.
 
