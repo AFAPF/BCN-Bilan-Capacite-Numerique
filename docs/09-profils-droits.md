@@ -52,6 +52,8 @@ Aucun profil ne doit contenir un mot de passe ou un code en clair.
 
 ## 4. Code d’accès
 
+Le code professionnel sert à ouvrir ou changer de profil uniquement lorsque le coffre chiffré de l’appareil est déjà ouvert. Il ne sert jamais seul à dériver la clé de chiffrement générale.
+
 Le professionnel utilise au choix :
 
 - un code numérique d’au moins six chiffres ;
@@ -62,6 +64,8 @@ BCN refuse les codes manifestement faibles ou séquentiels. Le secret est stock�
 Après cinq tentatives échouées, BCN applique un délai progressif avant un nouvel essai. Aucun échec de connexion ne déclenche l’effacement automatique des bilans.
 
 L’administrateur peut réinitialiser l’accès d’un professionnel sans connaître son ancien secret. Cette action est historisée.
+
+Le coffre de l’appareil utilise séparément une phrase maîtresse d’au moins seize caractères ou cinq mots aléatoires, ainsi qu’une clé de récupération conservée hors appareil. Après une fermeture complète, un redémarrage ou un verrouillage cryptographique, cette phrase maîtresse est nécessaire avant l’accès aux profils.
 
 ## 5. Session et verrouillage
 
@@ -246,13 +250,12 @@ La future application devra démontrer que :
 - seul l’administrateur peut restaurer ou supprimer définitivement ;
 - chaque action sensible crée une entrée d’audit.
 
-## 16. Éléments restant à définir techniquement
+## 16. Éléments restant à qualifier techniquement
 
-- algorithme de dérivation des secrets et paramètres ;
-- format et protection du code de récupération ;
-- chiffrement de la base locale ;
-- protection du journal d’audit ;
-- comportement en cas de copie du dossier de données ;
-- procédure de transfert vers un nouvel appareil ;
+Les principes sont fixés dans les documents de sécurité et d’architecture. Restent à qualifier avant production :
+
+- paramètres de dérivation sur le matériel minimal ;
+- ergonomie de la phrase maîtresse et de la récupération ;
+- résistance du journal d’audit aux altérations ;
 - interface détaillée de gestion des profils ;
-- politique de sauvegarde et restauration.
+- procédure de test de récupération et de transfert.
