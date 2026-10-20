@@ -85,25 +85,25 @@ Pour les quatre modules — frappe, pointage, repérage visuel, compréhension e
 
 ### F. Sécurité
 
-- [ ] Modèle de menaces réalisé.
-- [ ] Règles relatives aux codes d’accès définies.
-- [ ] Gestion des administrateurs et récupération d’accès définie.
-- [ ] Protection des exports et avertissements définis.
-- [ ] Comportement en cas de perte ou compromission de l’appareil défini.
-- [ ] Limites du stockage local sans chiffrement explicitement acceptées.
-- [ ] Procédure de signalement et de correction des vulnérabilités définie.
+- [x] Modèle de menaces réalisé.
+- [x] Règles relatives aux codes d’accès définies.
+- [x] Gestion des administrateurs et récupération d’accès définie.
+- [x] Protection des exports et avertissements définis.
+- [x] Comportement en cas de perte ou compromission de l’appareil défini.
+- [x] Limites du stockage local et garanties du chiffrement applicatif explicitées.
+- [x] Procédure de signalement et de correction des vulnérabilités spécifiée ; canal privé à configurer.
 
 ### G. Architecture technique
 
-- [ ] Modes d’installation et de fonctionnement hors connexion décidés.
-- [ ] Systèmes, navigateurs et appareils pris en charge listés.
-- [ ] Architecture applicative choisie et justifiée.
-- [ ] Stratégie de stockage local choisie.
-- [ ] Gestion des versions, migrations et compatibilité décidée.
+- [x] Modes d’installation et de fonctionnement hors connexion décidés.
+- [x] Systèmes, navigateurs et appareils cibles listés ; versions minimales à qualifier.
+- [x] Architecture applicative choisie et justifiée.
+- [x] Stratégie de stockage local choisie.
+- [x] Gestion des versions, migrations et compatibilité décidée.
 - [ ] Format interne des sessions et résultats défini.
-- [ ] Gestion des contenus versionnés et fichiers audio définie.
-- [ ] Dépendances externes et politique de mise à jour définies.
-- [ ] Sauvegarde, restauration et portabilité décidées.
+- [x] Gestion des contenus versionnés et fichiers audio définie.
+- [x] Dépendances externes cibles et politique de mise à jour définies ; versions à auditer au lancement.
+- [x] Sauvegarde, restauration et portabilité décidées.
 
 ### H. Interface et accessibilité
 
