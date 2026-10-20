@@ -342,7 +342,49 @@ La présentation graphique ou numérique des résultats reste à définir.
 
 ## Module 3 — Repérage visuel
 
-Épreuves, mesures et règles à définir.
+**Statut : construction en cours.**
+
+### Finalité générale
+
+Observer la capacité fonctionnelle du jeune à repérer une information ou une icône dans une interface numérique.
+
+Cette épreuve ne constitue pas un bilan de la vision et ne permet pas, à elle seule, d’attribuer les difficultés à une cause visuelle, attentionnelle, cognitive ou motrice.
+
+### Tâche retenue
+
+Le jeune doit repérer une information ou une icône demandée dans une interface numérique présentée par BCN.
+
+À ce stade, les tâches abstraites de recherche parmi des symboles, d’appariement avec un modèle et de suivi d’une suite visuelle ne sont pas retenues dans ce module.
+
+### Mode de réponse
+
+Le jeune répond directement en cliquant ou en touchant l’élément choisi.
+
+Comme cette réponse implique un geste de pointage, BCN doit conserver le dispositif utilisé et distinguer, autant que possible, une erreur de repérage d’un incident de pointage. Les règles opérationnelles de cette distinction restent à définir.
+
+### Mesures retenues
+
+BCN enregistre séparément :
+
+- les réussites ;
+- les erreurs ;
+- les aides apportées ou demandées ;
+- les incidents de passation.
+
+Le temps de réponse, les omissions et les fausses sélections ne sont pas retenus comme indicateurs séparés à ce stade.
+
+### Éléments restant à définir
+
+- types d’interfaces et situations présentées ;
+- variantes selon l’âge et le matériel ;
+- banque d’items et nombre d’items ;
+- consigne exacte ;
+- entraînement ;
+- critères précis de réussite et d’erreur ;
+- distinction entre erreur de repérage et incident de pointage ;
+- aides autorisées et traçabilité ;
+- durée, délai maximal, arrêt et reprise ;
+- contenu du bilan et limites d’interprétation.
 
 ## Module 4 — Compréhension et navigation
 
