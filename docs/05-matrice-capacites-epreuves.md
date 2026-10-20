@@ -392,11 +392,24 @@ Avant chaque item, BCN diffuse une consigne avec une **voix de synthèse fixe et
 
 La formulation, la voix, le débit et le fichier audio utilisés sont identiques pour tous les jeunes d’une même variante. Les textes exacts et les règles de répétition restent à définir.
 
-### Mode de réponse
+### Entraînement
+
+Avant les items notés, le jeune réalise deux items d’entraînement non notés :
+
+1. un item dans un bureau ou un gestionnaire de fichiers ;
+2. un item dans un document ou une barre d’outils.
+
+Ces essais ne sont pas inclus dans les dix items notés. Leur contenu, leur retour explicatif et la conduite à tenir en cas d’incompréhension restent à définir.
+
+### Mode de réponse et arrêt d’un item
 
 Le jeune répond directement en cliquant ou en touchant l’élément choisi.
 
+Une seule sélection est autorisée pour chaque item noté. La sélection termine immédiatement l’item et BCN passe au suivant, sans possibilité de correction.
+
 Comme cette réponse implique un geste de pointage, BCN doit conserver le dispositif utilisé et distinguer, autant que possible, une erreur de repérage d’un incident de pointage. Les règles opérationnelles de cette distinction restent à définir.
+
+Un délai maximal par item sera déterminé pendant l’étude pilote, puis figé dans chaque version. Le traitement précis d’un dépassement de délai reste à définir.
 
 ### Mesures retenues
 
@@ -414,11 +427,11 @@ Le temps de réponse, les omissions et les fausses sélections ne sont pas reten
 - construction, versionnement et équivalence des trois banques d’âge ;
 - variantes selon le matériel ;
 - consigne exacte ;
-- entraînement ;
 - critères précis de réussite et d’erreur ;
 - distinction entre erreur de repérage et incident de pointage ;
 - aides autorisées et traçabilité ;
-- durée, délai maximal, arrêt et reprise ;
+- valeur du délai maximal à établir au pilote et traitement de son dépassement ;
+- arrêt, interruption et reprise de l’épreuve ;
 - contenu du bilan et limites d’interprétation.
 
 ## Module 4 — Compréhension et navigation
