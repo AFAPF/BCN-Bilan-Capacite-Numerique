@@ -62,6 +62,8 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 - [Règles transversales de passation](docs/08-regles-transversales-passation.md)
 - [Profils professionnels et matrice des droits](docs/09-profils-droits.md)
 - [Données et protection des mineurs](docs/10-donnees-protection-mineurs.md)
+- [Sécurité et modèle de menaces](docs/11-securite-modele-menaces.md)
+- [Architecture technique](docs/12-architecture-technique.md)
 - [Feuille de route](ROADMAP.md)
 - [Contribuer au projet](CONTRIBUTING.md)
 - [Politique de sécurité](SECURITY.md)
