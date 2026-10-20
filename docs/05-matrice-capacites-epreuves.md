@@ -342,7 +342,7 @@ La présentation graphique ou numérique des résultats reste à définir.
 
 ## Module 3 — Repérage visuel
 
-**Statut : construction en cours.**
+**Statut fonctionnel : cadré.** Les valeurs provisoires et l’équivalence des banques ou appareils doivent encore être vérifiées pendant les essais techniques et l’étude pilote.
 
 ### Finalité générale
 
@@ -359,7 +359,7 @@ Deux environnements sont retenus :
 1. bureau et gestionnaire de fichiers ;
 2. document et barre d’outils.
 
-Les pages web, navigateurs, messageries et plateformes scolaires ne sont pas retenus dans ce module à ce stade. Les tâches abstraites de recherche parmi des symboles, d’appariement avec un modèle et de suivi d’une suite visuelle ne sont pas retenues non plus.
+Les pages web, navigateurs, messageries et plateformes scolaires ne sont pas retenus dans ce module. Les tâches abstraites de recherche parmi des symboles, d’appariement avec un modèle et de suivi d’une suite visuelle ne sont pas retenues non plus.
 
 ### Banque d’items et variantes d’âge
 
@@ -368,13 +368,13 @@ L’épreuve comporte **dix items au total** :
 - 5 items dans un bureau ou un gestionnaire de fichiers ;
 - 5 items dans un document ou une barre d’outils.
 
-Chaque série comprend trois niveaux de densité visuelle :
+Chaque série comprend trois niveaux de densité visuelle provisoires :
 
-- 3 items de densité faible ;
-- 4 items de densité moyenne ;
-- 3 items de densité forte.
+- 3 items de densité faible : 8 éléments sélectionnables affichés, cible comprise ;
+- 4 items de densité moyenne : 16 éléments sélectionnables affichés, cible comprise ;
+- 3 items de densité forte : 24 éléments sélectionnables affichés, cible comprise.
 
-L’ordre des dix items est aléatoire et enregistré. Le tirage doit respecter simultanément les quotas d’environnement et de densité.
+L’ordre des dix items est aléatoire et enregistré. Le tirage respecte simultanément les quotas d’environnement et de densité. Les éléments purement décoratifs ne sont pas comptés comme éléments sélectionnables, mais leur présence et leur apparence sont versionnées.
 
 Trois banques distinctes sont prévues :
 
@@ -382,9 +382,19 @@ Trois banques distinctes sont prévues :
 - 11–14 ans ;
 - 15–18 ans.
 
-Chaque banque adapte les contenus à l’âge tout en visant une difficulté et une structure équivalentes. Cette équivalence ne peut pas être supposée : elle devra être vérifiée pendant le pilote avant toute comparaison entre tranches.
+Chaque banque adapte le vocabulaire, les noms de fichiers et les situations à l’âge tout en conservant les mêmes environnements, quotas et niveaux de densité. L’équivalence réelle des banques devra être vérifiée pendant le pilote avant toute comparaison.
 
-Les critères objectifs définissant les densités faible, moyenne et forte restent à fixer puis à vérifier pendant le pilote.
+### Variantes matérielles
+
+Des variantes distinctes sont prévues pour :
+
+- ordinateur avec souris ;
+- ordinateur avec pavé tactile ;
+- tablette ou téléphone avec écran tactile.
+
+L’interface s’adapte à la surface disponible sans changer le nombre d’éléments sélectionnables ni la cible demandée. Les résultats restent associés au dispositif et au format d’écran. Leur équivalence ne peut pas être supposée avant validation.
+
+Pour limiter l’influence motrice, la zone activable autour d’un élément possède une dimension physique minimale provisoire de **12 mm**, sans agrandir visuellement l’icône. Cette valeur devra être testée avec la calibration de l’écran et validée au pilote.
 
 ### Présentation de la cible à rechercher
 
@@ -394,6 +404,8 @@ La formulation, la voix, le débit et le fichier audio utilisés sont identiques
 
 Une seule répétition audio est autorisée pour chaque item. BCN enregistre si cette répétition a été utilisée. Le texte reste affiché sans modification. Cette répétition n’entraîne ni pénalité ni réserve et n’empêche pas la comparaison ; elle reste disponible comme donnée de contexte.
 
+Les formulations exactes seront rédigées avec un vocabulaire concret, une seule action et une seule cible, puis testées auprès de chaque tranche d’âge.
+
 ### Entraînement
 
 Avant les items notés, le jeune réalise deux items d’entraînement non notés :
@@ -401,43 +413,85 @@ Avant les items notés, le jeune réalise deux items d’entraînement non noté
 1. un item dans un bureau ou un gestionnaire de fichiers ;
 2. un item dans un document ou une barre d’outils.
 
-Ces essais ne sont pas inclus dans les dix items notés. Après chaque item d’entraînement, BCN indique et explique le résultat. Un nouvel essai d’entraînement est possible. Si le second essai n’est toujours pas compris, la conduite à tenir suit la règle transversale de réserve qui sera définie pour les modules de compréhension et de repérage.
+Après chaque item d’entraînement, BCN indique et explique le résultat. Un nouvel essai d’entraînement est possible.
 
-### Mode de réponse et arrêt d’un item
+Si le second essai n’est toujours pas compris, la tâche notée est lancée avec la réserve obligatoire : **« tâche réalisée malgré une difficulté persistante de compréhension pendant l’entraînement »**. La comparaison reste possible, mais l’avertissement apparaît à proximité du résultat et dans la conclusion du module.
+
+### Mode de réponse et cotation d’un item
 
 Le jeune répond directement en cliquant ou en touchant l’élément choisi.
 
 Une seule sélection est autorisée pour chaque item noté. La sélection termine immédiatement l’item et BCN passe au suivant, sans possibilité de correction.
 
-Comme cette réponse implique un geste de pointage, BCN conserve le dispositif utilisé.
+Un item est réussi lorsque la cible attendue est sélectionnée avant le délai maximal. Une sélection d’un autre élément est une erreur. Le délai maximal sera déterminé pendant l’étude pilote puis figé dans la version de la banque. Son dépassement est enregistré comme erreur par délai.
+
+La réussite, l’erreur de sélection et l’erreur par délai restent des statuts distincts dans les données, même si le bilan affiche un total global d’erreurs.
+
+### Incident de pointage
+
+Comme la réponse implique un geste de pointage, BCN conserve le dispositif utilisé.
 
 Le professionnel peut reclasser une sélection comme **incident de pointage**. Cette intervention exige une justification, et BCN enregistre son auteur, sa date et l’item concerné. L’item original est conservé dans l’historique mais exclu de la cotation. Il est remplacé par un nouvel item de la même tranche d’âge, du même environnement et du même niveau de densité.
 
 Au troisième incident de pointage, BCN arrête l’épreuve. Les résultats déjà obtenus sont conservés comme résultats bruts, accompagnés de la mention **« épreuve arrêtée après trois incidents de pointage — résultats non comparables »**.
 
-Un délai maximal par item sera déterminé pendant l’étude pilote, puis figé dans chaque version. Si le délai est dépassé, BCN enregistre une **erreur par dépassement de délai** et passe à l’item suivant.
+### Aides et interventions
 
-### Mesures retenues
+Pendant un item noté, seule la répétition audio prévue est autorisée. Le professionnel ne doit pas montrer la cible, orienter le regard, reformuler la consigne ni guider physiquement le geste.
+
+Si une autre aide est nécessaire, le professionnel arrête l’item. BCN enregistre une erreur avec le motif **« besoin d’aide »**, la catégorie de l’aide, son auteur et une observation libre, puis passe à l’item suivant.
+
+Les catégories structurées sont :
+
+1. compréhension de la consigne ;
+2. repérage visuel ;
+3. initiation ou maintien du geste ;
+4. utilisation du dispositif ;
+5. attention ou fatigue.
+
+### Pause, interruption et reprise
+
+Les pauses sont autorisées avant l’épreuve et entre deux items. Une pause ou une interruption pendant un item annule cet item, qui est remplacé par un item équivalent.
+
+Un changement d’orientation, de taille utile d’écran ou de niveau de zoom interrompt l’item en cours. BCN vérifie de nouveau l’affichage et la calibration avant de proposer un item de remplacement. L’incident reste tracé et n’entre pas dans la cotation.
+
+### Mesures et restitution
 
 BCN enregistre séparément :
 
 - les réussites ;
-- les erreurs ;
-- les aides apportées ou demandées ;
-- les incidents de passation.
+- les erreurs de sélection ;
+- les erreurs par délai ;
+- les erreurs liées à un besoin d’aide ;
+- les répétitions audio ;
+- les incidents de pointage et autres incidents de passation ;
+- le dispositif, le format d’écran, la banque, l’item, l’environnement et la densité.
 
-Le temps de réponse, les omissions et les fausses sélections ne sont pas retenus comme indicateurs séparés à ce stade.
+Le temps de réponse n’est pas retenu comme indicateur de restitution dans cette version.
 
-### Éléments restant à définir
+Le bilan principal utilise un tableau compact indiquant :
 
-- construction, versionnement et équivalence des trois banques d’âge ;
-- variantes selon le matériel ;
-- consigne exacte ;
-- critères précis de réussite et d’erreur ;
-- aides autorisées et traçabilité ;
-- valeur du délai maximal à établir pendant le pilote ;
-- arrêt, interruption et reprise de l’épreuve ;
-- contenu du bilan et limites d’interprétation.
+- réussites sur 10 ;
+- erreurs totales et motifs ;
+- résultats séparés pour les deux environnements ;
+- résultats séparés selon les trois niveaux de densité ;
+- nombre de répétitions audio ;
+- aides et incidents ;
+- réserves ou limites de comparaison.
+
+Aucune note globale mêlant ce module aux autres modules n’est calculée.
+
+### Éléments restant à vérifier ou produire
+
+- contenu, versionnement et équivalence des trois banques d’âge ;
+- maquettes exactes des interfaces ;
+- textes de consigne et fichiers audio versionnés ;
+- validation de la densité provisoire de 8, 16 et 24 éléments ;
+- validation de la zone activable minimale provisoire de 12 mm ;
+- équivalence des variantes matérielles ;
+- valeur du délai maximal par item ;
+- critères techniques de détection d’un changement de zoom ou d’affichage ;
+- compréhension des consignes et stabilité de la cotation pendant le pilote.
 
 ## Module 4 — Compréhension et navigation
 
