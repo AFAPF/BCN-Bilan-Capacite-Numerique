@@ -21,7 +21,8 @@ Chaque action est associée au profil professionnel actif et à son identifiant 
 
 Données obligatoires :
 
-- code jeune pseudonymisé ;
+- nom et prénom du jeune ;
+- identifiant technique interne ;
 - âge en années et mois à la date de chaque module ;
 - niveau scolaire ;
 - tranche d’âge BCN utilisée.
@@ -39,7 +40,7 @@ L’application doit fonctionner sans identité civile lorsque le code jeune, l�
 Le professionnel :
 
 1. ouvre son profil ;
-2. sélectionne ou crée le dossier pseudonymisé du jeune ;
+2. sélectionne ou crée le dossier nominatif du jeune ;
 3. vérifie l’âge et le niveau scolaire ;
 4. choisit les modules et épreuves ;
 5. indique le matériel habituel ou non ;
