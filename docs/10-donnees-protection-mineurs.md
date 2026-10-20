@@ -71,7 +71,9 @@ Un dossier jeune peut contenir plusieurs passations. Une passation contient une 
 ### Dossier jeune
 
 - identifiant interne aléatoire ;
-- code jeune pseudonymisé ;
+- nom ;
+- prénom ;
+- code technique interne ;
 - âge en années et mois à la date du module ;
 - niveau scolaire ;
 - tranche d’âge BCN.
@@ -100,7 +102,6 @@ Un dossier jeune peut contenir plusieurs passations. Une passation contient une 
 
 ## 5. Données facultatives
 
-- nom et prénom ;
 - date de naissance complète ;
 - langue de scolarisation ;
 - contexte scolaire utile ;
@@ -109,7 +110,7 @@ Un dossier jeune peut contenir plusieurs passations. Une passation contient une 
 - observations libres pertinentes ;
 - ressenti exprimé par le jeune.
 
-L’application fonctionne sans identité civile complète.
+L’application exige le nom et le prénom pour produire le bilan professionnel nominatif. La date de naissance complète reste facultative et non recommandée ; l’âge en années et mois suffit.
 
 ## 6. Données calculées
 
@@ -159,13 +160,11 @@ BCN :
 - chiffre la base locale selon l’architecture de sécurité retenue ;
 - journalise les accès sensibles sans recopier leur contenu.
 
-## 9. Séparation identité et passation
+## 9. Identité et passation
 
-Les informations d’identité facultatives sont conservées dans une table séparée du dossier de passation.
+Le nom et le prénom sont conservés dans une table chiffrée séparée des événements bruts. La passation référence l’identifiant interne du jeune, tandis que l’écran professionnel et le bilan résolvent cette référence pour afficher l’identité.
 
-La passation référence uniquement l’identifiant interne du jeune. Les exports anonymisés n’accèdent pas à la table d’identité.
-
-Le code jeune ne doit pas être construit à partir du nom, de la date de naissance ou d’un identifiant scolaire directement reconnaissable.
+Le bilan courant et le CSV de travail sont nominatifs. Seul un éventuel export d’étude, créé séparément et explicitement, retire l’identité. Le code technique ne doit pas être construit à partir du nom, de la date de naissance ou d’un identifiant scolaire.
 
 ## 10. Bilan individuel et étude
 
@@ -289,7 +288,7 @@ L’application ne décide pas seule si une notification est juridiquement oblig
 
 La future application devra démontrer que :
 
-- l’identité civile est facultative ;
+- le nom et le prénom sont obligatoires pour le bilan nominatif et restent chiffrés localement ;
 - un export anonymisé ne contient aucun champ d’identité ;
 - les données d’étude sont physiquement ou logiquement séparées ;
 - aucune donnée n’est transmise automatiquement ;
