@@ -392,7 +392,7 @@ Avant chaque item, BCN diffuse une consigne avec une **voix de synthèse fixe et
 
 La formulation, la voix, le débit et le fichier audio utilisés sont identiques pour tous les jeunes d’une même variante.
 
-Une seule répétition audio est autorisée pour chaque item. BCN enregistre si cette répétition a été utilisée. Le texte reste affiché sans modification. L’effet de cette répétition sur l’interprétation ou la comparaison reste à définir.
+Une seule répétition audio est autorisée pour chaque item. BCN enregistre si cette répétition a été utilisée. Le texte reste affiché sans modification. Cette répétition n’entraîne ni pénalité ni réserve et n’empêche pas la comparaison ; elle reste disponible comme donnée de contexte.
 
 ### Entraînement
 
@@ -401,7 +401,7 @@ Avant les items notés, le jeune réalise deux items d’entraînement non noté
 1. un item dans un bureau ou un gestionnaire de fichiers ;
 2. un item dans un document ou une barre d’outils.
 
-Ces essais ne sont pas inclus dans les dix items notés. Leur contenu, leur retour explicatif et la conduite à tenir en cas d’incompréhension restent à définir.
+Ces essais ne sont pas inclus dans les dix items notés. Après chaque item d’entraînement, BCN indique et explique le résultat. Un nouvel essai d’entraînement est possible. Si le second essai n’est toujours pas compris, la conduite à tenir suit la règle transversale de réserve qui sera définie pour les modules de compréhension et de repérage.
 
 ### Mode de réponse et arrêt d’un item
 
@@ -412,6 +412,8 @@ Une seule sélection est autorisée pour chaque item noté. La sélection termin
 Comme cette réponse implique un geste de pointage, BCN conserve le dispositif utilisé.
 
 Le professionnel peut reclasser une sélection comme **incident de pointage**. Cette intervention exige une justification, et BCN enregistre son auteur, sa date et l’item concerné. L’item original est conservé dans l’historique mais exclu de la cotation. Il est remplacé par un nouvel item de la même tranche d’âge, du même environnement et du même niveau de densité.
+
+Au troisième incident de pointage, BCN arrête l’épreuve. Les résultats déjà obtenus sont conservés comme résultats bruts, accompagnés de la mention **« épreuve arrêtée après trois incidents de pointage — résultats non comparables »**.
 
 Un délai maximal par item sera déterminé pendant l’étude pilote, puis figé dans chaque version. Si le délai est dépassé, BCN enregistre une **erreur par dépassement de délai** et passe à l’item suivant.
 
