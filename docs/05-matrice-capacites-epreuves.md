@@ -495,7 +495,182 @@ Aucune note globale mêlant ce module aux autres modules n’est calculée.
 
 ## Module 4 — Compréhension et navigation
 
-Épreuves, mesures et règles à définir.
+**Statut fonctionnel : cadrage initial validé.** Les contenus exacts, les seuils temporels et l’équivalence des banques restent à produire et à vérifier.
+
+### Finalité générale
+
+Observer séparément :
+
+1. la compréhension fonctionnelle de consignes numériques simples ;
+2. la capacité à réaliser un parcours composé de plusieurs actions dans une interface simulée.
+
+Ce module n’est pas un test diagnostique du langage, de la lecture, de l’attention ou des fonctions exécutives. Les résultats doivent être interprétés avec les observations et les autres modules.
+
+### Sous-épreuve A — Compréhension de consignes numériques
+
+La sous-épreuve comporte **six items**.
+
+Pour chaque item, BCN présente une consigne correspondant à une seule action numérique. Le jeune sélectionne l’action, l’icône ou la commande qui répond à la consigne dans une interface simulée.
+
+Les notions couvertes sont réparties entre :
+
+- ouvrir ou fermer ;
+- enregistrer ;
+- revenir à l’écran précédent ;
+- sélectionner un fichier ou un dossier ;
+- utiliser un menu ;
+- confirmer ou annuler une action.
+
+Une seule réponse est autorisée par item. La première sélection termine l’item.
+
+### Sous-épreuve B — Parcours de navigation
+
+La sous-épreuve comporte **quatre scénarios** fonctionnels :
+
+1. retrouver et ouvrir un document dans une arborescence simple ;
+2. revenir à un emplacement précédent puis ouvrir un autre élément ;
+3. utiliser un menu pour réaliser une action demandée sur un document ;
+4. sélectionner un fichier dans une fenêtre simulée de dépôt ou de transmission.
+
+Chaque scénario comprend entre deux et quatre étapes selon la banque d’âge. Aucun fichier réel, compte en ligne, message ou service externe n’est utilisé.
+
+Plusieurs chemins peuvent être considérés comme valides lorsqu’ils aboutissent au même résultat sans aide. BCN enregistre le chemin réellement suivi et ne pénalise pas une méthode alternative valide.
+
+### Variantes d’âge
+
+Trois banques distinctes et versionnées sont prévues :
+
+- 8–10 ans ;
+- 11–14 ans ;
+- 15–18 ans.
+
+Le vocabulaire, les noms de fichiers, la profondeur de l’arborescence et le nombre d’étapes sont adaptés à l’âge. La structure générale et les capacités observées restent identiques. L’équivalence entre banques doit être vérifiée pendant le pilote.
+
+### Variantes matérielles
+
+Des variantes séparées sont prévues pour :
+
+- ordinateur avec souris ;
+- ordinateur avec pavé tactile ;
+- tablette ou téléphone avec écran tactile.
+
+Les résultats restent associés à l’appareil, au système de présentation et au dispositif de pointage. L’équivalence entre variantes ne peut pas être supposée avant validation.
+
+### Présentation des consignes
+
+Chaque consigne est présentée simultanément :
+
+- par une voix de synthèse fixe et versionnée ;
+- par le même texte affiché à l’écran.
+
+Une seule répétition audio est autorisée et enregistrée. Elle n’entraîne ni pénalité ni réserve.
+
+Les consignes utilisent une phrase courte, une action explicite et un vocabulaire adapté à la tranche d’âge. Les formulations exactes seront testées avant d’être figées.
+
+### Entraînement
+
+Chaque sous-épreuve commence par un item ou scénario d’entraînement non noté.
+
+BCN explique le résultat et autorise un second essai. Si la consigne n’est toujours pas comprise, la sous-épreuve est lancée avec la réserve obligatoire : **« sous-épreuve réalisée malgré une difficulté persistante de compréhension pendant l’entraînement »**.
+
+La comparaison reste possible, mais l’avertissement apparaît avec le résultat et dans la conclusion.
+
+### Mesures de la sous-épreuve A
+
+BCN enregistre séparément :
+
+- réussite ou erreur pour chacun des six items ;
+- type de commande concerné ;
+- répétition audio ;
+- aide nécessaire ;
+- incident de pointage ou incident technique.
+
+Le bilan affiche le nombre de réussites sur 6 et les erreurs regroupées par notion. Aucun temps de réponse n’est affiché.
+
+### Mesures de la sous-épreuve B
+
+Pour chacun des quatre scénarios, BCN enregistre :
+
+- réussite finale ou échec ;
+- étapes réalisées sans aide ;
+- actions incorrectes ;
+- retours en arrière ;
+- chemin réellement suivi ;
+- aides demandées ou apportées ;
+- abandon, délai dépassé ou incident technique.
+
+Les actions incorrectes corrigées spontanément restent comptées, mais n’empêchent pas une réussite finale. La réussite finale, l’efficience du parcours et les aides restent des indicateurs séparés.
+
+Aucune note globale unique ne fusionne ces indicateurs.
+
+### Aides
+
+Pendant un item noté, seule la répétition audio prévue est autorisée sans réserve.
+
+Toute lecture supplémentaire, reformulation, indication de l’emplacement, démonstration ou guidance physique est enregistrée comme aide. BCN conserve :
+
+- la catégorie de l’aide ;
+- l’étape concernée ;
+- l’auteur ;
+- une observation libre.
+
+Les catégories structurées sont :
+
+1. lecture supplémentaire ;
+2. reformulation ;
+3. repérage dans l’interface ;
+4. rappel de l’objectif ;
+5. guidance gestuelle ou physique ;
+6. difficulté technique liée au dispositif.
+
+Un item ou scénario réalisé avec une aide reste visible comme résultat assisté et n’est pas présenté comme une réussite autonome.
+
+### Erreurs, interruption et reprise
+
+Les délais maximaux des items et scénarios seront déterminés pendant le pilote.
+
+Un dépassement de délai clôt l’item ou le scénario avec le statut **« délai dépassé »**. Les étapes déjà réalisées sont conservées.
+
+Une interruption technique annule l’item actif, qui est remplacé par un item équivalent. Pour un scénario, BCN reprend à la dernière étape validée uniquement si l’état peut être restauré exactement ; sinon le scénario recommence avec une variante équivalente.
+
+Une pause est autorisée entre deux items ou scénarios, mais pas pendant une action chronométrée.
+
+### Restitution dans le bilan
+
+Le bilan utilise deux tableaux compacts distincts.
+
+Pour la compréhension :
+
+- réussites sur 6 ;
+- erreurs par notion ;
+- répétitions audio ;
+- aides et incidents ;
+- réserves d’interprétation.
+
+Pour la navigation :
+
+- scénarios réussis sur 4 ;
+- étapes réalisées sans aide ;
+- actions incorrectes et retours en arrière ;
+- scénarios assistés ;
+- abandons, délais et incidents ;
+- réserves d’interprétation.
+
+Les résultats sont présentés par sous-épreuve, tranche d’âge et variante matérielle. Ils ne sont pas fusionnés avec les autres modules.
+
+### Éléments restant à produire ou vérifier
+
+- contenus des trois banques d’âge ;
+- maquettes interactives et chemins valides ;
+- textes et fichiers audio versionnés ;
+- critères détaillés de chaque étape ;
+- nombre exact d’étapes par scénario et par âge ;
+- délais maximaux à déterminer au pilote ;
+- équivalence des banques et variantes matérielles ;
+- règles techniques de restauration d’un scénario ;
+- critères d’interprétation et références éventuelles après validation.
+
+
 
 ## Règle de comparaison
 
