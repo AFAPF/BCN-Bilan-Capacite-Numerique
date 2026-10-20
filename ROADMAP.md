@@ -22,17 +22,17 @@ Une expérimentation technique jetable ne peut être envisagée que pour lever u
 
 ## Phase 1 — Préproduction et cahier des charges
 
-- [ ] Définir complètement les profils utilisateurs et leurs droits.
-- [ ] Définir les parcours de passation et de gestion des bilans.
-- [ ] Établir la matrice complète des capacités évaluées.
-- [ ] Spécifier les quatre modules du premier prototype.
-- [ ] Définir les exigences d’accessibilité.
-- [ ] Définir le modèle de données et la protection des données.
-- [ ] Définir l’architecture technique et le fonctionnement hors connexion.
-- [ ] Définir les rapports PDF et exports CSV.
-- [ ] Rédiger les critères d’acceptation de la version pilote.
-- [ ] Découper le backlog de production.
-- [ ] Effectuer la revue de la porte d’entrée en production.
+- [x] Définir complètement les profils utilisateurs et leurs droits.
+- [x] Définir les parcours de passation et de gestion des bilans.
+- [x] Établir la matrice complète des capacités évaluées.
+- [x] Spécifier les quatre modules du premier prototype.
+- [x] Définir les exigences d’accessibilité.
+- [x] Définir le modèle de données et la protection des données.
+- [x] Définir l’architecture technique et le fonctionnement hors connexion.
+- [x] Définir les rapports PDF et exports CSV.
+- [x] Rédiger les critères d’acceptation de la version pilote.
+- [x] Découper le backlog de production.
+- [x] Effectuer la revue de la porte d’entrée en production.
 - [ ] Autoriser explicitement le démarrage de la production.
 
 Ordre de conception des modules :
@@ -44,7 +44,7 @@ Ordre de conception des modules :
 
 ## Phase 2 — Production du prototype minimal
 
-Cette phase reste fermée jusqu’à validation de la porte d’entrée.
+Cette phase est préparée mais reste fermée jusqu’à l’ordre explicite du porteur.
 
 Modules initiaux :
 
@@ -61,15 +61,15 @@ Fonctions transversales :
 - observations séparées ;
 - sauvegarde locale et reprise ;
 - rapport PDF ;
-- export CSV anonymisé par défaut ;
+- export CSV professionnel nominatif ;
 - historique des modifications ;
 - tests automatiques.
 
 ## Phase 3 — Standardisation
 
-- [ ] Rédiger toutes les fiches d’épreuve.
-- [ ] Fixer les consignes verbatim.
-- [ ] Définir les règles de cotation et les incidents.
+- [x] Rédiger les spécifications de toutes les épreuves.
+- [x] Fixer les consignes verbatim initiales.
+- [x] Définir les règles de cotation et les incidents.
 - [ ] Produire le manuel de passation.
 - [ ] Former plusieurs évaluateurs pour les essais.
 
