@@ -1,7 +1,7 @@
 # Architecture technique de la première version
 
 **Statut : architecture cible recommandée — aucun code de production autorisé avant validation de la porte d’entrée**
-**Décision structurante :** application web progressive locale, installable et hors connexion, sans serveur dans la première version.
+**Décision structurante :** application web progressive locale, accessible depuis GitHub Pages, installable et hors connexion, sans serveur de données ni cloud dans la première version.
 
 ## 1. Choix retenu
 
@@ -13,7 +13,7 @@ BCN v1 est une application web progressive responsive :
 - données conservées uniquement sur l’appareil ;
 - aucune API distante nécessaire à la passation ;
 - aucune synchronisation, télémétrie ou compte en ligne ;
-- sauvegardes et exports déclenchés par un utilisateur autorisé.
+- sauvegardes et exports déclenchés par l’utilisateur unique et conservés sur l’appareil professionnel.
 
 Ce choix maximise la compatibilité ordinateur–tablette et limite l’infrastructure. Il impose en contrepartie une sauvegarde explicite : le stockage d’un site peut être effacé par l’utilisateur, le navigateur ou la gestion de l’appareil.
 
@@ -198,6 +198,8 @@ La sauvegarde BCN est un conteneur chiffré comprenant :
 
 La restauration se fait dans un nouveau coffre ou après comparaison explicite. L’écrasement direct est interdit.
 
+Le choix initial du porteur est une sauvegarde sur le même appareil. Cette configuration ne protège pas contre la perte, le vol ou la panne du poste et doit déclencher un avertissement persistant. La recommandation de sécurité reste une seconde copie sur support externe local chiffré, sans cloud.
+
 Rythme recommandé :
 
 - rappel après toute journée contenant une nouvelle passation ;
@@ -218,18 +220,18 @@ En cas d’échec, l’ancienne version fonctionnelle reste active.
 
 ## 15. Réseau et confidentialité
 
-En mode de passation, la politique attendue est zéro requête réseau. Les seules connexions admises hors passation sont :
+GitHub Pages distribue uniquement les fichiers statiques de l’application. Aucune donnée réelle n’est envoyée à GitHub. En mode de passation, la politique attendue est zéro requête réseau. Les seules connexions admises hors passation sont :
 
 - téléchargement explicite d’une mise à jour ;
 - ouverture volontaire d’un lien documentaire ;
-- futur service distinct, non inclus dans v1 et soumis à nouvelle décision.
+- aucun service de données distant dans v1 ; toute évolution imposerait une nouvelle décision d’architecture, de sécurité et de conformité.
 
 Aucune police, icône, audio, analyse d’usage ou bibliothèque ne dépend d’un CDN à l’exécution.
 
 ## 16. Critères d’acceptation
 
 - une installation préparée termine une passation complète sans réseau ;
-- aucune requête réseau n’est observée pendant la passation ;
+- aucune requête réseau n’est observée pendant la passation et aucune donnée réelle n’est transmise à tout autre moment ;
 - un rechargement ou une coupure restaure le dernier état atomique ;
 - le changement d’orientation invalide la tâche concernée ;
 - un écran trop petit refuse l’item plutôt que de le redimensionner ;
