@@ -186,7 +186,9 @@ Chaque série de dix cibles comprend :
 
 Avant l’épreuve, BCN utilise automatiquement les données déclarées par l’écran et l’appareil afin de convertir ces dimensions physiques en dimensions d’affichage. La fiabilité de cette calibration automatique devra être vérifiée sur la matrice d’appareils du pilote.
 
-Si les données nécessaires sont absentes, incohérentes ou insuffisantes, BCN propose une **calibration manuelle guidée**. Le bilan conserve le mode de calibration utilisé, sa date, son auteur et les paramètres obtenus. Le support physique et la procédure exacte de cette calibration manuelle restent à définir.
+Si les données nécessaires sont absentes, incohérentes ou insuffisantes, BCN propose une **calibration manuelle guidée** à l’aide d’une carte physique au format bancaire standard. L’utilisateur ajuste à l’écran un gabarit aux dimensions de la carte. Le bilan conserve le mode de calibration utilisé, sa date, son auteur et les paramètres obtenus.
+
+La procédure devra vérifier que la carte utilisée correspond bien au format standard, empêcher la validation d’un réglage manifestement incohérent et préciser l’orientation du gabarit. Les tolérances acceptables restent à déterminer pendant les essais techniques.
 
 ### Double-clic et double-toucher
 
@@ -218,7 +220,9 @@ Les cibles de pointage sont des **cercles pleins, visuellement identiques et for
 
 Après chaque item noté, BCN affiche une transition neutre vers l’item suivant. Aucun message, couleur ou son ne révèle immédiatement au jeune si l’item est réussi ou échoué.
 
-Le contraste exact, les couleurs, la durée de transition et l’affichage particulier du glisser-déposer restent à définir et devront respecter les exigences d’accessibilité retenues pour BCN.
+Pour le glisser-déposer, l’objet déplaçable est représenté par un cercle plein et la zone de destination par un cercle en contour. Leur distinction ne doit pas reposer uniquement sur la couleur.
+
+Le contraste exact, les couleurs et la durée de transition restent à définir et devront respecter les exigences d’accessibilité retenues pour BCN.
 
 ### Banque d’items
 
@@ -261,6 +265,8 @@ Le délai maximal accordé pour atteindre une cible sera déterminé pendant l�
 
 Avant chacune des trois tâches, le jeune réalise **un item d’entraînement non noté** avec le dispositif utilisé. Cet item ne fait pas partie des dix cibles notées.
 
+À l’issue de cet item, BCN indique et explique le résultat. Un nouvel essai d’entraînement est possible. Les deux tentatives restent séparées des données notées. La conduite à tenir si le second essai montre encore une incompréhension reste à définir.
+
 Pendant un item noté, le professionnel ne doit apporter ni aide verbale ni aide physique. Si le jeune a besoin d’aide, le professionnel arrête l’item. BCN enregistre :
 
 - le statut « item arrêté pour besoin d’aide » ;
@@ -276,7 +282,7 @@ Si la taille utile de l’écran ou son orientation change pendant une tâche, B
 
 - validation pendant le pilote des dimensions provisoires de 8, 16 et 24 mm ;
 - méthode technique de lecture et de contrôle des données déclarées par l’écran ;
-- support physique, étapes et contrôles de la calibration manuelle guidée ;
+- étapes détaillées, contrôles et tolérances de la calibration manuelle avec carte standard ;
 - dimensions et marges exactes des cinq zones de départ ;
 - règles de positionnement des cibles sans chevauchement ni sortie de zone ;
 - validation pendant le pilote des distances provisoires de 50, 100 et 150 mm ;
@@ -286,6 +292,7 @@ Si la taille utile de l’écran ou son orientation change pendant une tâche, B
 - critères de détection et de déclaration d’une incompatibilité tactile ;
 - valeur du délai maximal, à établir pendant le pilote, et règles d’arrêt ;
 - contenu exact et consigne de chaque item d’entraînement ;
+- conduite à tenir après l’échec ou l’incompréhension du second essai d’entraînement ;
 - catégories proposées pour décrire la nature de l’aide nécessaire.
 
 
