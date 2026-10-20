@@ -274,7 +274,9 @@ Avant chacune des trois tâches, le jeune réalise **un item d’entraînement n
 
 À l’issue de cet item, BCN indique et explique le résultat. Un nouvel essai d’entraînement est possible. Les deux tentatives restent séparées des données notées.
 
-Si le second essai montre encore une incompréhension, la tâche notée est tout de même lancée. BCN ajoute automatiquement une réserve au résultat : **« tâche réalisée malgré une difficulté persistante de compréhension pendant l’entraînement »**. Cette réserve apparaît dans le bilan et doit être prise en compte dans l’interprétation.
+Si le second essai montre encore une incompréhension, la tâche notée est tout de même lancée. BCN ajoute automatiquement une réserve au résultat : **« tâche réalisée malgré une difficulté persistante de compréhension pendant l’entraînement »**.
+
+La comparaison aux références reste autorisée, mais l’avertissement doit apparaître à proximité immédiate du résultat comparé et dans la conclusion du module. Il ne peut pas être masqué par le professionnel.
 
 Pendant un item noté, le professionnel ne doit apporter ni aide verbale ni aide physique. Si le jeune a besoin d’aide, le professionnel arrête l’item. BCN enregistre :
 
@@ -294,11 +296,11 @@ Pour chacune des tâches du module Pointage, le bilan principal affiche :
 - le nombre de réussites sur 10 ;
 - le nombre d’échecs, séparés par motif ;
 - le nombre d’activations incorrectes ;
-- pour le glisser-déposer, la précision du dépôt.
+- pour le glisser-déposer, la précision du dépôt, calculée comme la **distance en millimètres entre le centre de l’objet relâché et le centre de la cible**.
 
-Les temps de réponse restent enregistrés dans les données de passation, mais ne sont pas affichés comme temps médians dans le bilan principal à ce stade. Le détail de chaque item n’est pas intégré au bilan principal.
+Les temps de réponse restent enregistrés dans les données internes de passation. Ils ne sont affichés ni dans le bilan principal ni dans les exports PDF ou CSV. Le détail de chaque item n’est pas intégré au bilan principal.
 
-La formule exacte de l’indicateur de précision du dépôt et la présentation graphique ou numérique de ces résultats restent à définir.
+La présentation graphique ou numérique des résultats reste à définir.
 
 ### Éléments restant à définir
 
