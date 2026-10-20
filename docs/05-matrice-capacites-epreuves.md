@@ -139,6 +139,8 @@ Les textes historiques transmis restent des références méthodologiques et ne 
 
 ## Module 2 — Pointage et manipulation
 
+**Statut fonctionnel : cadré.** Les éléments restant à définir ci-dessous relèvent des essais techniques, de l’accessibilité détaillée ou de l’étude pilote et ne doivent pas être remplacés par des valeurs supposées.
+
 ### Tâches validées
 
 1. Cliquer avec une souris ou toucher une cible.
@@ -296,7 +298,15 @@ Pendant un item noté, le professionnel ne doit apporter ni aide verbale ni aide
 - une catégorie structurée décrivant le besoin d’aide ;
 - une zone de texte libre permettant au professionnel de préciser son observation.
 
-Les catégories exactes restent à valider. Cet arrêt ne doit pas être confondu avec un échec moteur, une activation incorrecte ou un dépassement de délai.
+Les cinq catégories structurées sont :
+
+1. compréhension de la consigne ;
+2. repérage visuel ;
+3. initiation ou maintien du geste ;
+4. utilisation du dispositif ;
+5. attention ou fatigue.
+
+Cet arrêt ne doit pas être confondu avec un échec moteur, une activation incorrecte ou un dépassement de délai.
 
 Si la taille utile de l’écran ou son orientation change pendant une tâche, BCN interrompt la tâche, impose une nouvelle calibration et recommence toute la tâche avec un nouveau tirage versionné. La tentative interrompue reste conservée comme incident de passation et n’est pas utilisée comme résultat noté.
 
@@ -328,7 +338,6 @@ La présentation graphique ou numérique des résultats reste à définir.
 - critères de détection et de déclaration d’une incompatibilité tactile ;
 - valeur du délai maximal, à établir pendant le pilote, et règles d’arrêt ;
 - contenu exact et consigne de chaque item d’entraînement ;
-- catégories structurées proposées pour décrire la nature du besoin d’aide.
 
 
 ## Module 3 — Repérage visuel
