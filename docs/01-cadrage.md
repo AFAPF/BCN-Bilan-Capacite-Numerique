@@ -89,3 +89,18 @@ Le comité de suivi devrait réunir au minimum :
 La conception appliquera la minimisation des données, l’usage de codes anonymisés ou pseudonymisés, la séparation entre bilan individuel et données de recherche, une durée de conservation définie et une information adaptée aux mineurs et à leurs responsables légaux.
 
 Toute collecte destinée à la recherche ou à l’étalonnage devra être précédée des validations éthiques, institutionnelles et juridiques nécessaires.
+
+## 10. Portage et trajectoire d’usage
+
+BCN est actuellement un projet personnel. Le dépôt public documente sa conception mais ne constitue ni une publication opérationnelle, ni une autorisation d’utilisation professionnelle, ni l’attribution d’une licence.
+
+La trajectoire retenue est :
+
+1. conception et essais avec données fictives ;
+2. développement et qualification technique ;
+3. simulation sans données d’élèves ;
+4. expérimentation limitée uniquement après accord de la structure et cadrage de la protection des données ;
+5. usage par le porteur pendant plusieurs mois ;
+6. décision ultérieure d’arrêt, de maintien personnel ou de diffusion.
+
+L’usage de BCN dans le travail ne doit pas être présenté comme un outil officiel du PAS ou de l’employeur sans autorisation explicite. Le choix de licence est différé jusqu’à la décision de diffusion.
