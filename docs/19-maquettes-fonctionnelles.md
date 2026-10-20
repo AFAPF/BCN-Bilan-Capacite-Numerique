@@ -142,13 +142,13 @@ Aucune statistique comparant les jeunes.
 
 - recherche par code ;
 - filtres niveau, statut, période ;
-- colonnes : code, âge, niveau, dernière passation, statut ;
+- colonnes : nom, prénom, âge, niveau, dernière passation, statut ;
 - action Ouvrir ;
 - création Nouvelle fiche.
 
 ### Fiche
 
-- code ;
+- nom et prénom ;
 - âge en années et mois ;
 - niveau scolaire ;
 - échéance de conservation ;
@@ -156,7 +156,7 @@ Aucune statistique comparant les jeunes.
 - observations administratives minimisées ;
 - actions : nouvelle passation, archiver, corbeille.
 
-Aucun champ de nom ou prénom.
+Le nom et le prénom sont obligatoires et visibles uniquement dans l’espace professionnel.
 
 ## 9. M04 — Assistant de passation
 
@@ -329,7 +329,7 @@ Le professionnel peut choisir une autre option autorisée avec motif.
 
 En-tête :
 
-- code jeune ;
+- nom et prénom du jeune ;
 - âge et niveau ;
 - statut ;
 - dates ;
@@ -448,7 +448,7 @@ Contrôles effectués au niveau fonctionnel :
 
 - toutes les fonctions du parcours disposent d’un écran ;
 - espace professionnel et espace élève séparés ;
-- aucune identité civile ;
+- identité civile visible uniquement dans les écrans professionnels et le bilan nominatif ;
 - aucun résultat présenté au jeune ;
 - aucun partage cloud ;
 - erreurs, pause, verrouillage et reprise couverts ;
