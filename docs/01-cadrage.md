@@ -86,7 +86,7 @@ Le comité de suivi devrait réunir au minimum :
 
 ## 9. Protection des données
 
-La conception appliquera la minimisation des données, l’usage de codes anonymisés ou pseudonymisés, la séparation entre bilan individuel et données de recherche, une durée de conservation définie et une information adaptée aux mineurs et à leurs responsables légaux.
+La conception appliquera la minimisation, le chiffrement local de l’identité, la séparation entre bilan nominatif et éventuelles données de recherche anonymisées, une durée de conservation définie et une information adaptée aux mineurs et à leurs responsables légaux.
 
 Toute collecte destinée à la recherche ou à l’étalonnage devra être précédée des validations éthiques, institutionnelles et juridiques nécessaires.
 
