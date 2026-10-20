@@ -60,6 +60,7 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 - [Matrice capacités–épreuves–mesures](docs/05-matrice-capacites-epreuves.md)
 - [Plan de préproduction](docs/07-plan-preproduction.md)
 - [Règles transversales de passation](docs/08-regles-transversales-passation.md)
+- [Profils professionnels et matrice des droits](docs/09-profils-droits.md)
 - [Feuille de route](ROADMAP.md)
 - [Contribuer au projet](CONTRIBUTING.md)
 - [Politique de sécurité](SECURITY.md)
