@@ -363,7 +363,18 @@ Les pages web, navigateurs, messageries et plateformes scolaires ne sont pas ret
 
 ### Banque d’items et variantes d’âge
 
-L’épreuve comporte **dix items au total**.
+L’épreuve comporte **dix items au total** :
+
+- 5 items dans un bureau ou un gestionnaire de fichiers ;
+- 5 items dans un document ou une barre d’outils.
+
+Chaque série comprend trois niveaux de densité visuelle :
+
+- 3 items de densité faible ;
+- 4 items de densité moyenne ;
+- 3 items de densité forte.
+
+L’ordre des dix items est aléatoire et enregistré. Le tirage doit respecter simultanément les quotas d’environnement et de densité.
 
 Trois banques distinctes sont prévues :
 
@@ -373,7 +384,13 @@ Trois banques distinctes sont prévues :
 
 Chaque banque adapte les contenus à l’âge tout en visant une difficulté et une structure équivalentes. Cette équivalence ne peut pas être supposée : elle devra être vérifiée pendant le pilote avant toute comparaison entre tranches.
 
-La répartition des dix items entre les deux environnements, le mode de tirage et les paramètres de difficulté restent à définir.
+Les critères objectifs définissant les densités faible, moyenne et forte restent à fixer puis à vérifier pendant le pilote.
+
+### Présentation de la cible à rechercher
+
+Avant chaque item, BCN diffuse une consigne avec une **voix de synthèse fixe et versionnée**. Le même texte reste affiché à l’écran.
+
+La formulation, la voix, le débit et le fichier audio utilisés sont identiques pour tous les jeunes d’une même variante. Les textes exacts et les règles de répétition restent à définir.
 
 ### Mode de réponse
 
@@ -394,7 +411,6 @@ Le temps de réponse, les omissions et les fausses sélections ne sont pas reten
 
 ### Éléments restant à définir
 
-- répartition des dix items entre les deux environnements ;
 - construction, versionnement et équivalence des trois banques d’âge ;
 - variantes selon le matériel ;
 - consigne exacte ;
