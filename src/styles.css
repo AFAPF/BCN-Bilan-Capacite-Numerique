@@ -135,7 +135,7 @@ footer { padding: 1.5rem clamp(1rem, 5vw, 4.5rem); display: flex; justify-conten
 .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .7rem; padding: 1.5rem; }
 .icon-grid button { min-height: 6rem; display: grid; place-content: center; border: 1px solid transparent; border-radius: .7rem; background: transparent; }
 .icon-grid button:hover, .icon-grid button:focus-visible { border-color: #6ca596; background: #edf5f1; }
-.icon-grid button span { font-size: 2rem; }.icon-grid button small { margin-top: .3rem; }
+.icon-grid button span { font-size: 2.4rem; }
 .question-card { width: min(90%, 50rem); margin: 4rem auto; padding: 2.5rem; border-radius: 1rem; background: #f7f4ec; }
 .question-card h2 { font-size: 1.8rem; }
 .choice-list { display: grid; gap: .8rem; margin-top: 2rem; }

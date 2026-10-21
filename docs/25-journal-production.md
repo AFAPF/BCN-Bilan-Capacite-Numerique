@@ -47,3 +47,14 @@ La commande de référence est `npm run check`. Elle exécute successivement le 
 - bilan descriptif par tâche et impression PDF par le navigateur.
 
 Cette version sert à éprouver l’ergonomie et le fonctionnement général. Elle ne remplace pas la qualification des protocoles, contenus, mesures physiques, délais et règles de cotation prévue dans les lots suivants.
+
+## 21 octobre 2026 — correction du repérage visuel
+
+Après le premier essai complet du porteur :
+
+- la zone de réponse n’affiche plus aucun nom sous les icônes ;
+- seules les icônes constituent les réponses visibles ;
+- chaque consigne décrit précisément la fonction de l’icône attendue ;
+- les dix cibles sont dossier, imprimer, enregistrer, message, rechercher, pièce jointe, corbeille, réglages, calendrier et verrouiller ;
+- les densités sont réparties en trois faibles, quatre moyennes et trois fortes ;
+- les interfaces alternent entre « Bureau et fichiers » et « Document et barre d’outils ».

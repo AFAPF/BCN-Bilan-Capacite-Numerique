@@ -131,13 +131,31 @@ function PointingTask({ mode, onComplete }: { mode: "pointing_click" | "pointing
   return <section className="test-screen"><TestTop title={TASKS.find((task) => task.code === mode)!.title} counter={`${index + 1}/10`} /><p className="test-instruction">{mode === "pointing_click" ? "Clique une fois sur le cercle." : mode === "pointing_double" ? "Double-clique sur le cercle." : "Fais glisser le carré plein au centre du cercle."}</p><div ref={board} className={`point-board ${mode}`} onClick={boardActivation} onDoubleClick={boardActivation} onPointerMove={dragMove} onPointerUp={dragEnd}><div className="point-target" style={{ left: `${target.x}%`, top: `${target.y}%`, width: `${target.size}mm`, height: `${target.size}mm` }} />{mode === "pointing_drag" && <div className="drag-object" onPointerDown={(event) => { event.currentTarget.setPointerCapture(event.pointerId); setDrag((value) => ({ ...value, active: true })); }} style={{ left: `${drag.x}%`, top: `${drag.y}%` }} />}</div></section>;
 }
 
-const SEARCH_SYMBOLS = ["📁","🖨️","💾","✉️","🔍","📎","🗑️","⚙️","📅","🔒","📄","✂️","📊","🖼️","↩️","⭐"];
+const SEARCH_ICONS = [
+  { id: "folder", symbol: "📁", label: "Dossier", prompt: "Clique sur l’icône qui permet d’ouvrir un dossier." },
+  { id: "print", symbol: "🖨️", label: "Imprimer", prompt: "Clique sur l’icône qui permet d’imprimer." },
+  { id: "save", symbol: "💾", label: "Enregistrer", prompt: "Clique sur l’icône qui permet d’enregistrer." },
+  { id: "mail", symbol: "✉️", label: "Message", prompt: "Clique sur l’icône qui représente un message." },
+  { id: "search", symbol: "🔍", label: "Rechercher", prompt: "Clique sur l’icône qui permet de rechercher." },
+  { id: "attachment", symbol: "📎", label: "Pièce jointe", prompt: "Clique sur l’icône qui permet d’ajouter une pièce jointe." },
+  { id: "trash", symbol: "🗑️", label: "Corbeille", prompt: "Clique sur l’icône qui permet de supprimer un élément." },
+  { id: "settings", symbol: "⚙️", label: "Réglages", prompt: "Clique sur l’icône qui permet d’ouvrir les réglages." },
+  { id: "calendar", symbol: "📅", label: "Calendrier", prompt: "Clique sur l’icône qui représente le calendrier." },
+  { id: "lock", symbol: "🔒", label: "Verrouiller", prompt: "Clique sur l’icône qui permet de verrouiller." },
+  { id: "document", symbol: "📄", label: "Document", prompt: "" },
+  { id: "cut", symbol: "✂️", label: "Couper", prompt: "" },
+  { id: "chart", symbol: "📊", label: "Graphique", prompt: "" },
+  { id: "image", symbol: "🖼️", label: "Image", prompt: "" },
+  { id: "back", symbol: "↩️", label: "Retour", prompt: "" },
+  { id: "favorite", symbol: "⭐", label: "Favori", prompt: "" },
+] as const;
+const SEARCH_DENSITIES = [8, 12, 16, 12, 8, 16, 12, 8, 16, 12] as const;
 function VisualSearchTask({ onComplete }: { onComplete: (result: TaskResult) => void }) {
-  const [index, setIndex] = useState(0); const [items, setItems] = useState<ItemResult[]>([]); const started = useRef(0); const target = SEARCH_SYMBOLS[(index * 3 + 1) % SEARCH_SYMBOLS.length]!; const shown = useMemo(() => { const size = 8 + (index % 3) * 4; const base = SEARCH_SYMBOLS.slice(0, size); if (!base.includes(target)) base[size - 1] = target; const offset = index % size; return [...base.slice(offset), ...base.slice(0, offset)]; }, [index, target]);
+  const [index, setIndex] = useState(0); const [items, setItems] = useState<ItemResult[]>([]); const started = useRef(0); const target = SEARCH_ICONS[index]!; const shown = useMemo(() => { const size = SEARCH_DENSITIES[index]!; const base = SEARCH_ICONS.slice(0, size); if (!base.some((icon) => icon.id === target.id)) base[size - 1] = target; const offset = (index * 3) % size; return [...base.slice(offset), ...base.slice(0, offset)]; }, [index, target]);
   useEffect(() => { started.current = performance.now(); }, [index]);
-  function answer(symbol: string, timeStamp: number) { const next = [...items, { success: symbol === target, durationMs: Math.round(timeStamp - started.current), ...(symbol === target ? {} : { failureReason: "sélection incorrecte" }) }]; if (index === 9) onComplete(makeCountResult("visual_search", next)); else { setItems(next); setIndex((value) => value + 1); } }
-  function speak() { speechSynthesis.cancel(); speechSynthesis.speak(new SpeechSynthesisUtterance(`Trouve l’icône ${symbolName(target)}`)); }
-  return <section className="test-screen"><TestTop title="Repérage visuel" counter={`${index + 1}/10`} /><div className="search-prompt"><span>Trouve : <strong>{symbolName(target)}</strong></span><button className="secondary" onClick={speak}>🔊 Répéter</button></div><div className="mock-window"><div className="window-bar"><i/><i/><i/><span>Documents</span></div><div className="icon-grid">{shown.map((symbol, symbolIndex) => <button key={`${symbol}-${symbolIndex}`} onClick={(event) => answer(symbol, event.timeStamp)}><span>{symbol}</span><small>{symbolName(symbol)}</small></button>)}</div></div></section>;
+  function answer(iconId: string, timeStamp: number) { const success = iconId === target.id; const next = [...items, { success, durationMs: Math.round(timeStamp - started.current), ...(success ? {} : { failureReason: "sélection incorrecte" }) }]; if (index === 9) onComplete(makeCountResult("visual_search", next)); else { setItems(next); setIndex((value) => value + 1); } }
+  function speak() { speechSynthesis.cancel(); speechSynthesis.speak(new SpeechSynthesisUtterance(target.prompt)); }
+  return <section className="test-screen"><TestTop title="Repérage visuel" counter={`${index + 1}/10`} /><div className="search-prompt"><span><strong>{target.prompt}</strong></span><button className="secondary" onClick={speak}>🔊 Répéter</button></div><div className="mock-window"><div className="window-bar"><i/><i/><i/><span>{index % 2 === 0 ? "Bureau et fichiers" : "Document et barre d’outils"}</span></div><div className="icon-grid">{shown.map((icon) => <button key={icon.id} aria-label={`Icône ${icon.label}`} title={icon.label} onClick={(event) => answer(icon.id, event.timeStamp)}><span aria-hidden="true">{icon.symbol}</span></button>)}</div></div></section>;
 }
 
 interface ChoiceItem { prompt: string; choices: string[]; correct: number }
@@ -175,5 +193,4 @@ function makePointingResult(taskCode: TaskCode, items: ItemResult[]): TaskResult
 function words(value: string) { return value.trim() ? value.trim().split(/\s+/u) : []; }
 function normalize(value: string) { return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/gi, "").toLowerCase(); }
 function round(value: number) { return Math.round(value * 10) / 10; }
-function symbolName(symbol: string) { return ({ "📁":"dossier", "🖨️":"imprimer", "💾":"enregistrer", "✉️":"message", "🔍":"rechercher", "📎":"pièce jointe", "🗑️":"corbeille", "⚙️":"réglages", "📅":"calendrier", "🔒":"verrou", "📄":"document", "✂️":"couper", "📊":"graphique", "🖼️":"image", "↩️":"retour", "⭐":"favori" } as Record<string,string>)[symbol] ?? symbol; }
 function metricLabel(value: string) { return ({ reussites: "Réussites", erreurs: "Erreurs", tempsMedianMs: "Temps médian (ms)", motsSaisis: "Mots saisis", motsCorrects: "Mots corrects", motsParMinute: "Mots/min", motsCorrectsParMinute: "Mots corrects/min", dureeSecondes: "Durée (s)" } as Record<string,string>)[value] ?? value; }

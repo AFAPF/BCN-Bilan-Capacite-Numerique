@@ -111,6 +111,7 @@ npm run check
 - [Backlog de production](docs/23-backlog-production.md)
 - [Revue de la porte d’entrée](docs/24-revue-porte-entree.md)
 - [Journal de production](docs/25-journal-production.md)
+- [Modules complémentaires proposés](docs/26-modules-complementaires.md)
 - [Feuille de route](ROADMAP.md)
 - [Contribuer au projet](CONTRIBUTING.md)
 - [Politique de sécurité](SECURITY.md)
