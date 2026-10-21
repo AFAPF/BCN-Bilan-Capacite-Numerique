@@ -122,3 +122,16 @@ Les missions visuelles sont replacées dans des environnements proches de ceux r
 - zones d’activation agrandies et mise en page responsive pour ordinateur, tablette et smartphone ;
 - explorateur présenté explicitement comme une mission Windows simulée ;
 - aucune connexion à Google, Microsoft ou à un autre service externe.
+
+## 21 octobre 2026 — dépannage contextualisé et traitement de texte 0.8
+
+Les situations sont rendues plus proches d’un usage réel, sans perdre la compatibilité tactile :
+
+- les cinq consignes de la mission dépannage sont reformulées avec une action précise et un emplacement explicite ;
+- l’annulation d’une suppression est présentée dans un document Word simulé ;
+- l’actualisation d’une page est cherchée directement dans la barre d’outils Chrome ;
+- le volume, la connexion Internet et l’aide sont cherchés dans une barre des tâches Windows ;
+- la simulation Word affiche un ruban, des onglets, une page et l’état de la modification ;
+- la partie traitement de texte passe de cinq à dix situations ;
+- les commandes ajoutées sont copier, couper, coller, souligner et imprimer ;
+- les autres environnements et leurs règles de réponse restent inchangés.

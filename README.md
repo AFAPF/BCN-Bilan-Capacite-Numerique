@@ -4,7 +4,7 @@
 
 ## Statut du projet
 
-**Phase : production — version d’essai interactive 0.7.**
+**Phase : production — version d’essai interactive 0.8.**
 
 BCN est actuellement un **projet personnel expérimental**. Son périmètre, son architecture, ses règles, ses contenus initiaux, ses maquettes, ses tests et son backlog sont définis. La production a commencé par le socle local chiffré. Les données et bilans restent localement sur l’appareil. Aucune diffusion à d’autres utilisateurs n’est encore décidée.
 
@@ -57,7 +57,8 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 - pipeline GitHub Actions : lint, tests, build et GitHub Pages.
 - création de dossiers fictifs ;
 - sélection indépendante de huit modules de connaissances ;
-- trente-cinq missions de reconnaissance de commandes dans des interfaces simulées Windows, Android, Chrome, traitement de texte, Gmail et Outlook ;
+- quarante missions de reconnaissance de commandes dans des interfaces simulées Windows, Android, Chrome, traitement de texte, Gmail et Outlook ;
+- dix situations de traitement de texte couvrant enregistrer, gras, listes, annuler, rétablir, copier, couper, coller, souligner et imprimer ;
 - icônes cohérentes avec chaque environnement grâce à Material Symbols et Fluent UI System Icons ;
 - cinq recherches de documents à partir d’un chemin dans un explorateur simulé ;
 - mêmes questions et mêmes commandes au clic ou au toucher ;
