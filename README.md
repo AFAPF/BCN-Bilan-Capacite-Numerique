@@ -4,7 +4,7 @@
 
 ## Statut du projet
 
-**Phase : production — incrément 01 (socle local sécurisé).**
+**Phase : production — version d’essai interactive 0.2.**
 
 BCN est actuellement un **projet personnel expérimental**. Son périmètre, son architecture, ses règles, ses contenus initiaux, ses maquettes, ses tests et son backlog sont définis. La production a commencé par le socle local chiffré. Les données et bilans restent localement sur l’appareil. Aucune diffusion à d’autres utilisateurs n’est encore décidée.
 
@@ -45,7 +45,7 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 6. Accessibilité et fonctionnement local sans cloud.
 7. Validation scientifique progressive et transparente.
 
-## Premier incrément disponible
+## Version actuellement disponible
 
 - application React + TypeScript + Vite en mode strict ;
 - PWA installable et interface mise en cache hors connexion ;
@@ -55,8 +55,14 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 - ralentissement des tentatives après cinq échecs ;
 - sauvegarde locale chiffrée, contrôle d’intégrité et restauration confirmée ;
 - pipeline GitHub Actions : lint, tests, build et GitHub Pages.
+- création de dossiers fictifs ;
+- sélection indépendante des sept tâches ;
+- copie au clavier avec premiers indicateurs ;
+- clic simple, double-clic et glisser-déposer ;
+- repérage visuel, compréhension et navigation simulée ;
+- bilan descriptif local imprimable en PDF.
 
-Ce premier incrément ne contient volontairement encore aucune épreuve utilisable avec un jeune et doit être testé uniquement avec des données fictives.
+Cette version permet de tester le parcours complet mais n’est pas encore une version pilote qualifiée. Elle doit être utilisée uniquement avec des données fictives jusqu’à la recette prévue au backlog.
 
 ### Développement local
 

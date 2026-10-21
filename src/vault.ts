@@ -1,5 +1,5 @@
 import { createVaultMaterial, decryptJson, encryptJson, sha256, unlockVaultMaterial, type VaultConfig } from "./crypto";
-import { assertWorkspace, createWorkspace, type AuditEvent, type PersistenceStatus, type Workspace } from "./domain";
+import { createWorkspace, migrateWorkspace, type AuditEvent, type PersistenceStatus, type Workspace } from "./domain";
 import { readVault, writeVault, type StoredVault } from "./storage";
 
 export interface BackupContainer {
@@ -46,8 +46,7 @@ class VaultService {
     if (!stored) throw new Error("Aucun coffre local n’a été trouvé.");
     try {
       const key = await unlockVaultMaterial(password, stored.config);
-      const value = await decryptJson(stored.state, key);
-      assertWorkspace(value);
+      const value = migrateWorkspace(await decryptJson(stored.state, key));
       const now = new Date().toISOString();
       value.lastOpenedAt = now;
       value.profile.lastLoginAt = now;
@@ -120,8 +119,7 @@ class VaultService {
     let value: unknown;
     try {
       key = await unlockVaultMaterial(password, candidate.vault.config);
-      value = await decryptJson(candidate.vault.state, key);
-      assertWorkspace(value);
+      value = migrateWorkspace(await decryptJson(candidate.vault.state, key));
     } catch {
       throw new Error("Phrase secrète incorrecte ou sauvegarde illisible.");
     }

@@ -30,3 +30,20 @@ Conformément au découpage validé, cet incrément ne crée aucun dossier jeune
 ### Contrôles
 
 La commande de référence est `npm run check`. Elle exécute successivement le lint, les tests automatisés et le build de production.
+
+## 20 octobre 2026 — version d’essai interactive 0.2
+
+À la demande du porteur, un parcours testable de bout en bout est ajouté :
+
+- migration automatique du coffre de schéma 1 vers le schéma 2 ;
+- dossiers nominatifs locaux — données fictives imposées à ce stade ;
+- création et reprise d’une passation ;
+- sélection indépendante des tâches ;
+- copie chronométrée et premiers calculs de débit ;
+- dix cibles pour le clic simple, le double-clic et le glisser-déposer ;
+- dix items de repérage visuel avec consigne vocale locale ;
+- six items de compréhension ;
+- quatre scénarios simulés de navigation ;
+- bilan descriptif par tâche et impression PDF par le navigateur.
+
+Cette version sert à éprouver l’ergonomie et le fonctionnement général. Elle ne remplace pas la qualification des protocoles, contenus, mesures physiques, délais et règles de cotation prévue dans les lots suivants.

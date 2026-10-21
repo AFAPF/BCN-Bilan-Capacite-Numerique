@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState, type FormEvent } from "react"
 import type { Workspace } from "./domain";
 import { requestPersistentStorage, vaultExists } from "./storage";
 import { UnlockDelayedError, vaultService } from "./vault";
+import EvaluationApp from "./EvaluationApp";
 
 const AUTO_LOCK_MS = 30 * 60 * 1000;
 
@@ -137,20 +138,13 @@ function WorkspaceView({ workspace, onLock, onWorkspaceChange }: { workspace: Wo
   return <div className="app-shell">
     <header className="topbar"><Brand /><div className="top-actions"><span className="user-chip">{workspace.profile.displayName}</span><button className="secondary" onClick={onLock}>Verrouiller</button></div></header>
     <main className="dashboard">
-      <div className="heading-row"><div><p className="eyebrow">Espace professionnel</p><h1>Bonjour {workspace.profile.displayName}</h1><p className="muted">Le socle sécurisé de BCN est opérationnel.</p></div><span className="status-pill"><span aria-hidden="true">●</span> Coffre ouvert</span></div>
+      <div className="heading-row"><div><p className="eyebrow">Espace professionnel</p><h1>Bonjour {workspace.profile.displayName}</h1><p className="muted">Le prototype interactif est prêt à être essayé avec des données fictives.</p></div><span className="status-pill"><span aria-hidden="true">●</span> Coffre ouvert</span></div>
       {notice && <div className="notice" role="status">{notice}</div>}
-      <section className="milestone"><div><span className="step">Incrément 01</span><h2>Fondations locales prêtes</h2><p>Cette version qualifie le stockage et le fonctionnement hors connexion avant d’intégrer les épreuves.</p></div><div className="progress-ring" aria-label="1 lot sur 8"><strong>1/8</strong><small>lots</small></div></section>
-      <section className="card-grid" aria-label="État technique">
-        <article className="card"><span className="card-icon lock-icon" aria-hidden="true">◆</span><h2>Coffre chiffré</h2><p>AES‑256‑GCM, clé enveloppée par une phrase secrète et PBKDF2‑SHA‑256.</p><span className="ok">Opérationnel</span></article>
-        <article className="card"><span className="card-icon" aria-hidden="true">↧</span><h2>Stockage local</h2><p>Persistance transactionnelle IndexedDB. Statut : <strong>{storageLabel(workspace.storagePersistence)}</strong>.</p><span className="ok">Aucun cloud</span></article>
-        <article className="card"><span className="card-icon" aria-hidden="true">⌁</span><h2>Mode hors ligne</h2><p>L’application installée met en cache son interface sur cet appareil.</p><span className="ok">PWA active</span></article>
-      </section>
+      <EvaluationApp workspace={workspace} onChange={onWorkspaceChange} />
       <section className="backup-panel"><div><p className="eyebrow">Continuité</p><h2>Sauvegarde du coffre</h2><p>Le fichier contient le coffre déjà chiffré. Conservez-le sur un support local distinct et maîtrisé.</p></div><div className="backup-actions"><button className="primary" onClick={() => void backup()}>Télécharger une sauvegarde</button><label className="file-button">Restaurer une sauvegarde<input type="file" accept=".json,.bcn" onChange={(event) => void inspectBackup(event)} /></label></div></section>
-      <section className="next-panel"><div><span className="step muted-step">Prochain incrément</span><h2>Dossiers fictifs et parcours professionnel</h2></div><p>Les données nominatives et les épreuves resteront désactivées jusqu’à leur implémentation et leur qualification.</p></section>
     </main>
     <footer><span>BCN {workspace.appVersion}</span><span>Dernière ouverture : {new Date(workspace.lastOpenedAt).toLocaleString("fr-FR")}</span></footer>
   </div>;
 }
 
-function storageLabel(status: Workspace["storagePersistence"]) { return status === "granted" ? "persistant" : status === "denied" ? "non garanti" : "inconnu"; }
 function errorMessage(error: unknown) { return error instanceof Error ? error.message : "Une erreur inattendue est survenue."; }
