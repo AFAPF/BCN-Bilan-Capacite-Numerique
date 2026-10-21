@@ -74,6 +74,14 @@ Les résultats adaptés restent séparés et leur comparabilité est expliciteme
 - prise en main d’un appareil tactile ;
 - fatigue, confort et préférence de dispositif.
 
+## Éléments désormais intégrés dans la version 0.3
+
+- repérage des icônes Windows ;
+- repérage des icônes de traitement de texte ;
+- repérage des actions générales sur les fichiers ;
+- simulation de deux fenêtres ;
+- raccourcis tout sélectionner, copier, coller, couper, annuler et rétablir.
+
 ## Ordre recommandé
 
 1. dictée et manipulation de texte ;

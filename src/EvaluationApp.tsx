@@ -7,7 +7,8 @@ const TASKS: { code: TaskCode; title: string; description: string }[] = [
   { code: "pointing_click", title: "Clic simple", description: "10 cibles de tailles variées" },
   { code: "pointing_double", title: "Double-clic", description: "Intervalle et reconnaissance" },
   { code: "pointing_drag", title: "Glisser-déposer", description: "Dépôt du centre dans la cible" },
-  { code: "visual_search", title: "Repérage visuel", description: "10 recherches dans deux interfaces" },
+  { code: "visual_search", title: "Repérage visuel", description: "15 icônes en trois phases" },
+  { code: "keyboard_shortcuts", title: "Raccourcis de base", description: "Deux fenêtres et huit actions guidées" },
   { code: "comprehension", title: "Compréhension", description: "6 consignes numériques" },
   { code: "navigation", title: "Navigation", description: "4 situations simulées" },
 ];
@@ -100,6 +101,7 @@ function AssessmentRunner({ participant, assessment, onExit, onResult }: { parti
   if (!started) return <section className="flow-card task-intro"><button className="text-button" onClick={onExit}>← Quitter et reprendre plus tard</button><div className="task-progress"><span style={{ width: `${(index / assessment.selectedTasks.length) * 100}%` }} /></div><p className="eyebrow">Tâche {index + 1} sur {assessment.selectedTasks.length}</p><h2>{info.title}</h2><p>{instructionFor(code)}</p><div className="training-box"><strong>Essai d’entraînement</strong><p>Explique la consigne à {participant.firstName}. Cette version d’essai démarre directement quand vous êtes prêts.</p></div><button className="primary large-button" onClick={() => setStarted(true)}>Démarrer la tâche</button></section>;
   if (code === "typing_copy") return <TypingTask onComplete={(result) => void complete(result)} />;
   if (code === "visual_search") return <VisualSearchTask onComplete={(result) => void complete(result)} />;
+  if (code === "keyboard_shortcuts") return <KeyboardShortcutsTask onComplete={(result) => void complete(result)} />;
   if (code === "comprehension") return <ChoiceTask code={code} items={COMPREHENSION_ITEMS} onComplete={(result) => void complete(result)} />;
   if (code === "navigation") return <ChoiceTask code={code} items={NAVIGATION_ITEMS} onComplete={(result) => void complete(result)} />;
   return <PointingTask mode={code} onComplete={(result) => void complete(result)} />;
@@ -132,30 +134,63 @@ function PointingTask({ mode, onComplete }: { mode: "pointing_click" | "pointing
 }
 
 const SEARCH_ICONS = [
-  { id: "folder", symbol: "📁", label: "Dossier", prompt: "Clique sur l’icône qui permet d’ouvrir un dossier." },
-  { id: "print", symbol: "🖨️", label: "Imprimer", prompt: "Clique sur l’icône qui permet d’imprimer." },
+  { id: "start", symbol: "⊞", label: "Menu Démarrer", prompt: "Clique sur l’icône qui ouvre le menu Démarrer." },
+  { id: "folder", symbol: "📁", label: "Explorateur de fichiers", prompt: "Clique sur l’icône qui ouvre l’explorateur de fichiers." },
+  { id: "search", symbol: "🔍", label: "Rechercher", prompt: "Clique sur l’icône qui permet de rechercher sur l’ordinateur." },
+  { id: "settings", symbol: "⚙️", label: "Paramètres", prompt: "Clique sur l’icône qui ouvre les paramètres de l’ordinateur." },
+  { id: "trash", symbol: "🗑️", label: "Corbeille", prompt: "Clique sur l’icône de la corbeille." },
+  { id: "bold", symbol: "𝐁", label: "Gras", prompt: "Clique sur l’icône qui met le texte en gras." },
+  { id: "underline", symbol: "U̲", label: "Souligner", prompt: "Clique sur l’icône qui souligne le texte." },
+  { id: "align", symbol: "≡", label: "Aligner", prompt: "Clique sur l’icône qui permet d’aligner le texte." },
+  { id: "list", symbol: "☷", label: "Liste à puces", prompt: "Clique sur l’icône qui crée une liste à puces." },
+  { id: "undo", symbol: "↶", label: "Annuler", prompt: "Clique sur l’icône qui annule la dernière action." },
   { id: "save", symbol: "💾", label: "Enregistrer", prompt: "Clique sur l’icône qui permet d’enregistrer." },
-  { id: "mail", symbol: "✉️", label: "Message", prompt: "Clique sur l’icône qui représente un message." },
-  { id: "search", symbol: "🔍", label: "Rechercher", prompt: "Clique sur l’icône qui permet de rechercher." },
+  { id: "print", symbol: "🖨️", label: "Imprimer", prompt: "Clique sur l’icône qui permet d’imprimer." },
+  { id: "download", symbol: "⬇️", label: "Télécharger", prompt: "Clique sur l’icône qui permet de télécharger un fichier." },
+  { id: "upload", symbol: "⬆️", label: "Importer", prompt: "Clique sur l’icône qui permet d’importer un fichier." },
   { id: "attachment", symbol: "📎", label: "Pièce jointe", prompt: "Clique sur l’icône qui permet d’ajouter une pièce jointe." },
-  { id: "trash", symbol: "🗑️", label: "Corbeille", prompt: "Clique sur l’icône qui permet de supprimer un élément." },
-  { id: "settings", symbol: "⚙️", label: "Réglages", prompt: "Clique sur l’icône qui permet d’ouvrir les réglages." },
-  { id: "calendar", symbol: "📅", label: "Calendrier", prompt: "Clique sur l’icône qui représente le calendrier." },
-  { id: "lock", symbol: "🔒", label: "Verrouiller", prompt: "Clique sur l’icône qui permet de verrouiller." },
+  { id: "redo", symbol: "↷", label: "Rétablir", prompt: "" },
   { id: "document", symbol: "📄", label: "Document", prompt: "" },
   { id: "cut", symbol: "✂️", label: "Couper", prompt: "" },
-  { id: "chart", symbol: "📊", label: "Graphique", prompt: "" },
+  { id: "mail", symbol: "✉️", label: "Message", prompt: "" },
   { id: "image", symbol: "🖼️", label: "Image", prompt: "" },
-  { id: "back", symbol: "↩️", label: "Retour", prompt: "" },
+  { id: "back", symbol: "←", label: "Retour", prompt: "" },
+  { id: "forward", symbol: "→", label: "Suivant", prompt: "" },
+  { id: "close", symbol: "✕", label: "Fermer", prompt: "" },
   { id: "favorite", symbol: "⭐", label: "Favori", prompt: "" },
 ] as const;
-const SEARCH_DENSITIES = [8, 12, 16, 12, 8, 16, 12, 8, 16, 12] as const;
+const SEARCH_PHASES = [
+  { title: "Navigation Windows", targetIds: ["start", "folder", "search", "settings", "trash"] },
+  { title: "Traitement de texte", targetIds: ["bold", "underline", "align", "list", "undo"] },
+  { title: "Fichiers et actions courantes", targetIds: ["save", "print", "download", "upload", "attachment"] },
+] as const;
+const SEARCH_DENSITIES = [8, 12, 16, 12, 16, 8, 12, 16, 12, 16, 8, 12, 16, 12, 16] as const;
 function VisualSearchTask({ onComplete }: { onComplete: (result: TaskResult) => void }) {
-  const [index, setIndex] = useState(0); const [items, setItems] = useState<ItemResult[]>([]); const started = useRef(0); const target = SEARCH_ICONS[index]!; const shown = useMemo(() => { const size = SEARCH_DENSITIES[index]!; const base = SEARCH_ICONS.slice(0, size); if (!base.some((icon) => icon.id === target.id)) base[size - 1] = target; const offset = (index * 3) % size; return [...base.slice(offset), ...base.slice(0, offset)]; }, [index, target]);
+  const [index, setIndex] = useState(0); const [items, setItems] = useState<ItemResult[]>([]); const started = useRef(0); const phase = SEARCH_PHASES[Math.floor(index / 5)]!; const targetId = phase.targetIds[index % 5]!; const target = SEARCH_ICONS.find((icon) => icon.id === targetId)!; const shown = useMemo(() => { const size = SEARCH_DENSITIES[index]!; const base = SEARCH_ICONS.slice(0, size); if (!base.some((icon) => icon.id === target.id)) base[size - 1] = target; const offset = (index * 3) % size; return [...base.slice(offset), ...base.slice(0, offset)]; }, [index, target]);
   useEffect(() => { started.current = performance.now(); }, [index]);
-  function answer(iconId: string, timeStamp: number) { const success = iconId === target.id; const next = [...items, { success, durationMs: Math.round(timeStamp - started.current), ...(success ? {} : { failureReason: "sélection incorrecte" }) }]; if (index === 9) onComplete(makeCountResult("visual_search", next)); else { setItems(next); setIndex((value) => value + 1); } }
+  function answer(iconId: string, timeStamp: number) { const success = iconId === target.id; const next = [...items, { success, durationMs: Math.round(timeStamp - started.current), ...(success ? {} : { failureReason: "sélection incorrecte" }) }]; if (index === 14) onComplete({ ...makeCountResult("visual_search", next), metrics: { reussites: next.filter((item) => item.success).length, erreurs: next.filter((item) => !item.success).length, phases: 3 } }); else { setItems(next); setIndex((value) => value + 1); } }
   function speak() { speechSynthesis.cancel(); speechSynthesis.speak(new SpeechSynthesisUtterance(target.prompt)); }
-  return <section className="test-screen"><TestTop title="Repérage visuel" counter={`${index + 1}/10`} /><div className="search-prompt"><span><strong>{target.prompt}</strong></span><button className="secondary" onClick={speak}>🔊 Répéter</button></div><div className="mock-window"><div className="window-bar"><i/><i/><i/><span>{index % 2 === 0 ? "Bureau et fichiers" : "Document et barre d’outils"}</span></div><div className="icon-grid">{shown.map((icon) => <button key={icon.id} aria-label={`Icône ${icon.label}`} title={icon.label} onClick={(event) => answer(icon.id, event.timeStamp)}><span aria-hidden="true">{icon.symbol}</span></button>)}</div></div></section>;
+  return <section className="test-screen"><TestTop title={`Repérage visuel · ${phase.title}`} counter={`${index + 1}/15`} /><div className="phase-tabs">{SEARCH_PHASES.map((item, phaseIndex) => <span className={phaseIndex === Math.floor(index / 5) ? "active" : phaseIndex < Math.floor(index / 5) ? "done" : ""} key={item.title}>{phaseIndex + 1}. {item.title}</span>)}</div><div className="search-prompt"><span><strong>{target.prompt}</strong></span><button className="secondary" onClick={speak}>🔊 Répéter</button></div><div className="mock-window"><div className="window-bar"><i/><i/><i/><span>{phase.title}</span></div><div className="icon-grid">{shown.map((icon) => <button key={icon.id} aria-label={`Icône ${icon.label}`} title={icon.label} onClick={(event) => answer(icon.id, event.timeStamp)}><span aria-hidden="true">{icon.symbol}</span></button>)}</div></div></section>;
+}
+
+const SHORTCUT_STEPS = [
+  { kind: "key", window: "source", chord: "Ctrl + A", key: "a", instruction: "Dans la fenêtre 1, sélectionne tout le texte." },
+  { kind: "key", window: "source", chord: "Ctrl + C", key: "c", instruction: "Copie maintenant le texte sélectionné." },
+  { kind: "click", window: "destination", chord: "Clic", key: "", instruction: "Clique dans la fenêtre 2 pour l’activer." },
+  { kind: "key", window: "destination", chord: "Ctrl + V", key: "v", instruction: "Colle le texte dans la fenêtre 2." },
+  { kind: "key", window: "destination", chord: "Ctrl + A", key: "a", instruction: "Sélectionne tout le texte de la fenêtre 2." },
+  { kind: "key", window: "destination", chord: "Ctrl + X", key: "x", instruction: "Coupe le texte sélectionné." },
+  { kind: "key", window: "destination", chord: "Ctrl + Z", key: "z", instruction: "Annule la dernière action pour retrouver le texte." },
+  { kind: "key", window: "destination", chord: "Ctrl + Y", key: "y", instruction: "Rétablis l’action qui vient d’être annulée." },
+] as const;
+
+function KeyboardShortcutsTask({ onComplete }: { onComplete: (result: TaskResult) => void }) {
+  const sourceText = "La classe prépare un exposé sur les planètes."; const [destinationText, setDestinationText] = useState(""); const [activeWindow, setActiveWindow] = useState<"source" | "destination">("source"); const [stepIndex, setStepIndex] = useState(0); const [items, setItems] = useState<ItemResult[]>([]); const [errors, setErrors] = useState(0); const [sourceSelected, setSourceSelected] = useState(false); const [destinationSelected, setDestinationSelected] = useState(false); const [clipboard, setClipboard] = useState(""); const started = useRef(0); const capture = useRef<HTMLDivElement>(null); const step = SHORTCUT_STEPS[stepIndex]!;
+  useEffect(() => { started.current = performance.now(); capture.current?.focus(); }, [stepIndex]);
+  function advance(timeStamp: number) { const next = [...items, { success: true, durationMs: Math.round(timeStamp - started.current) }]; if (stepIndex === SHORTCUT_STEPS.length - 1) onComplete({ taskCode: "keyboard_shortcuts", completedAt: new Date().toISOString(), items: next, metrics: { raccourcisReussis: 7, changementFenetre: 1, erreursActions: errors } }); else { setItems(next); setStepIndex((value) => value + 1); } }
+  function activateWindow(windowName: "source" | "destination", timeStamp: number) { setActiveWindow(windowName); capture.current?.focus(); if (step.kind === "click" && step.window === windowName) advance(timeStamp); else if (step.kind === "click") setErrors((value) => value + 1); }
+  function keyAction(event: React.KeyboardEvent) { event.preventDefault(); if (step.kind !== "key" || !(event.ctrlKey || event.metaKey) || event.key.toLowerCase() !== step.key || activeWindow !== step.window) { setErrors((value) => value + 1); return; } if (step.key === "a") { if (activeWindow === "source") setSourceSelected(true); else setDestinationSelected(true); } if (step.key === "c") setClipboard(sourceText); if (step.key === "v") setDestinationText(clipboard); if (step.key === "x") { setClipboard(destinationText); setDestinationText(""); setDestinationSelected(false); } if (step.key === "z") setDestinationText(clipboard); if (step.key === "y") setDestinationText(""); advance(event.timeStamp); }
+  return <section className="test-screen"><TestTop title="Raccourcis de base" counter={`${stepIndex + 1}/8`} /><div className="shortcut-instruction"><p className="eyebrow">Action demandée</p><h2>{step.instruction}</h2><kbd>{step.chord}</kbd><p>Les autres actions sont enregistrées comme erreurs, mais tu peux réessayer.</p></div><div ref={capture} tabIndex={0} className="shortcut-workspace" onKeyDown={keyAction}><button className={`sim-window ${activeWindow === "source" ? "active" : ""}`} onClick={(event) => activateWindow("source", event.timeStamp)}><span className="sim-title">Fenêtre 1 · Texte source</span><p className={sourceSelected ? "selected-text" : ""}>{sourceText}</p></button><button className={`sim-window ${activeWindow === "destination" ? "active" : ""}`} onClick={(event) => activateWindow("destination", event.timeStamp)}><span className="sim-title">Fenêtre 2 · Document de travail</span><p className={destinationSelected ? "selected-text" : ""}>{destinationText || "Clique ici au moment demandé."}</p></button></div><div className="shortcut-status"><span>Fenêtre active : <strong>{activeWindow === "source" ? "1" : "2"}</strong></span><span>Erreurs : <strong>{errors}</strong></span></div></section>;
 }
 
 interface ChoiceItem { prompt: string; choices: string[]; correct: number }
@@ -187,10 +222,10 @@ function Report({ participant, assessment, onBack }: { participant: Participant;
 
 function FlowHeader({ step, title, onBack }: { step: string; title: string; onBack: () => void }) { return <header className="flow-header"><button className="back-button" onClick={onBack} aria-label="Retour">←</button><div><p className="eyebrow">{step}</p><h2>{title}</h2></div></header>; }
 function TestTop({ title, counter }: { title: string; counter: string }) { return <header className="test-top"><span>BCN</span><strong>{title}</strong><span>{counter}</span></header>; }
-function instructionFor(code: TaskCode) { const instructions: Record<TaskCode,string> = { typing_copy: "Recopier un texte pendant cinq minutes, sans aide à la correction.", pointing_click: "Cliquer ou toucher dix cibles.", pointing_double: "Double-cliquer ou double-toucher dix cibles.", pointing_drag: "Déplacer dix objets au centre de leur cible.", visual_search: "Repérer dix informations ou icônes.", comprehension: "Répondre à six consignes numériques.", navigation: "Résoudre quatre situations de navigation." }; return instructions[code]; }
+function instructionFor(code: TaskCode) { const instructions: Record<TaskCode,string> = { typing_copy: "Recopier un texte pendant cinq minutes, sans aide à la correction.", pointing_click: "Cliquer ou toucher dix cibles.", pointing_double: "Double-cliquer ou double-toucher dix cibles.", pointing_drag: "Déplacer dix objets au centre de leur cible.", visual_search: "Repérer quinze icônes réparties entre Windows, traitement de texte et actions courantes.", keyboard_shortcuts: "Réaliser les raccourcis copier, couper, coller, tout sélectionner, annuler et rétablir dans deux fenêtres simulées.", comprehension: "Répondre à six consignes numériques.", navigation: "Résoudre quatre situations de navigation." }; return instructions[code]; }
 function makeCountResult(taskCode: TaskCode, items: ItemResult[]): TaskResult { return { taskCode, completedAt: new Date().toISOString(), items, metrics: { reussites: items.filter((item) => item.success).length, erreurs: items.filter((item) => !item.success).length } }; }
 function makePointingResult(taskCode: TaskCode, items: ItemResult[]): TaskResult { const successfulTimes = items.filter((item) => item.success).map((item) => item.durationMs).sort((a,b) => a-b); return { ...makeCountResult(taskCode, items), metrics: { reussites: successfulTimes.length, erreurs: items.length - successfulTimes.length, tempsMedianMs: successfulTimes.length ? successfulTimes[Math.floor(successfulTimes.length / 2)]! : 0 } }; }
 function words(value: string) { return value.trim() ? value.trim().split(/\s+/u) : []; }
 function normalize(value: string) { return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/gi, "").toLowerCase(); }
 function round(value: number) { return Math.round(value * 10) / 10; }
-function metricLabel(value: string) { return ({ reussites: "Réussites", erreurs: "Erreurs", tempsMedianMs: "Temps médian (ms)", motsSaisis: "Mots saisis", motsCorrects: "Mots corrects", motsParMinute: "Mots/min", motsCorrectsParMinute: "Mots corrects/min", dureeSecondes: "Durée (s)" } as Record<string,string>)[value] ?? value; }
+function metricLabel(value: string) { return ({ reussites: "Réussites", erreurs: "Erreurs", phases: "Phases", raccourcisReussis: "Raccourcis réussis", changementFenetre: "Changement de fenêtre", erreursActions: "Actions incorrectes", tempsMedianMs: "Temps médian (ms)", motsSaisis: "Mots saisis", motsCorrects: "Mots corrects", motsParMinute: "Mots/min", motsCorrectsParMinute: "Mots corrects/min", dureeSecondes: "Durée (s)" } as Record<string,string>)[value] ?? value; }

@@ -60,6 +60,8 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 - copie au clavier avec premiers indicateurs ;
 - clic simple, double-clic et glisser-déposer ;
 - repérage visuel, compréhension et navigation simulée ;
+- repérage visuel en trois phases : Windows, traitement de texte et actions courantes ;
+- épreuve guidée des raccourcis de base dans deux fenêtres simulées ;
 - bilan descriptif local imprimable en PDF.
 
 Cette version permet de tester le parcours complet mais n’est pas encore une version pilote qualifiée. Elle doit être utilisée uniquement avec des données fictives jusqu’à la recette prévue au backlog.

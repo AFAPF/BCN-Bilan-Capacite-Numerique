@@ -58,3 +58,17 @@ Après le premier essai complet du porteur :
 - les dix cibles sont dossier, imprimer, enregistrer, message, rechercher, pièce jointe, corbeille, réglages, calendrier et verrouiller ;
 - les densités sont réparties en trois faibles, quatre moyennes et trois fortes ;
 - les interfaces alternent entre « Bureau et fichiers » et « Document et barre d’outils ».
+
+## 21 octobre 2026 — repérage en trois phases et raccourcis
+
+À la suite du deuxième essai du porteur :
+
+- le repérage visuel passe à quinze items ;
+- phase 1 : navigation Windows ;
+- phase 2 : icônes de traitement de texte ;
+- phase 3 : fichiers et actions courantes ;
+- une barre de progression distingue clairement les trois phases ;
+- une nouvelle tâche indépendante simule deux fenêtres ;
+- les actions évaluées sont tout sélectionner, copier, changer de fenêtre, coller, couper, annuler et rétablir ;
+- chaque étape est guidée et les actions incorrectes sont comptées sans bloquer l’élève ;
+- les raccourcis sont évalués séparément de la capacité à réaliser la même action par les menus.
