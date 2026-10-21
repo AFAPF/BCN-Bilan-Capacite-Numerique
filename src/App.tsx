@@ -1,107 +1,69 @@
-import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import type { Workspace } from "./domain";
-import { requestPersistentStorage, vaultExists } from "./storage";
+import { requestPersistentStorage, vaultExists, workspaceExists } from "./storage";
 import { UnlockDelayedError, vaultService } from "./vault";
 import EvaluationApp from "./EvaluationApp";
 
-const AUTO_LOCK_MS = 30 * 60 * 1000;
-
 export default function App() {
-  const [phase, setPhase] = useState<"loading" | "setup" | "locked" | "open">("loading");
+  const [phase, setPhase] = useState<"loading" | "welcome" | "legacy" | "open">("loading");
   const [workspace, setWorkspace] = useState<Workspace | null>(null);
   const [message, setMessage] = useState("");
-  const lastActivity = useRef(0);
-
   useEffect(() => {
-    void vaultExists().then((exists) => setPhase(exists ? "locked" : "setup")).catch((error: unknown) => {
-      setMessage(errorMessage(error));
-      setPhase("setup");
-    });
+    void (async () => {
+      try {
+        if (await workspaceExists()) {
+          setWorkspace(await vaultService.openLocal());
+          setPhase("welcome");
+          return;
+        }
+        if (await vaultExists()) {
+          setPhase("legacy");
+          return;
+        }
+        const persistence = await requestPersistentStorage();
+        setWorkspace(await vaultService.createLocal("BCN — appareil local", "FOURCADE Arnaud", persistence));
+        setPhase("welcome");
+      } catch (error) {
+        setMessage(errorMessage(error));
+        setPhase("legacy");
+      }
+    })();
   }, []);
-
-  const lock = useCallback(async () => {
-    try {
-      await vaultService.lock();
-    } finally {
-      setWorkspace(null);
-      setPhase("locked");
-      setMessage("Coffre verrouillé. La clé a été retirée de la mémoire.");
-    }
-  }, []);
-
-  useEffect(() => {
-    if (phase !== "open") return;
-    lastActivity.current = Date.now();
-    const activity = () => { lastActivity.current = Date.now(); };
-    const events: (keyof WindowEventMap)[] = ["pointerdown", "keydown", "focus"];
-    events.forEach((event) => window.addEventListener(event, activity, { passive: true }));
-    const timer = window.setInterval(() => {
-      if (Date.now() - lastActivity.current >= AUTO_LOCK_MS) void lock();
-    }, 15_000);
-    return () => {
-      events.forEach((event) => window.removeEventListener(event, activity));
-      window.clearInterval(timer);
-    };
-  }, [lock, phase]);
 
   if (phase === "loading") return <Loading />;
-  if (phase === "setup") return <Setup onCreated={(value) => { setWorkspace(value); setPhase("open"); }} message={message} />;
-  if (phase === "locked") return <Unlock onUnlocked={(value) => { lastActivity.current = Date.now(); setWorkspace(value); setPhase("open"); setMessage(""); }} message={message} />;
+  if (phase === "legacy") return <LegacyMigration onReady={(value) => { setWorkspace(value); setPhase("welcome"); setMessage(""); }} message={message} />;
+  if (phase === "welcome" && workspace) return <Welcome onStart={() => setPhase("open")} />;
   if (!workspace) return null;
-  return <WorkspaceView workspace={workspace} onLock={() => void lock()} onWorkspaceChange={setWorkspace} />;
+  return <WorkspaceView workspace={workspace} onWorkspaceChange={setWorkspace} />;
 }
 
 function Brand() {
-  return <div className="brand" aria-label="BCN"><span className="brand-mark">B</span><span><strong>BCN</strong><small>Bilan des capacités numériques</small></span></div>;
+  return <div className="brand" aria-label="BCN — Bilan de Connaissance Numérique"><span className="brand-mark" aria-hidden="true"><i /><i /><i /></span><span><strong>BCN</strong><small>Bilan de Connaissance Numérique</small></span></div>;
 }
 
 function Loading() {
   return <main className="centered"><Brand /><p role="status">Ouverture du stockage local…</p></main>;
 }
 
-function Setup({ onCreated, message }: { onCreated: (workspace: Workspace) => void; message: string }) {
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState(message);
-
-  async function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setBusy(true); setError("");
-    const form = new FormData(event.currentTarget);
-    const password = String(form.get("password") ?? "");
-    if (password !== String(form.get("confirmation") ?? "")) { setError("Les deux phrases secrètes ne correspondent pas."); setBusy(false); return; }
-    try {
-      const persistence = await requestPersistentStorage();
-      onCreated(await vaultService.create(password, String(form.get("label") ?? ""), String(form.get("name") ?? ""), persistence));
-    } catch (cause) { setError(errorMessage(cause)); setBusy(false); }
-  }
-
-  return <main className="auth-layout">
-    <section className="intro-panel"><Brand /><p className="eyebrow">Première ouverture</p><h1>Votre espace de travail reste sur cet appareil.</h1><p>BCN chiffre le contenu avant de l’enregistrer. La phrase secrète n’est ni stockée ni récupérable.</p><div className="privacy-note"><span aria-hidden="true">●</span> Aucun dossier ni bilan n’est envoyé sur Internet.</div></section>
-    <section className="auth-card" aria-labelledby="setup-title"><h2 id="setup-title">Créer le coffre local</h2><p className="muted">Utilisez uniquement des données fictives pendant la construction.</p>
-      <form onSubmit={submit}>
-        <label>Nom du professionnel<input name="name" autoComplete="name" maxLength={80} required /></label>
-        <label>Nom du coffre<input name="label" defaultValue="BCN — poste principal" maxLength={80} required /></label>
-        <label>Phrase secrète<input name="password" type="password" autoComplete="new-password" minLength={12} maxLength={256} required /><small>12 caractères minimum. Conservez-la dans un endroit sûr.</small></label>
-        <label>Confirmer la phrase secrète<input name="confirmation" type="password" autoComplete="new-password" minLength={12} maxLength={256} required /></label>
-        {error && <p className="error" role="alert">{error}</p>}
-        <button className="primary" disabled={busy}>{busy ? "Création et chiffrement…" : "Créer le coffre"}</button>
-      </form>
-    </section>
-  </main>;
+function Welcome({ onStart }: { onStart: () => void }) {
+  return <main className="welcome-page"><div className="welcome-orb welcome-orb-one" /><div className="welcome-orb welcome-orb-two" /><header><Brand /><span className="welcome-version">Version expérimentale</span></header><section className="welcome-content"><p className="eyebrow">Évaluation des connaissances numériques</p><h1>Observer et comprendre l’autonomie numérique de l’élève.</h1><p className="welcome-lead">BCN propose des situations simulées pour évaluer la compréhension des interfaces, des fichiers, du traitement de texte, d’Internet, de la communication et de la sécurité numérique.</p><div className="welcome-actions"><button className="primary welcome-start" onClick={onStart}>Commencer</button><span>Ordinateur · tablette · smartphone</span></div></section><footer className="welcome-footer"><span>Les données et les bilans restent sur cet appareil.</span><strong>Créé par FOURCADE Arnaud © 2026</strong></footer></main>;
 }
 
-function Unlock({ onUnlocked, message }: { onUnlocked: (workspace: Workspace) => void; message: string }) {
+function LegacyMigration({ onReady, message }: { onReady: (workspace: Workspace) => void; message: string }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(message);
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); setBusy(true); setError("");
-    try { onUnlocked(await vaultService.unlock(String(new FormData(event.currentTarget).get("password") ?? ""))); }
+    try {
+      const workspace = await vaultService.migrateToLocal(String(new FormData(event.currentTarget).get("password") ?? ""));
+      onReady(workspace);
+    }
     catch (cause) { setError(cause instanceof UnlockDelayedError ? cause.message : errorMessage(cause)); setBusy(false); }
   }
-  return <main className="centered"><div className="unlock-card"><Brand /><p className="eyebrow">Coffre local</p><h1>Déverrouiller BCN</h1><form onSubmit={submit}><label>Phrase secrète<input autoFocus name="password" type="password" autoComplete="current-password" required /></label>{error && <p className="error" role="alert">{error}</p>}<button className="primary" disabled={busy}>{busy ? "Déchiffrement…" : "Déverrouiller"}</button></form><p className="microcopy">Après cinq échecs, les tentatives sont temporairement ralenties.</p></div></main>;
+  return <main className="centered"><div className="unlock-card"><Brand /><p className="eyebrow">Mise à jour unique</p><h1>Conserver les données existantes</h1><p>Entre une dernière fois l’ancienne phrase secrète. Elle sera ensuite supprimée et BCN s’ouvrira directement.</p><form onSubmit={submit}><label>Ancienne phrase secrète<input autoFocus name="password" type="password" autoComplete="current-password" required /></label>{error && <p className="error" role="alert">{error}</p>}<button className="primary" disabled={busy}>{busy ? "Mise à jour…" : "Conserver mes données"}</button></form></div></main>;
 }
 
-function WorkspaceView({ workspace, onLock, onWorkspaceChange }: { workspace: Workspace; onLock: () => void; onWorkspaceChange: (value: Workspace) => void }) {
+function WorkspaceView({ workspace, onWorkspaceChange }: { workspace: Workspace; onWorkspaceChange: (value: Workspace) => void }) {
   const [notice, setNotice] = useState("");
 
   async function backup() {
@@ -112,7 +74,7 @@ function WorkspaceView({ workspace, onLock, onWorkspaceChange }: { workspace: Wo
       anchor.href = url; anchor.download = `BCN-sauvegarde-${new Date().toISOString().slice(0, 10)}.bcn.json`; anchor.click();
       URL.revokeObjectURL(url);
       if (vaultService.current) onWorkspaceChange({ ...vaultService.current });
-      setNotice(`Sauvegarde chiffrée créée et vérifiée (${hash.slice(0, 10)}…).`);
+      setNotice(`Sauvegarde locale créée et vérifiée (${hash.slice(0, 10)}…).`);
     } catch (cause) { setNotice(errorMessage(cause)); }
   }
 
@@ -122,28 +84,34 @@ function WorkspaceView({ workspace, onLock, onWorkspaceChange }: { workspace: Wo
     try {
       const json = await file.text();
       const candidate = await vaultService.verifyBackup(json);
-      if (!window.confirm(`Sauvegarde valide du ${new Date(candidate.exportedAt).toLocaleString("fr-FR")}\n\nLa restauration remplacera entièrement le coffre présent sur cet appareil. Continuer ?`)) {
+      if (!window.confirm(`Sauvegarde valide du ${new Date(candidate.exportedAt).toLocaleString("fr-FR")}\n\nLa restauration remplacera entièrement les données BCN présentes sur cet appareil. Continuer ?`)) {
         setNotice("Sauvegarde valide. Restauration annulée, aucune donnée modifiée.");
         return;
       }
-      const password = window.prompt("Saisissez la phrase secrète de cette sauvegarde pour la vérifier :");
-      if (!password) { setNotice("Restauration annulée, aucune donnée modifiée."); return; }
-      const restored = await vaultService.restoreBackup(json, password);
+      let restored: Workspace;
+      if (candidate.version === 2) {
+        restored = await vaultService.restoreBackup(json);
+      } else {
+        const password = window.prompt("Cette sauvegarde provient d’une ancienne version protégée. Saisissez son ancienne phrase secrète :");
+        if (!password) { setNotice("Restauration annulée, aucune donnée modifiée."); return; }
+        restored = await vaultService.restoreBackup(json, password);
+        await vaultService.migrateToLocal(password);
+      }
       onWorkspaceChange({ ...restored });
-      setNotice("Sauvegarde vérifiée, déchiffrée et restaurée avec succès.");
+      setNotice("Sauvegarde vérifiée et restaurée avec succès.");
     } catch (cause) { setNotice(errorMessage(cause)); }
     event.target.value = "";
   }
 
   return <div className="app-shell">
-    <header className="topbar"><Brand /><div className="top-actions"><span className="user-chip">{workspace.profile.displayName}</span><button className="secondary" onClick={onLock}>Verrouiller</button></div></header>
+    <header className="topbar"><Brand /><div className="top-actions"><span className="user-chip">{workspace.profile.displayName}</span><span className="local-chip">Données locales</span></div></header>
     <main className="dashboard">
-      <div className="heading-row"><div><p className="eyebrow">Espace professionnel</p><h1>Bonjour {workspace.profile.displayName}</h1><p className="muted">Le prototype interactif est prêt à être essayé avec des données fictives.</p></div><span className="status-pill"><span aria-hidden="true">●</span> Coffre ouvert</span></div>
+      <div className="heading-row"><div><p className="eyebrow">Espace d’évaluation</p><h1>Bonjour {workspace.profile.displayName}</h1><p className="muted">Sélectionne un dossier ou commence une nouvelle passation BCN.</p></div><span className="status-pill"><span aria-hidden="true">●</span> Stockage local</span></div>
       {notice && <div className="notice" role="status">{notice}</div>}
       <EvaluationApp workspace={workspace} onChange={onWorkspaceChange} />
-      <section className="backup-panel"><div><p className="eyebrow">Continuité</p><h2>Sauvegarde du coffre</h2><p>Le fichier contient le coffre déjà chiffré. Conservez-le sur un support local distinct et maîtrisé.</p></div><div className="backup-actions"><button className="primary" onClick={() => void backup()}>Télécharger une sauvegarde</button><label className="file-button">Restaurer une sauvegarde<input type="file" accept=".json,.bcn" onChange={(event) => void inspectBackup(event)} /></label></div></section>
+      <section className="backup-panel"><div><p className="eyebrow">Continuité</p><h2>Sauvegarde locale</h2><p>Télécharge régulièrement une copie des données et conserve-la sur un support local distinct.</p></div><div className="backup-actions"><button className="primary" onClick={() => void backup()}>Télécharger une sauvegarde</button><label className="file-button">Restaurer une sauvegarde<input type="file" accept=".json,.bcn" onChange={(event) => void inspectBackup(event)} /></label></div></section>
     </main>
-    <footer><span>BCN {workspace.appVersion}</span><span>Dernière ouverture : {new Date(workspace.lastOpenedAt).toLocaleString("fr-FR")}</span></footer>
+    <footer><span>BCN {workspace.appVersion} · Bilan de Connaissance Numérique</span><span>Créé par FOURCADE Arnaud © 2026</span></footer>
   </div>;
 }
 

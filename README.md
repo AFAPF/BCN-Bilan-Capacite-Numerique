@@ -1,12 +1,12 @@
-# BCN — Bilan de Capacité Numérique
+# BCN — Bilan de Connaissance Numérique
 
-> Projet public de conception d’un bilan fonctionnel standardisé des capacités numériques scolaires pour les jeunes de 8 à 18 ans.
+> Projet personnel expérimental d’évaluation structurée des connaissances numériques scolaires pour les jeunes de 8 à 18 ans.
 
 ## Statut du projet
 
-**Phase : production — version d’essai interactive 0.8.**
+**Phase : production — version d’essai interactive 0.9.**
 
-BCN est actuellement un **projet personnel expérimental**. Son périmètre, son architecture, ses règles, ses contenus initiaux, ses maquettes, ses tests et son backlog sont définis. La production a commencé par le socle local chiffré. Les données et bilans restent localement sur l’appareil. Aucune diffusion à d’autres utilisateurs n’est encore décidée.
+BCN est actuellement un **projet personnel expérimental**. Son périmètre, son architecture, ses règles, ses contenus initiaux, ses maquettes, ses tests et son backlog sont définis. Les données et bilans restent localement sur l’appareil. Aucune diffusion à d’autres utilisateurs n’est encore décidée.
 
 BCN est en cours de développement. Il ne s’agit actuellement ni d’un test étalonné, ni d’un outil diagnostique, ni d’un dispositif médical. Les scores, seuils et interprétations ne devront être présentés comme « normés » qu’après une validation méthodologique, une étude pilote et un étalonnage sur un échantillon approprié.
 
@@ -49,11 +49,10 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 
 - application React + TypeScript + Vite en mode strict ;
 - PWA installable et interface mise en cache hors connexion ;
-- coffre IndexedDB chiffré en AES-256-GCM ;
-- clé de données enveloppée par PBKDF2-SHA-256 (600 000 itérations) ;
-- verrouillage automatique après 30 minutes ;
-- ralentissement des tentatives après cinq échecs ;
-- sauvegarde locale chiffrée, contrôle d’intégrité et restauration confirmée ;
+- stockage IndexedDB local sur l’appareil ;
+- accès direct sans écran de verrouillage pendant la phase expérimentale ;
+- migration unique proposée aux appareils utilisant encore l’ancien mot de passe ;
+- sauvegarde locale avec contrôle d’intégrité et restauration confirmée ;
 - pipeline GitHub Actions : lint, tests, build et GitHub Pages.
 - création de dossiers fictifs ;
 - sélection indépendante de huit modules de connaissances ;

@@ -1,4 +1,4 @@
-const CACHE = "bcn-shell-v10";
+const CACHE = "bcn-shell-v11";
 const SHELL = ["./manifest.webmanifest", "./icon.svg"];
 
 self.addEventListener("install", (event) => {

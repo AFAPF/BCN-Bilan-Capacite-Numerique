@@ -1,14 +1,24 @@
 import { createVaultMaterial, decryptJson, encryptJson, sha256, unlockVaultMaterial, type VaultConfig } from "./crypto";
 import { APP_VERSION, createWorkspace, migrateWorkspace, type AuditEvent, type PersistenceStatus, type Workspace } from "./domain";
-import { readVault, writeVault, type StoredVault } from "./storage";
+import { readVault, readWorkspace, removeEncryptedVault, writeVault, writeWorkspace, type StoredVault } from "./storage";
 
-export interface BackupContainer {
+export interface EncryptedBackupContainer {
   format: "bcn-backup";
   version: 1;
   exportedAt: string;
   vault: StoredVault;
   integrity: string;
 }
+
+export interface LocalBackupContainer {
+  format: "bcn-backup";
+  version: 2;
+  exportedAt: string;
+  workspace: Workspace;
+  integrity: string;
+}
+
+export type BackupContainer = EncryptedBackupContainer | LocalBackupContainer;
 
 export class UnlockDelayedError extends Error {
   constructor(public readonly retryAfterMs: number) {
@@ -20,6 +30,7 @@ class VaultService {
   private dataKey: CryptoKey | null = null;
   private config: VaultConfig | null = null;
   private workspace: Workspace | null = null;
+  private localMode = false;
   private failedUnlocks = 0;
   private blockedUntil = 0;
 
@@ -36,6 +47,42 @@ class VaultService {
     this.dataKey = material.dataKey;
     this.config = material.config;
     this.workspace = workspace;
+    return workspace;
+  }
+
+  async createLocal(label: string, displayName: string, persistence: PersistenceStatus): Promise<Workspace> {
+    const workspace = createWorkspace(label, displayName, persistence);
+    await writeWorkspace(workspace);
+    this.dataKey = null;
+    this.config = null;
+    this.workspace = workspace;
+    this.localMode = true;
+    return workspace;
+  }
+
+  async openLocal(): Promise<Workspace> {
+    const stored = await readWorkspace();
+    if (!stored) throw new Error("Aucun espace local n’a été trouvé.");
+    const workspace = migrateWorkspace(stored);
+    const now = new Date().toISOString();
+    workspace.appVersion = APP_VERSION;
+    workspace.lastOpenedAt = now;
+    workspace.profile.lastLoginAt = now;
+    this.dataKey = null;
+    this.config = null;
+    this.workspace = workspace;
+    this.localMode = true;
+    await this.save();
+    return workspace;
+  }
+
+  async migrateToLocal(password: string): Promise<Workspace> {
+    const workspace = await this.unlock(password);
+    await writeWorkspace(workspace);
+    await removeEncryptedVault();
+    this.dataKey = null;
+    this.config = null;
+    this.localMode = true;
     return workspace;
   }
 
@@ -71,8 +118,13 @@ class VaultService {
   }
 
   async save(): Promise<void> {
-    if (!this.dataKey || !this.config || !this.workspace) throw new Error("Le coffre est verrouillé.");
+    if (!this.workspace) throw new Error("L’espace local n’est pas ouvert.");
     this.workspace.updatedAt = new Date().toISOString();
+    if (this.localMode) {
+      await writeWorkspace(this.workspace);
+      return;
+    }
+    if (!this.dataKey || !this.config) throw new Error("Le coffre est verrouillé.");
     const state = await encryptJson(this.workspace, this.dataKey);
     await writeVault({ config: this.config, state });
   }
@@ -87,6 +139,7 @@ class VaultService {
       this.dataKey = null;
       this.config = null;
       this.workspace = null;
+      this.localMode = false;
     }
   }
 
@@ -95,6 +148,13 @@ class VaultService {
     this.workspace.lastBackupAt = new Date().toISOString();
     this.workspace.audit.push(audit("backup_created"));
     await this.save();
+    if (this.localMode) {
+      const unsigned = { format: "bcn-backup" as const, version: 2 as const, exportedAt: new Date().toISOString(), workspace: structuredClone(this.workspace) };
+      const integrity = await sha256(JSON.stringify(unsigned));
+      this.workspace.lastBackupHash = integrity;
+      await this.save();
+      return { json: JSON.stringify({ ...unsigned, integrity }, null, 2), hash: integrity };
+    }
     const stored = await readVault();
     if (!stored) throw new Error("Coffre local introuvable.");
     const unsigned = { format: "bcn-backup" as const, version: 1 as const, exportedAt: new Date().toISOString(), vault: stored };
@@ -106,16 +166,38 @@ class VaultService {
 
   async verifyBackup(json: string): Promise<BackupContainer> {
     const parsed = JSON.parse(json) as Partial<BackupContainer>;
-    if (parsed.format !== "bcn-backup" || parsed.version !== 1 || !parsed.vault || typeof parsed.integrity !== "string") {
+    if (parsed.format !== "bcn-backup" || typeof parsed.integrity !== "string") {
       throw new Error("Format de sauvegarde BCN invalide.");
     }
-    const unsigned = { format: parsed.format, version: parsed.version, exportedAt: parsed.exportedAt, vault: parsed.vault };
+    const unsigned = parsed.version === 2 && "workspace" in parsed
+      ? { format: parsed.format, version: parsed.version, exportedAt: parsed.exportedAt, workspace: parsed.workspace }
+      : parsed.version === 1 && "vault" in parsed
+        ? { format: parsed.format, version: parsed.version, exportedAt: parsed.exportedAt, vault: parsed.vault }
+        : null;
+    if (!unsigned) throw new Error("Format de sauvegarde BCN invalide.");
     if ((await sha256(JSON.stringify(unsigned))) !== parsed.integrity) throw new Error("Sauvegarde corrompue ou modifiée.");
     return parsed as BackupContainer;
   }
 
-  async restoreBackup(json: string, password: string): Promise<Workspace> {
+  async restoreBackup(json: string, password?: string): Promise<Workspace> {
     const candidate = await this.verifyBackup(json);
+    if (candidate.version === 2) {
+      const workspace = migrateWorkspace(candidate.workspace);
+      const now = new Date().toISOString();
+      workspace.appVersion = APP_VERSION;
+      workspace.updatedAt = now;
+      workspace.lastOpenedAt = now;
+      workspace.profile.lastLoginAt = now;
+      workspace.audit.push(audit("backup_restored"));
+      await writeWorkspace(workspace);
+      await removeEncryptedVault();
+      this.dataKey = null;
+      this.config = null;
+      this.workspace = workspace;
+      this.localMode = true;
+      return workspace;
+    }
+    if (!password) throw new Error("Cette ancienne sauvegarde nécessite sa phrase secrète.");
     let key: CryptoKey;
     let value: unknown;
     try {
@@ -136,6 +218,7 @@ class VaultService {
     this.dataKey = key;
     this.config = candidate.vault.config;
     this.workspace = workspace;
+    this.localMode = false;
     return workspace;
   }
 }

@@ -1,4 +1,5 @@
 import type { CipherText, VaultConfig } from "./crypto";
+import type { Workspace } from "./domain";
 
 const DATABASE_NAME = "bcn-local-vault";
 const STORE_NAME = "encrypted_records";
@@ -33,6 +34,40 @@ export async function writeVault(vault: StoredVault): Promise<void> {
     transaction.oncomplete = () => resolve();
     transaction.onerror = () => reject(transaction.error ?? new Error("Échec de l’écriture locale."));
     transaction.onabort = () => reject(transaction.error ?? new Error("Écriture locale annulée."));
+  });
+  database.close();
+}
+
+export async function readWorkspace(): Promise<Workspace | null> {
+  return (await readRecord<Workspace>("workspace")) ?? null;
+}
+
+export async function writeWorkspace(workspace: Workspace): Promise<void> {
+  const database = await openDatabase();
+  await new Promise<void>((resolve, reject) => {
+    const transaction = database.transaction(STORE_NAME, "readwrite");
+    transaction.objectStore(STORE_NAME).put(workspace, "workspace");
+    transaction.oncomplete = () => resolve();
+    transaction.onerror = () => reject(transaction.error ?? new Error("Échec de l’écriture locale."));
+    transaction.onabort = () => reject(transaction.error ?? new Error("Écriture locale annulée."));
+  });
+  database.close();
+}
+
+export async function workspaceExists(): Promise<boolean> {
+  return (await readRecord<Workspace>("workspace")) !== undefined;
+}
+
+export async function removeEncryptedVault(): Promise<void> {
+  const database = await openDatabase();
+  await new Promise<void>((resolve, reject) => {
+    const transaction = database.transaction(STORE_NAME, "readwrite");
+    const store = transaction.objectStore(STORE_NAME);
+    store.delete("config");
+    store.delete("state");
+    transaction.oncomplete = () => resolve();
+    transaction.onerror = () => reject(transaction.error ?? new Error("Migration locale impossible."));
+    transaction.onabort = () => reject(transaction.error ?? new Error("Migration locale annulée."));
   });
   database.close();
 }

@@ -1,13 +1,13 @@
 {
-  "name": "BCN — Bilan des capacités numériques",
+  "name": "BCN — Bilan de Connaissance Numérique",
   "short_name": "BCN",
-  "description": "Outil local d'évaluation descriptive des capacités numériques.",
+  "description": "Outil local d’évaluation des connaissances numériques.",
   "lang": "fr",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f5f2e9",
-  "theme_color": "#173f3a",
+  "background_color": "#f4f8fa",
+  "theme_color": "#00526A",
   "icons": [
     { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
   ]

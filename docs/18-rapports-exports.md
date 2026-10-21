@@ -41,7 +41,7 @@ Conteneur chiffré destiné à la restauration ; ce n’est pas un export d’an
 
 L’en-tête contient :
 
-- titre « BCN — Bilan de Capacité Numérique » ;
+- titre « BCN — Bilan de Connaissance Numérique » ;
 - mention « version expérimentale non étalonnée » ;
 - nom et prénom du jeune ;
 - âge en années et mois ;

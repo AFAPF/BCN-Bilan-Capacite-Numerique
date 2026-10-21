@@ -135,3 +135,17 @@ Les situations sont rendues plus proches d’un usage réel, sans perdre la comp
 - la partie traitement de texte passe de cinq à dix situations ;
 - les commandes ajoutées sont copier, couper, coller, souligner et imprimer ;
 - les autres environnements et leurs règles de réponse restent inchangés.
+
+## 21 octobre 2026 — nouvelle identité visuelle et accueil libre 0.9
+
+L’identité de BCN et son écran d’entrée sont entièrement revus :
+
+- le nom développé devient « BCN — Bilan de Connaissance Numérique » ;
+- la palette utilise exclusivement le bleu pétrole `#00526A`, l’orange `#E6631D` et le jaune orangé `#F7A916` transmis par le porteur ;
+- aucun logo APF n’est utilisé ; BCN dispose d’un symbole géométrique original composé de trois barres ;
+- la première page présente brièvement le programme et propose un accès direct par le bouton « Commencer » ;
+- la mention « Créé par FOURCADE Arnaud © 2026 » apparaît sur l’accueil et dans le pied de page ;
+- le verrouillage visible et le verrouillage automatique sont désactivés pendant la phase expérimentale ;
+- les appareils possédant un ancien coffre protégé bénéficient d’une migration unique afin de conserver leurs données ;
+- les nouvelles installations créent automatiquement leur espace local sans demander de mot de passe ;
+- les sauvegardes de la nouvelle version sont restaurées sans demande de mot de passe.
