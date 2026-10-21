@@ -109,3 +109,16 @@ Après l’essai de la version 0.5, les questionnaires textuels jugés trop simp
 - l’élève ouvre les dossiers, sélectionne le document demandé puis utilise le bouton « Ouvrir » ;
 - les erreurs de navigation, chemins trouvés sans erreur et durées sont conservés dans le bilan ;
 - toutes les commandes restent réalisables par un toucher simple ou un clic.
+
+## 21 octobre 2026 — environnements numériques simulés 0.7
+
+Les missions visuelles sont replacées dans des environnements proches de ceux rencontrés par les élèves :
+
+- simulations de bureau Windows, écran Android, navigateur Chrome, traitement de texte, Gmail et Outlook ;
+- réponse directement dans l’interface, sans carte de QCM séparée ;
+- icônes Material Symbols dans les environnements Google et Android ;
+- icônes Fluent UI dans les environnements Windows et Microsoft ;
+- consigne courte et constante : toucher directement la commande demandée ;
+- zones d’activation agrandies et mise en page responsive pour ordinateur, tablette et smartphone ;
+- explorateur présenté explicitement comme une mission Windows simulée ;
+- aucune connexion à Google, Microsoft ou à un autre service externe.

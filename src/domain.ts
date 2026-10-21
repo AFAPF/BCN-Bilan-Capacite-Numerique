@@ -1,5 +1,5 @@
 export const SCHEMA_VERSION = 2 as const;
-export const APP_VERSION = "0.6.0";
+export const APP_VERSION = "0.7.0";
 
 export type PersistenceStatus = "granted" | "denied" | "unknown";
 
