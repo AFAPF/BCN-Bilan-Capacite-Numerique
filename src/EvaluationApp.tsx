@@ -9,6 +9,7 @@ const TASKS: { code: TaskCode; title: string; description: string }[] = [
   { code: "pointing_drag", title: "Glisser-déposer", description: "Dépôt du centre dans la cible" },
   { code: "visual_search", title: "Repérage visuel", description: "15 icônes en trois phases" },
   { code: "keyboard_shortcuts", title: "Raccourcis de base", description: "Deux fenêtres et huit actions guidées" },
+  { code: "file_management", title: "Fichiers et dossiers", description: "7 actions dans un explorateur simulé" },
   { code: "comprehension", title: "Compréhension", description: "6 consignes numériques" },
   { code: "navigation", title: "Navigation", description: "4 situations simulées" },
 ];
@@ -102,6 +103,7 @@ function AssessmentRunner({ participant, assessment, onExit, onResult }: { parti
   if (code === "typing_copy") return <TypingTask onComplete={(result) => void complete(result)} />;
   if (code === "visual_search") return <VisualSearchTask onComplete={(result) => void complete(result)} />;
   if (code === "keyboard_shortcuts") return <KeyboardShortcutsTask onComplete={(result) => void complete(result)} />;
+  if (code === "file_management") return <FileManagementTask onComplete={(result) => void complete(result)} />;
   if (code === "comprehension") return <ChoiceTask code={code} items={COMPREHENSION_ITEMS} onComplete={(result) => void complete(result)} />;
   if (code === "navigation") return <ChoiceTask code={code} items={NAVIGATION_ITEMS} onComplete={(result) => void complete(result)} />;
   return <PointingTask mode={code} onComplete={(result) => void complete(result)} />;
@@ -193,6 +195,101 @@ function KeyboardShortcutsTask({ onComplete }: { onComplete: (result: TaskResult
   return <section className="test-screen"><TestTop title="Raccourcis de base" counter={`${stepIndex + 1}/8`} /><div className="shortcut-instruction"><p className="eyebrow">Action demandée</p><h2>{step.instruction}</h2><kbd>{step.chord}</kbd><p>Les autres actions sont enregistrées comme erreurs, mais tu peux réessayer.</p></div><div ref={capture} tabIndex={0} className="shortcut-workspace" onKeyDown={keyAction}><button className={`sim-window ${activeWindow === "source" ? "active" : ""}`} onClick={(event) => activateWindow("source", event.timeStamp)}><span className="sim-title">Fenêtre 1 · Texte source</span><p className={sourceSelected ? "selected-text" : ""}>{sourceText}</p></button><button className={`sim-window ${activeWindow === "destination" ? "active" : ""}`} onClick={(event) => activateWindow("destination", event.timeStamp)}><span className="sim-title">Fenêtre 2 · Document de travail</span><p className={destinationSelected ? "selected-text" : ""}>{destinationText || "Clique ici au moment demandé."}</p></button></div><div className="shortcut-status"><span>Fenêtre active : <strong>{activeWindow === "source" ? "1" : "2"}</strong></span><span>Erreurs : <strong>{errors}</strong></span></div></section>;
 }
 
+const FILE_STEPS = [
+  "Ouvre le dossier « Documents ».",
+  "Crée un dossier nommé « Travail scolaire ».",
+  "Renomme « Texte sans titre.docx » en « Exposé planètes.docx ».",
+  "Déplace « Exposé planètes.docx » dans « Travail scolaire ».",
+  "Recherche le fichier « Emploi du temps.pdf ».",
+  "Supprime le fichier « Brouillon.txt ».",
+  "Enregistre le document ouvert sous le nom « Compte rendu.docx » dans « Travail scolaire ».",
+] as const;
+
+type FileAction = "create" | "rename" | "move" | "delete" | "save" | null;
+type ExplorerEntry = { name: string; kind: "folder" | "file"; icon: string };
+
+function FileManagementTask({ onComplete }: { onComplete: (result: TaskResult) => void }) {
+  const [stepIndex, setStepIndex] = useState(0);
+  const [items, setItems] = useState<ItemResult[]>([]);
+  const [errors, setErrors] = useState(0);
+  const [helps, setHelps] = useState(0);
+  const [location, setLocation] = useState<"Accueil" | "Documents" | "Recherche">("Accueil");
+  const [entries, setEntries] = useState<ExplorerEntry[]>([
+    { name: "Texte sans titre.docx", kind: "file", icon: "📄" },
+    { name: "Brouillon.txt", kind: "file", icon: "📝" },
+    { name: "Emploi du temps.pdf", kind: "file", icon: "📕" },
+    { name: "Photo de classe.jpg", kind: "file", icon: "🖼️" },
+  ]);
+  const [selected, setSelected] = useState("");
+  const [pending, setPending] = useState<FileAction>(null);
+  const [nameValue, setNameValue] = useState("");
+  const [destination, setDestination] = useState("Travail scolaire");
+  const [search, setSearch] = useState("");
+  const [notice, setNotice] = useState("");
+  const started = useRef(0);
+
+  const homeEntries: ExplorerEntry[] = [
+    { name: "Documents", kind: "folder", icon: "📁" },
+    { name: "Images", kind: "folder", icon: "📁" },
+    { name: "Téléchargements", kind: "folder", icon: "📁" },
+  ];
+  const visibleEntries = location === "Accueil" ? homeEntries : location === "Recherche" ? entries.filter((entry) => normalize(entry.name).includes(normalize(search))) : entries;
+
+  useEffect(() => { started.current = performance.now(); }, [stepIndex]);
+
+  function wrong() { setErrors((value) => value + 1); setNotice("Cette action ne permet pas encore de passer à l’étape suivante."); }
+  function applyExpected(index: number) {
+    if (index === 0) setLocation("Documents");
+    if (index === 1) setEntries((current) => current.some((entry) => entry.name === "Travail scolaire") ? current : [...current, { name: "Travail scolaire", kind: "folder", icon: "📁" }]);
+    if (index === 2) setEntries((current) => current.map((entry) => entry.name === "Texte sans titre.docx" ? { ...entry, name: "Exposé planètes.docx" } : entry));
+    if (index === 3) setEntries((current) => current.filter((entry) => entry.name !== "Exposé planètes.docx"));
+    if (index === 4) { setSearch(""); setLocation("Documents"); }
+    if (index === 5) { setLocation("Documents"); setEntries((current) => current.filter((entry) => entry.name !== "Brouillon.txt")); }
+    if (index === 6) setEntries((current) => [...current, { name: "Compte rendu.docx", kind: "file", icon: "📄" }]);
+    setSelected(""); setPending(null); setNameValue(""); setNotice("");
+  }
+  function complete(success: boolean, timeStamp: number, reason?: string) {
+    const next = [...items, { success, durationMs: Math.round(timeStamp - started.current), ...(reason ? { failureReason: reason } : {}) }];
+    applyExpected(stepIndex);
+    if (stepIndex === FILE_STEPS.length - 1) {
+      onComplete({ taskCode: "file_management", completedAt: new Date().toISOString(), items: next, metrics: { actionsAutonomes: next.filter((item) => item.success).length, aides: helps + (success ? 0 : 1), erreursActions: errors, dureeSecondes: Math.round(next.reduce((total, item) => total + item.durationMs, 0) / 1000) } });
+    } else { setItems(next); setStepIndex((value) => value + 1); }
+  }
+  function openEntry(entry: ExplorerEntry, timeStamp: number) {
+    if (stepIndex === 0 && entry.name === "Documents") complete(true, timeStamp); else wrong();
+  }
+  function launch(action: Exclude<FileAction, null>) {
+    const valid = (stepIndex === 1 && action === "create") || (stepIndex === 2 && action === "rename" && selected === "Texte sans titre.docx") || (stepIndex === 3 && action === "move" && selected === "Exposé planètes.docx") || (stepIndex === 5 && action === "delete" && selected === "Brouillon.txt") || (stepIndex === 6 && action === "save");
+    if (!valid) { wrong(); return; }
+    setPending(action);
+    setNameValue(action === "rename" ? selected : action === "save" ? "Document sans titre.docx" : "");
+    setNotice("");
+  }
+  function validateAction(timeStamp: number) {
+    const valid = (pending === "create" && nameValue.trim() === "Travail scolaire") ||
+      (pending === "rename" && nameValue.trim() === "Exposé planètes.docx") ||
+      (pending === "move" && destination === "Travail scolaire") ||
+      pending === "delete" ||
+      (pending === "save" && nameValue.trim() === "Compte rendu.docx" && destination === "Travail scolaire");
+    if (valid) complete(true, timeStamp); else wrong();
+  }
+  function runSearch(timeStamp: number) {
+    if (stepIndex === 4 && normalize(search).includes("emploidutemps")) { setLocation("Recherche"); complete(true, timeStamp); } else wrong();
+  }
+  function signalHelp(timeStamp: number) { setHelps((value) => value + 1); complete(false, timeStamp, "besoin d’aide"); }
+
+  return <section className="test-screen file-task"><TestTop title="Gestion des fichiers et dossiers" counter={`${stepIndex + 1}/7`} />
+    <div className="file-task-prompt"><div><p className="eyebrow">Action demandée</p><h2>{FILE_STEPS[stepIndex]}</h2></div><button className="secondary" onClick={(event) => signalHelp(event.timeStamp)}>Signaler une aide</button></div>
+    <div className="explorer-window">
+      <div className="explorer-toolbar"><button aria-label="Retour à l’accueil" onClick={() => { setLocation("Accueil"); setSelected(""); }}>←</button><span className="address-bar">📂 {location}</span><label className="explorer-search"><span className="sr-only">Rechercher</span><input value={search} onChange={(event) => setSearch(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter") runSearch(event.timeStamp); }} placeholder="Rechercher" /><button onClick={(event) => runSearch(event.timeStamp)} aria-label="Lancer la recherche">🔍</button></label></div>
+      <div className="explorer-actions"><button onClick={() => launch("create")}>＋ Nouveau dossier</button><button onClick={() => launch("rename")}>✏️ Renommer</button><button onClick={() => launch("move")}>↗ Déplacer</button><button onClick={() => launch("delete")}>🗑️ Supprimer</button><button className="save-document" onClick={() => launch("save")}>💾 Enregistrer le document</button></div>
+      <div className="explorer-body"><nav><strong>Accès rapide</strong><button onClick={() => setLocation("Accueil")}>🏠 Accueil</button><button onClick={() => setLocation("Documents")}>📄 Documents</button><button>🖼️ Images</button><button>⬇️ Téléchargements</button></nav><main><p className="explorer-hint">Sélection : un clic · Ouvrir : double-clic</p><div className="file-grid">{visibleEntries.map((entry) => <button key={entry.name} className={selected === entry.name ? "selected" : ""} onClick={() => setSelected(entry.name)} onDoubleClick={(event) => openEntry(entry, event.timeStamp)}><span aria-hidden="true">{entry.icon}</span><small>{entry.name}</small></button>)}</div>{visibleEntries.length === 0 && <p className="empty-folder">Aucun élément</p>}</main></div>
+    </div>
+    {pending && <div className="file-dialog" role="dialog" aria-modal="true" aria-label="Action sur le fichier"><div><h3>{pending === "create" ? "Nouveau dossier" : pending === "rename" ? "Renommer" : pending === "move" ? "Déplacer vers" : pending === "delete" ? "Supprimer ce fichier ?" : "Enregistrer sous"}</h3>{(pending === "create" || pending === "rename" || pending === "save") && <label>Nom<input autoFocus value={nameValue} onChange={(event) => setNameValue(event.target.value)} /></label>}{(pending === "move" || pending === "save") && <label>Destination<select value={destination} onChange={(event) => setDestination(event.target.value)}><option>Travail scolaire</option><option>Images</option><option>Téléchargements</option></select></label>}<div className="form-actions"><button className="secondary" onClick={() => setPending(null)}>Annuler</button><button className="primary" onClick={(event) => validateAction(event.timeStamp)}>{pending === "delete" ? "Confirmer la suppression" : pending === "save" ? "Enregistrer" : "Valider"}</button></div></div></div>}
+    <div className="file-task-status"><span>Erreurs d’action : <strong>{errors}</strong></span><span>Aides : <strong>{helps}</strong></span>{notice && <span role="status">{notice}</span>}</div>
+  </section>;
+}
+
 interface ChoiceItem { prompt: string; choices: string[]; correct: number }
 const COMPREHENSION_ITEMS: ChoiceItem[] = [
   { prompt: "Sélectionne l’action qui permet d’enregistrer un document.", choices: ["Enregistrer", "Imprimer", "Fermer"], correct: 0 },
@@ -222,10 +319,10 @@ function Report({ participant, assessment, onBack }: { participant: Participant;
 
 function FlowHeader({ step, title, onBack }: { step: string; title: string; onBack: () => void }) { return <header className="flow-header"><button className="back-button" onClick={onBack} aria-label="Retour">←</button><div><p className="eyebrow">{step}</p><h2>{title}</h2></div></header>; }
 function TestTop({ title, counter }: { title: string; counter: string }) { return <header className="test-top"><span>BCN</span><strong>{title}</strong><span>{counter}</span></header>; }
-function instructionFor(code: TaskCode) { const instructions: Record<TaskCode,string> = { typing_copy: "Recopier un texte pendant cinq minutes, sans aide à la correction.", pointing_click: "Cliquer ou toucher dix cibles.", pointing_double: "Double-cliquer ou double-toucher dix cibles.", pointing_drag: "Déplacer dix objets au centre de leur cible.", visual_search: "Repérer quinze icônes réparties entre Windows, traitement de texte et actions courantes.", keyboard_shortcuts: "Réaliser les raccourcis copier, couper, coller, tout sélectionner, annuler et rétablir dans deux fenêtres simulées.", comprehension: "Répondre à six consignes numériques.", navigation: "Résoudre quatre situations de navigation." }; return instructions[code]; }
+function instructionFor(code: TaskCode) { const instructions: Record<TaskCode,string> = { typing_copy: "Recopier un texte pendant cinq minutes, sans aide à la correction.", pointing_click: "Cliquer ou toucher dix cibles.", pointing_double: "Double-cliquer ou double-toucher dix cibles.", pointing_drag: "Déplacer dix objets au centre de leur cible.", visual_search: "Repérer quinze icônes réparties entre Windows, traitement de texte et actions courantes.", keyboard_shortcuts: "Réaliser les raccourcis copier, couper, coller, tout sélectionner, annuler et rétablir dans deux fenêtres simulées.", file_management: "Réaliser sept actions dans un explorateur de fichiers simulé : créer, renommer, déplacer, rechercher, supprimer et enregistrer.", comprehension: "Répondre à six consignes numériques.", navigation: "Résoudre quatre situations de navigation." }; return instructions[code]; }
 function makeCountResult(taskCode: TaskCode, items: ItemResult[]): TaskResult { return { taskCode, completedAt: new Date().toISOString(), items, metrics: { reussites: items.filter((item) => item.success).length, erreurs: items.filter((item) => !item.success).length } }; }
 function makePointingResult(taskCode: TaskCode, items: ItemResult[]): TaskResult { const successfulTimes = items.filter((item) => item.success).map((item) => item.durationMs).sort((a,b) => a-b); return { ...makeCountResult(taskCode, items), metrics: { reussites: successfulTimes.length, erreurs: items.length - successfulTimes.length, tempsMedianMs: successfulTimes.length ? successfulTimes[Math.floor(successfulTimes.length / 2)]! : 0 } }; }
 function words(value: string) { return value.trim() ? value.trim().split(/\s+/u) : []; }
 function normalize(value: string) { return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/gi, "").toLowerCase(); }
 function round(value: number) { return Math.round(value * 10) / 10; }
-function metricLabel(value: string) { return ({ reussites: "Réussites", erreurs: "Erreurs", phases: "Phases", raccourcisReussis: "Raccourcis réussis", changementFenetre: "Changement de fenêtre", erreursActions: "Actions incorrectes", tempsMedianMs: "Temps médian (ms)", motsSaisis: "Mots saisis", motsCorrects: "Mots corrects", motsParMinute: "Mots/min", motsCorrectsParMinute: "Mots corrects/min", dureeSecondes: "Durée (s)" } as Record<string,string>)[value] ?? value; }
+function metricLabel(value: string) { return ({ reussites: "Réussites", erreurs: "Erreurs", phases: "Phases", raccourcisReussis: "Raccourcis réussis", changementFenetre: "Changement de fenêtre", erreursActions: "Actions incorrectes", actionsAutonomes: "Actions autonomes", aides: "Aides", tempsMedianMs: "Temps médian (ms)", motsSaisis: "Mots saisis", motsCorrects: "Mots corrects", motsParMinute: "Mots/min", motsCorrectsParMinute: "Mots corrects/min", dureeSecondes: "Durée (s)" } as Record<string,string>)[value] ?? value; }

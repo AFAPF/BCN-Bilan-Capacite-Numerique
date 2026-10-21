@@ -72,3 +72,14 @@ Après le premier essai complet du porteur :
 - les actions évaluées sont tout sélectionner, copier, changer de fenêtre, coller, couper, annuler et rétablir ;
 - chaque étape est guidée et les actions incorrectes sont comptées sans bloquer l’élève ;
 - les raccourcis sont évalués séparément de la capacité à réaliser la même action par les menus.
+
+## 21 octobre 2026 — gestion des fichiers et dossiers 0.4
+
+Le premier module fonctionnel d’autonomie informatique est ajouté :
+
+- explorateur de fichiers entièrement simulé et utilisable hors connexion ;
+- sept actions guidées : ouvrir, créer, renommer, déplacer, rechercher, supprimer et enregistrer ;
+- sélection et double-clic distincts, barre d’actions, recherche et boîtes de dialogue ;
+- comptage séparé des actions autonomes, erreurs d’action, aides et durée totale ;
+- bouton professionnel « Signaler une aide » : l’étape est enregistrée avec aide puis le scénario continue dans un état cohérent ;
+- aucune modification n’est effectuée sur les véritables fichiers de l’appareil.

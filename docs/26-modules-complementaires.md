@@ -15,7 +15,7 @@ Le premier essai complet montre que les gestes élémentaires ne suffisent pas �
 
 Mesures principales : mots par minute, mots corrects par minute, erreurs finales, corrections, réussites autonomes, aides et temps actif.
 
-## Priorité 2 — Gestion des fichiers et dossiers
+## Gestion des fichiers et dossiers — intégrée en version 0.4
 
 - créer un dossier ;
 - retrouver un fichier ;
@@ -24,6 +24,8 @@ Mesures principales : mots par minute, mots corrects par minute, erreurs finales
 - reconnaître les principaux types de fichiers.
 
 Mesures principales : étapes autonomes, actions incorrectes, retours, aides, réussite finale et organisation retenue.
+
+La première version couvre sept actions dans un explorateur local simulé. L’organisation libre et la reconnaissance approfondie des extensions restent à développer après les essais d’usage.
 
 ## Priorité 3 — Lecture et manipulation d’un document scolaire
 
@@ -82,11 +84,14 @@ Les résultats adaptés restent séparés et leur comparabilité est expliciteme
 - simulation de deux fenêtres ;
 - raccourcis tout sélectionner, copier, coller, couper, annuler et rétablir.
 
+## Élément intégré dans la version 0.4
+
+- gestion des fichiers et dossiers : ouvrir, créer, renommer, déplacer, rechercher, supprimer et enregistrer au bon emplacement.
+
 ## Ordre recommandé
 
 1. dictée et manipulation de texte ;
-2. fichiers et dossiers ;
-3. document scolaire ;
-4. production scolaire intégrée ;
-5. navigation web locale ;
-6. comparaison avec outils d’adaptation.
+2. document scolaire ;
+3. production scolaire intégrée ;
+4. navigation web locale ;
+5. comparaison avec outils d’adaptation.

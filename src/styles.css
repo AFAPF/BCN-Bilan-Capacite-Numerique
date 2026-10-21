@@ -149,6 +149,38 @@ footer { padding: 1.5rem clamp(1rem, 5vw, 4.5rem); display: flex; justify-conten
 .sim-window p { margin: 1rem; padding: 1rem; min-height: 7rem; border: 1px solid #d8ddd9; background: #fff; line-height: 1.7; }
 .selected-text { background: #b9d9ff !important; color: #0b3154; }
 .shortcut-status { display: flex; justify-content: center; gap: 2rem; padding: 1rem 2rem 2rem; }
+.file-task { position: relative; }
+.file-task-prompt { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 2rem; border-bottom: 1px solid #d9ddd9; }
+.file-task-prompt h2 { margin: .2rem 0 0; font-size: 1.35rem; }
+.explorer-window { margin: 1rem 2rem; overflow: hidden; border: 1px solid #bfc7c4; border-radius: .8rem; background: #fff; box-shadow: 0 8px 25px rgba(23,63,58,.08); }
+.explorer-toolbar { display: grid; grid-template-columns: auto 1fr minmax(13rem, .45fr); align-items: center; gap: .6rem; padding: .65rem; background: #edf0ee; }
+.explorer-toolbar > button, .explorer-search button { min-width: 2.4rem; min-height: 2.35rem; border: 1px solid #cbd2cf; border-radius: .45rem; background: #fff; }
+.address-bar { min-height: 2.35rem; display: flex; align-items: center; padding: 0 .8rem; border: 1px solid #cbd2cf; border-radius: .45rem; background: #fff; }
+.explorer-search { display: grid; grid-template-columns: 1fr auto; }
+.explorer-search input { min-width: 0; border-radius: .45rem 0 0 .45rem; }
+.explorer-search button { border-left: 0; border-radius: 0 .45rem .45rem 0; }
+.explorer-actions { display: flex; flex-wrap: wrap; gap: .35rem; padding: .55rem .7rem; border-block: 1px solid #d8ddda; }
+.explorer-actions button { padding: .55rem .7rem; border: 0; border-radius: .45rem; background: transparent; color: #294b46; font-weight: 600; }
+.explorer-actions button:hover, .explorer-actions button:focus-visible { background: #e2eee9; }
+.explorer-actions .save-document { margin-left: auto; background: #dcece5; }
+.explorer-body { min-height: 21rem; display: grid; grid-template-columns: 12rem 1fr; }
+.explorer-body nav { display: grid; align-content: start; gap: .25rem; padding: 1rem .7rem; border-right: 1px solid #d8ddda; background: #f4f6f4; }
+.explorer-body nav strong { padding: .25rem .6rem .55rem; font-size: .82rem; color: #697772; }
+.explorer-body nav button { padding: .6rem; border: 0; border-radius: .45rem; background: transparent; text-align: left; }
+.explorer-body nav button:hover { background: #e2eee9; }
+.explorer-body main { padding: .8rem 1rem; }
+.explorer-hint { margin: 0 0 .7rem; color: #71807b; font-size: .8rem; }
+.file-grid { display: grid; grid-template-columns: repeat(4, minmax(7rem, 1fr)); gap: .55rem; }
+.file-grid button { min-height: 7.3rem; display: grid; place-content: center; gap: .45rem; padding: .65rem; border: 2px solid transparent; border-radius: .55rem; background: transparent; color: #243d39; }
+.file-grid button:hover { background: #edf5f1; }.file-grid button.selected { border-color: #4b8a7c; background: #dcece5; }
+.file-grid button span { font-size: 2.5rem; }.file-grid button small { overflow-wrap: anywhere; }
+.empty-folder { padding: 3rem; color: #71807b; text-align: center; }
+.file-dialog { position: absolute; inset: 0; z-index: 5; display: grid; place-items: center; padding: 1rem; background: rgba(13,38,34,.48); }
+.file-dialog > div { width: min(28rem, 100%); padding: 1.5rem; border-radius: .9rem; background: #fff; box-shadow: 0 20px 50px rgba(0,0,0,.25); }
+.file-dialog h3 { margin-top: 0; }.file-dialog label { display: grid; gap: .35rem; margin-top: .8rem; font-weight: 700; }
+.file-task-status { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: .25rem 2rem 1.5rem; color: #596964; }
+.file-task-status [role="status"] { flex-basis: 100%; color: #9a4c38; text-align: center; font-weight: 600; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 .question-card { width: min(90%, 50rem); margin: 4rem auto; padding: 2.5rem; border-radius: 1rem; background: #f7f4ec; }
 .question-card h2 { font-size: 1.8rem; }
 .choice-list { display: grid; gap: .8rem; margin-top: 2rem; }
@@ -160,5 +192,5 @@ footer { padding: 1.5rem clamp(1rem, 5vw, 4.5rem); display: flex; justify-conten
 .result-table h3, .result-table p { margin: 0; }.result-table p { margin-top: .25rem; color: #697772; }
 .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; }
 .metrics span { padding: .6rem; border-radius: .5rem; background: #f3f5f2; }.metrics small, .metrics strong { display: block; }.metrics small { color: #71807b; }.metrics strong { margin-top: .2rem; }
-@media (max-width: 750px) { .section-heading, .participant-row { align-items: stretch; grid-template-columns: 1fr; flex-direction: column; } .row-actions { flex-wrap: wrap; } .two-column-form, .task-grid, .copy-layout, .shortcut-workspace { grid-template-columns: 1fr; } .icon-grid { grid-template-columns: repeat(3, 1fr); } .phase-tabs { grid-template-columns: 1fr; } .result-table { grid-template-columns: 1fr; } .metrics { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 750px) { .section-heading, .participant-row { align-items: stretch; grid-template-columns: 1fr; flex-direction: column; } .row-actions { flex-wrap: wrap; } .two-column-form, .task-grid, .copy-layout, .shortcut-workspace { grid-template-columns: 1fr; } .icon-grid { grid-template-columns: repeat(3, 1fr); } .phase-tabs { grid-template-columns: 1fr; } .result-table { grid-template-columns: 1fr; } .metrics { grid-template-columns: 1fr 1fr; } .file-task-prompt { align-items: stretch; flex-direction: column; } .explorer-toolbar { grid-template-columns: auto 1fr; }.explorer-search { grid-column: 1 / -1; }.explorer-body { grid-template-columns: 1fr; }.explorer-body nav { display: none; }.file-grid { grid-template-columns: repeat(2, 1fr); }.explorer-actions .save-document { margin-left: 0; }.explorer-window { margin-inline: .7rem; } }
 @media print { .topbar, footer, .backup-panel, .form-actions, .back-button { display: none !important; } body { background: #fff; } .dashboard { width: 100%; padding: 0; } .heading-row, .evaluation-home { display: none; } .flow-card { border: 0; box-shadow: none; } }
