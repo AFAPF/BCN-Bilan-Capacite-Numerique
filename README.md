@@ -57,8 +57,8 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 - pipeline GitHub Actions : lint, tests, build et GitHub Pages.
 - création de dossiers fictifs ;
 - sélection indépendante de huit modules de connaissances ;
-- interface, fichiers, traitement de texte et navigation Internet ;
-- communication, sécurité, résolution de problèmes et outils d’adaptation ;
+- trente-cinq missions de reconnaissance d’icônes SVG : interface, traitement de texte, Internet, messagerie, sécurité, dépannage et adaptation ;
+- cinq recherches de documents à partir d’un chemin dans un explorateur simulé ;
 - mêmes questions et mêmes commandes au clic ou au toucher ;
 - aucun clavier, double-clic, glisser-déposer ou appui long obligatoire ;
 - grandes zones de réponse adaptées aux ordinateurs, tablettes et smartphones ;

@@ -3,14 +3,14 @@ import { APP_VERSION, type Assessment, type ItemResult, type Participant, type S
 import { vaultService } from "./vault";
 
 const TASKS: { code: TaskCode; title: string; description: string }[] = [
-  { code: "interface_knowledge", title: "Comprendre l’interface", description: "Écran, fenêtres, icônes et commandes" },
-  { code: "files_knowledge", title: "Fichiers et dossiers", description: "Classer, retrouver, enregistrer et supprimer" },
-  { code: "text_knowledge", title: "Traitement de texte", description: "Saisir, corriger, sélectionner et mettre en forme" },
-  { code: "web_knowledge", title: "Internet et navigation", description: "Adresse, liens, recherche et téléchargements" },
-  { code: "communication_knowledge", title: "Communication numérique", description: "Messages, pièces jointes et destinataires" },
-  { code: "safety_knowledge", title: "Sécurité numérique", description: "Mots de passe, données et contenus suspects" },
-  { code: "problem_solving", title: "Résoudre un problème", description: "Réagir à une erreur ou un blocage" },
-  { code: "accessibility_tools", title: "Outils d’adaptation", description: "Zoom, lecture vocale, dictée et affichage" },
+  { code: "interface_knowledge", title: "Mission interface", description: "Retrouver les commandes principales" },
+  { code: "files_knowledge", title: "Mission explorateur", description: "Suivre cinq chemins et ouvrir le bon fichier" },
+  { code: "text_knowledge", title: "Mission traitement de texte", description: "Reconnaître les outils d’édition" },
+  { code: "web_knowledge", title: "Mission Internet", description: "Choisir les commandes du navigateur" },
+  { code: "communication_knowledge", title: "Mission messagerie", description: "Pièces jointes, réponses et envoi" },
+  { code: "safety_knowledge", title: "Mission sécurité", description: "Reconnaître les protections et alertes" },
+  { code: "problem_solving", title: "Mission dépannage", description: "Choisir l’outil adapté au problème" },
+  { code: "accessibility_tools", title: "Mission adaptation", description: "Identifier les aides numériques" },
 ];
 
 const LEGACY_TASK_TITLES: Partial<Record<TaskCode, string>> = {
@@ -77,6 +77,74 @@ const THEORY_BANKS = {
   ],
 } satisfies Record<string, ChoiceItem[]>;
 type TheoryCode = keyof typeof THEORY_BANKS;
+
+type IconName = "settings" | "home" | "search" | "close" | "windows" | "save" | "bold" | "list" | "undo" | "redo" | "back" | "refresh" | "download" | "link" | "attachment" | "send" | "reply" | "replyAll" | "mail" | "lock" | "shield" | "eyeOff" | "warning" | "trash" | "volume" | "wifi" | "help" | "zoom" | "microphone" | "contrast" | "textSize" | "folder" | "file";
+interface IconChallenge { prompt: string; context: string; options: IconName[]; correct: IconName }
+const ICON_LABELS: Record<IconName, string> = {
+  settings: "Paramètres", home: "Accueil", search: "Rechercher", close: "Fermer", windows: "Fenêtres", save: "Enregistrer", bold: "Gras", list: "Liste à puces", undo: "Annuler", redo: "Rétablir", back: "Retour", refresh: "Actualiser", download: "Télécharger", link: "Lien", attachment: "Pièce jointe", send: "Envoyer", reply: "Répondre", replyAll: "Répondre à tous", mail: "Message", lock: "Verrouiller", shield: "Protection", eyeOff: "Masquer", warning: "Alerte", trash: "Supprimer", volume: "Volume", wifi: "Connexion Internet", help: "Aide", zoom: "Zoom", microphone: "Dictée vocale", contrast: "Contraste", textSize: "Taille du texte", folder: "Dossier", file: "Fichier",
+};
+const ICON_PATHS: Record<IconName, string[]> = {
+  settings: ["M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z", "M12 2v3M12 19v3M4.9 4.9 7 7M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1"],
+  home: ["M3 11.5 12 4l9 7.5", "M5.5 10v10h13V10M9.5 20v-6h5v6"], search: ["M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14ZM16 16l5 5"], close: ["M5 5l14 14M19 5 5 19"], windows: ["M3 4h8v7H3zM13 4h8v7h-8zM3 13h8v7H3zM13 13h8v7h-8z"],
+  save: ["M4 3h13l3 3v15H4z", "M8 3v6h8V3M8 21v-7h8v7"], bold: ["M7 4h6a4 4 0 0 1 0 8H7z", "M7 12h7a4 4 0 0 1 0 8H7z"], list: ["M9 6h12M9 12h12M9 18h12M4 6h.01M4 12h.01M4 18h.01"], undo: ["M9 7 4 12l5 5", "M5 12h9a6 6 0 0 1 6 6"], redo: ["m15 7 5 5-5 5", "M19 12h-9a6 6 0 0 0-6 6"],
+  back: ["m10 5-7 7 7 7", "M3 12h18"], refresh: ["M20 7v5h-5", "M4 17v-5h5", "M6.1 8A7 7 0 0 1 18.5 6L20 12M4 12l1.5 6A7 7 0 0 0 18 16"], download: ["M12 3v12", "m7 10 5 5 5-5", "M4 21h16"], link: ["M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1", "M14 11a5 5 0 0 0-7.1-.1l-2 2A5 5 0 0 0 12 20l1.1-1.1"],
+  attachment: ["M8 12.5 14.5 6a3.5 3.5 0 1 1 5 5L10 20.5a5 5 0 0 1-7-7L13 3.5", "M6.5 15 16 5.5"], send: ["M3 11.5 21 3l-8.5 18-2-7.5z", "M10.5 13.5 21 3"], reply: ["m10 7-6 5 6 5", "M5 12h8a7 7 0 0 1 7 7"], replyAll: ["m8 7-5 5 5 5M13 7l-5 5 5 5", "M9 12h5a7 7 0 0 1 7 7"], mail: ["M3 5h18v14H3z", "m3 7 9 6 9-6"],
+  lock: ["M6 10h12v11H6z", "M8 10V7a4 4 0 0 1 8 0v3"], shield: ["M12 3 20 6v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z", "m8.5 12 2.2 2.2 4.8-5"], eyeOff: ["M3 3l18 18", "M10.5 10.5a2.1 2.1 0 0 0 3 3", "M6.5 6.7C4.5 8 3 10 2 12c2.3 4.2 5.7 6 10 6 1.3 0 2.5-.2 3.5-.6M10 6.2A10 10 0 0 1 12 6c4.3 0 7.7 1.8 10 6a13 13 0 0 1-2.2 3.2"], warning: ["M12 3 2 21h20z", "M12 9v5M12 18h.01"], trash: ["M4 7h16M9 7V4h6v3M7 7l1 14h8l1-14M10 11v6M14 11v6"],
+  volume: ["M4 10h4l5-4v12l-5-4H4z", "M16 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"], wifi: ["M3 9a14 14 0 0 1 18 0M6 13a9 9 0 0 1 12 0M9.5 16.5a4 4 0 0 1 5 0M12 20h.01"], help: ["M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z", "M9.5 9a2.5 2.5 0 1 1 3.7 2.2c-1.2.7-1.2 1.3-1.2 2.3M12 18h.01"],
+  zoom: ["M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15ZM16 16l5 5M10.5 7v7M7 10.5h7"], microphone: ["M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1-6 0z", "M5 11a7 7 0 0 0 14 0M12 18v4M8 22h8"], contrast: ["M12 22a10 10 0 1 0 0-20z", "M12 2v20"], textSize: ["M4 6V3h16v3M12 3v18M8 21h8"], folder: ["M3 6h7l2 2h9v12H3z"], file: ["M6 3h8l4 4v14H6z", "M14 3v5h5"],
+};
+
+const ICON_CHALLENGES: Record<Exclude<TheoryCode, "files_knowledge">, IconChallenge[]> = {
+  interface_knowledge: [
+    { context: "Écran d’accueil", prompt: "Trouve l’icône qui ouvre les paramètres.", options: ["home", "settings", "search", "windows"], correct: "settings" },
+    { context: "Fenêtre ouverte", prompt: "Quelle icône permet de fermer la fenêtre ?", options: ["back", "close", "refresh", "home"], correct: "close" },
+    { context: "Plusieurs applications ouvertes", prompt: "Quelle icône permet d’afficher ou de changer de fenêtre ?", options: ["windows", "folder", "settings", "trash"], correct: "windows" },
+    { context: "Retrouver une application", prompt: "Quelle commande permet de lancer une recherche ?", options: ["search", "home", "close", "refresh"], correct: "search" },
+    { context: "Navigation générale", prompt: "Quelle icône ramène généralement à l’accueil ?", options: ["back", "home", "windows", "settings"], correct: "home" },
+  ],
+  text_knowledge: [
+    { context: "Document modifié", prompt: "Quelle icône permet d’enregistrer le travail ?", options: ["save", "download", "folder", "attachment"], correct: "save" },
+    { context: "Mettre un titre en valeur", prompt: "Quelle icône applique le gras ?", options: ["textSize", "bold", "list", "contrast"], correct: "bold" },
+    { context: "Organiser plusieurs idées", prompt: "Quelle icône crée une liste à puces ?", options: ["list", "bold", "redo", "textSize"], correct: "list" },
+    { context: "Erreur de modification", prompt: "Quelle icône annule la dernière action ?", options: ["redo", "back", "undo", "refresh"], correct: "undo" },
+    { context: "Action annulée par erreur", prompt: "Quelle icône rétablit l’action ?", options: ["undo", "redo", "refresh", "back"], correct: "redo" },
+  ],
+  web_knowledge: [
+    { context: "Navigateur Internet", prompt: "Quelle icône revient à la page précédente ?", options: ["back", "undo", "home", "refresh"], correct: "back" },
+    { context: "Page qui ne s’affiche pas correctement", prompt: "Quelle icône recharge la page ?", options: ["download", "redo", "refresh", "search"], correct: "refresh" },
+    { context: "Récupérer un document", prompt: "Quelle icône télécharge le fichier sur l’appareil ?", options: ["attachment", "download", "save", "folder"], correct: "download" },
+    { context: "Ouvrir une autre page", prompt: "Quelle icône représente généralement un lien ?", options: ["link", "attachment", "mail", "wifi"], correct: "link" },
+    { context: "Trouver une information sur une page", prompt: "Quelle icône lance une recherche ?", options: ["zoom", "search", "refresh", "help"], correct: "search" },
+  ],
+  communication_knowledge: [
+    { context: "Nouveau message", prompt: "Quelle icône ajoute un fichier au message ?", options: ["link", "attachment", "download", "folder"], correct: "attachment" },
+    { context: "Message terminé", prompt: "Quelle icône permet de l’envoyer ?", options: ["mail", "reply", "send", "attachment"], correct: "send" },
+    { context: "Message reçu", prompt: "Quelle icône répond seulement à l’expéditeur ?", options: ["replyAll", "reply", "send", "back"], correct: "reply" },
+    { context: "Message adressé à plusieurs personnes", prompt: "Quelle icône répond à tous les destinataires ?", options: ["reply", "replyAll", "mail", "windows"], correct: "replyAll" },
+    { context: "Boîte de réception", prompt: "Quelle icône représente un message électronique ?", options: ["mail", "file", "attachment", "link"], correct: "mail" },
+  ],
+  safety_knowledge: [
+    { context: "Protéger l’accès", prompt: "Quelle icône indique qu’un élément est verrouillé ?", options: ["lock", "shield", "eyeOff", "warning"], correct: "lock" },
+    { context: "Protection de l’appareil", prompt: "Quelle icône représente le mieux la sécurité ?", options: ["settings", "shield", "lock", "help"], correct: "shield" },
+    { context: "Masquer un mot de passe", prompt: "Quelle icône indique que le contenu est caché ?", options: ["eyeOff", "close", "lock", "trash"], correct: "eyeOff" },
+    { context: "Message potentiellement dangereux", prompt: "Quelle icône signale une alerte ?", options: ["help", "warning", "shield", "settings"], correct: "warning" },
+    { context: "Supprimer une information sensible", prompt: "Quelle icône place généralement l’élément dans la corbeille ?", options: ["close", "trash", "back", "file"], correct: "trash" },
+  ],
+  problem_solving: [
+    { context: "Texte supprimé par erreur", prompt: "Quelle commande faut-il essayer en premier ?", options: ["undo", "trash", "back", "redo"], correct: "undo" },
+    { context: "Page bloquée ou incomplète", prompt: "Quelle commande peut la recharger ?", options: ["refresh", "download", "close", "search"], correct: "refresh" },
+    { context: "Aucun son", prompt: "Quel réglage faut-il vérifier ?", options: ["wifi", "settings", "volume", "microphone"], correct: "volume" },
+    { context: "Site inaccessible", prompt: "Quelle icône permet de vérifier la connexion sans fil ?", options: ["link", "wifi", "refresh", "home"], correct: "wifi" },
+    { context: "Consigne ou erreur incomprise", prompt: "Quelle icône permet généralement d’obtenir de l’aide ?", options: ["warning", "settings", "help", "search"], correct: "help" },
+  ],
+  accessibility_tools: [
+    { context: "Texte trop petit", prompt: "Quelle icône permet d’agrandir l’affichage ?", options: ["zoom", "search", "textSize", "contrast"], correct: "zoom" },
+    { context: "Écouter un texte", prompt: "Quelle icône correspond à la lecture sonore ?", options: ["microphone", "volume", "mail", "wifi"], correct: "volume" },
+    { context: "Écrire en parlant", prompt: "Quelle icône active la dictée vocale ?", options: ["volume", "microphone", "textSize", "attachment"], correct: "microphone" },
+    { context: "Éléments peu visibles", prompt: "Quelle icône correspond au réglage du contraste ?", options: ["settings", "eyeOff", "contrast", "zoom"], correct: "contrast" },
+    { context: "Lecture difficile", prompt: "Quelle icône permet de modifier la taille du texte ?", options: ["bold", "textSize", "zoom", "list"], correct: "textSize" },
+  ],
+};
 
 type View = { page: "home" } | { page: "new-participant" } | { page: "select"; participantId: string } | { page: "run"; assessmentId: string } | { page: "report"; assessmentId: string };
 
@@ -164,7 +232,8 @@ function AssessmentRunner({ participant, assessment, onExit, onResult }: { parti
   const info = taskInfo(code);
   async function complete(result: TaskResult) { await onResult(result, index + 1 >= assessment.selectedTasks.length); setStarted(false); }
   if (!started) return <section className="flow-card task-intro"><button className="text-button" onClick={onExit}>← Quitter et reprendre plus tard</button><div className="task-progress"><span style={{ width: `${(index / assessment.selectedTasks.length) * 100}%` }} /></div><p className="eyebrow">Tâche {index + 1} sur {assessment.selectedTasks.length}</p><h2>{info.title}</h2><p>{instructionFor(code)}</p><div className="training-box"><strong>Essai d’entraînement</strong><p>Explique la consigne à {participant.firstName}. Cette version d’essai démarre directement quand vous êtes prêts.</p></div><button className="primary large-button" onClick={() => setStarted(true)}>Démarrer la tâche</button></section>;
-  if (code in THEORY_BANKS) return <ChoiceTask code={code as TheoryCode} items={THEORY_BANKS[code as TheoryCode]} onComplete={(result) => void complete(result)} />;
+  if (code === "files_knowledge") return <ExplorerFindTask onComplete={(result) => void complete(result)} />;
+  if (code in ICON_CHALLENGES) return <IconMissionTask code={code as Exclude<TheoryCode, "files_knowledge">} onComplete={(result) => void complete(result)} />;
   if (code === "typing_copy") return <TypingTask onComplete={(result) => void complete(result)} />;
   if (code === "visual_search") return <VisualSearchTask onComplete={(result) => void complete(result)} />;
   if (code === "keyboard_shortcuts") return <KeyboardShortcutsTask onComplete={(result) => void complete(result)} />;
@@ -355,6 +424,61 @@ function FileManagementTask({ onComplete }: { onComplete: (result: TaskResult) =
   </section>;
 }
 
+function UiIcon({ name }: { name: IconName }) {
+  return <svg className="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{ICON_PATHS[name].map((path) => <path d={path} key={path} />)}</svg>;
+}
+
+function IconMissionTask({ code, onComplete }: { code: Exclude<TheoryCode, "files_knowledge">; onComplete: (result: TaskResult) => void }) {
+  const challenges = ICON_CHALLENGES[code]; const [index, setIndex] = useState(0); const [items, setItems] = useState<ItemResult[]>([]); const started = useRef(0); const challenge = challenges[index]!;
+  useEffect(() => { started.current = performance.now(); }, [index]);
+  const offset = index % challenge.options.length; const options = [...challenge.options.slice(offset), ...challenge.options.slice(0, offset)];
+  function answer(icon: IconName, timeStamp: number) { const success = icon === challenge.correct; const next = [...items, { success, durationMs: Math.round(timeStamp - started.current), ...(success ? {} : { failureReason: `icône choisie : ${ICON_LABELS[icon]}` }) }]; if (index === challenges.length - 1) onComplete(makeCountResult(code, next)); else { setItems(next); setIndex((value) => value + 1); } }
+  return <section className="test-screen mission-screen"><TestTop title={taskInfo(code).title} counter={`${index + 1}/${challenges.length}`} /><div className="mission-progress" aria-label={`Mission ${index + 1} sur ${challenges.length}`}>{challenges.map((_, dot) => <span className={dot < index ? "done" : dot === index ? "active" : ""} key={dot} />)}</div><div className="mission-card"><p className="mission-context">Mission {index + 1} · {challenge.context}</p><h2>{challenge.prompt}</h2><p className="mission-help">Choisis uniquement l’icône correspondante.</p><div className="mission-icons">{options.map((icon) => <button aria-label={ICON_LABELS[icon]} onClick={(event) => answer(icon, event.timeStamp)} key={icon}><UiIcon name={icon} /></button>)}</div></div></section>;
+}
+
+type ExplorerTreeNode = { kind: "file" } | { kind: "folder"; children: Record<string, ExplorerTreeNode> };
+const EXPLORER_TREE: ExplorerTreeNode = { kind: "folder", children: {
+  Documents: { kind: "folder", children: {
+    École: { kind: "folder", children: {
+      Français: { kind: "folder", children: { "Fiche lecture.pdf": { kind: "file" }, "Poésie.pdf": { kind: "file" }, "Vocabulaire.docx": { kind: "file" } } },
+      Mathématiques: { kind: "folder", children: { "Exercices fractions.pdf": { kind: "file" }, "Tables.pdf": { kind: "file" }, "Géométrie.docx": { kind: "file" } } },
+    } },
+    Devoirs: { kind: "folder", children: { Histoire: { kind: "folder", children: { "Antiquité.docx": { kind: "file" }, "Moyen Âge.pdf": { kind: "file" } } }, "Sciences.pdf": { kind: "file" } } },
+    "Notes.txt": { kind: "file" },
+  } },
+  Téléchargements: { kind: "folder", children: { "Autorisation sortie.pdf": { kind: "file" }, "Programme.pdf": { kind: "file" }, "image.png": { kind: "file" } } },
+  Images: { kind: "folder", children: { Exposé: { kind: "folder", children: { "Planète Mars.jpg": { kind: "file" }, "Terre.jpg": { kind: "file" }, "Soleil.jpg": { kind: "file" } } }, "Photo classe.jpg": { kind: "file" } } },
+} };
+const EXPLORER_TARGETS = [
+  ["Documents", "École", "Français", "Fiche lecture.pdf"],
+  ["Documents", "École", "Mathématiques", "Exercices fractions.pdf"],
+  ["Téléchargements", "Autorisation sortie.pdf"],
+  ["Images", "Exposé", "Planète Mars.jpg"],
+  ["Documents", "Devoirs", "Histoire", "Antiquité.docx"],
+] as const;
+
+function folderAt(path: string[]): Extract<ExplorerTreeNode, { kind: "folder" }> {
+  let node: ExplorerTreeNode = EXPLORER_TREE;
+  for (const part of path) { if (node.kind !== "folder") break; node = node.children[part]!; }
+  return node as Extract<ExplorerTreeNode, { kind: "folder" }>;
+}
+
+function ExplorerFindTask({ onComplete }: { onComplete: (result: TaskResult) => void }) {
+  const [index, setIndex] = useState(0); const [items, setItems] = useState<ItemResult[]>([]); const [path, setPath] = useState<string[]>([]); const [selected, setSelected] = useState(""); const [mistakes, setMistakes] = useState(0); const [totalMistakes, setTotalMistakes] = useState(0); const [notice, setNotice] = useState(""); const started = useRef(0); const target = EXPLORER_TARGETS[index]!; const folder = folderAt(path); const entries = Object.entries(folder.children);
+  useEffect(() => { started.current = performance.now(); }, [index]);
+  function markMistake(message: string) { setMistakes((value) => value + 1); setTotalMistakes((value) => value + 1); setNotice(message); }
+  function openSelected(timeStamp: number) {
+    if (!selected) { markMistake("Sélectionne d’abord un élément."); return; }
+    const node = folder.children[selected]!; const nextPath = [...path, selected];
+    if (node.kind === "folder") { const expectedFolders = target.slice(0, -1); const correctDirection = nextPath.every((part, partIndex) => expectedFolders[partIndex] === part); if (!correctDirection) markMistake("Ce dossier ne correspond pas au chemin affiché."); else setNotice(""); setPath(nextPath); setSelected(""); return; }
+    if (nextPath.join("/") !== target.join("/")) { markMistake("Ce n’est pas le document demandé."); return; }
+    const next = [...items, { success: mistakes === 0, durationMs: Math.round(timeStamp - started.current), ...(mistakes ? { failureReason: `${mistakes} erreur(s) de navigation` } : {}) }];
+    if (index === EXPLORER_TARGETS.length - 1) onComplete({ ...makeCountResult("files_knowledge", next), metrics: { cheminsTrouves: next.length, sansErreur: next.filter((item) => item.success).length, erreursNavigation: totalMistakes, dureeSecondes: Math.round(next.reduce((sum, item) => sum + item.durationMs, 0) / 1000) } });
+    else { setItems(next); setIndex((value) => value + 1); setPath([]); setSelected(""); setMistakes(0); setNotice(""); }
+  }
+  return <section className="test-screen explorer-mission"><TestTop title="Mission explorateur" counter={`${index + 1}/${EXPLORER_TARGETS.length}`} /><div className="explorer-goal"><p className="eyebrow">Document à retrouver</p><h2>{target.join(" › ")}</h2><p>Ouvre les dossiers, sélectionne le document puis touche « Ouvrir ».</p></div><div className="universal-explorer"><div className="universal-explorer-bar"><button aria-label="Dossier précédent" disabled={path.length === 0} onClick={() => { setPath((current) => current.slice(0, -1)); setSelected(""); setNotice(""); }}>←</button><span>Accueil{path.length ? ` › ${path.join(" › ")}` : ""}</span></div><div className="universal-file-grid">{entries.map(([name, node]) => <button className={selected === name ? "selected" : ""} onClick={() => { setSelected(name); setNotice(""); }} key={name}><UiIcon name={node.kind === "folder" ? "folder" : "file"} /><span>{name}</span></button>)}</div><div className="explorer-mission-actions"><span role="status">{notice}</span><button className="primary" disabled={!selected} onClick={(event) => openSelected(event.timeStamp)}>Ouvrir</button></div></div></section>;
+}
+
 const COMPREHENSION_ITEMS: ChoiceItem[] = [
   { prompt: "Sélectionne l’action qui permet d’enregistrer un document.", choices: ["Enregistrer", "Imprimer", "Fermer"], correct: 0 },
   { prompt: "Quel bouton permet généralement de revenir en arrière ?", choices: ["Annuler", "Supprimer", "Partager"], correct: 0 },
@@ -385,10 +509,10 @@ function Report({ participant, assessment, onBack }: { participant: Participant;
 function FlowHeader({ step, title, onBack }: { step: string; title: string; onBack: () => void }) { return <header className="flow-header"><button className="back-button" onClick={onBack} aria-label="Retour">←</button><div><p className="eyebrow">{step}</p><h2>{title}</h2></div></header>; }
 function TestTop({ title, counter }: { title: string; counter: string }) { return <header className="test-top"><span>BCN</span><strong>{title}</strong><span>{counter}</span></header>; }
 function taskInfo(code: TaskCode) { return TASKS.find((task) => task.code === code) ?? { code, title: LEGACY_TASK_TITLES[code] ?? "Épreuve archivée", description: "Ancienne épreuve" }; }
-function instructionFor(code: TaskCode) { if (code in THEORY_BANKS) return "Répondre à cinq situations de connaissances numériques. Une seule réponse est attendue pour chaque question."; const instructions: Partial<Record<TaskCode,string>> = { typing_copy: "Recopier un texte pendant cinq minutes, sans aide à la correction.", pointing_click: "Cliquer ou toucher dix cibles.", pointing_double: "Double-cliquer ou double-toucher dix cibles.", pointing_drag: "Déplacer dix objets au centre de leur cible.", visual_search: "Repérer quinze icônes réparties entre Windows, traitement de texte et actions courantes.", keyboard_shortcuts: "Réaliser les raccourcis de base dans deux fenêtres simulées.", file_management: "Réaliser sept actions dans un explorateur de fichiers simulé.", comprehension: "Répondre à six consignes numériques.", navigation: "Résoudre quatre situations simulées." }; return instructions[code] ?? "Réaliser l’épreuve."; }
+function instructionFor(code: TaskCode) { if (code === "files_knowledge") return "Suivre cinq chemins dans un explorateur simulé, sélectionner le bon document puis l’ouvrir."; if (code in ICON_CHALLENGES) return "Résoudre cinq missions en choisissant l’icône adaptée à chaque situation."; if (code in THEORY_BANKS) return "Répondre à cinq situations de connaissances numériques."; const instructions: Partial<Record<TaskCode,string>> = { typing_copy: "Recopier un texte pendant cinq minutes, sans aide à la correction.", pointing_click: "Cliquer ou toucher dix cibles.", pointing_double: "Double-cliquer ou double-toucher dix cibles.", pointing_drag: "Déplacer dix objets au centre de leur cible.", visual_search: "Repérer quinze icônes réparties entre Windows, traitement de texte et actions courantes.", keyboard_shortcuts: "Réaliser les raccourcis de base dans deux fenêtres simulées.", file_management: "Réaliser sept actions dans un explorateur de fichiers simulé.", comprehension: "Répondre à six consignes numériques.", navigation: "Résoudre quatre situations simulées." }; return instructions[code] ?? "Réaliser l’épreuve."; }
 function makeCountResult(taskCode: TaskCode, items: ItemResult[]): TaskResult { return { taskCode, completedAt: new Date().toISOString(), items, metrics: { reussites: items.filter((item) => item.success).length, erreurs: items.filter((item) => !item.success).length } }; }
 function makePointingResult(taskCode: TaskCode, items: ItemResult[]): TaskResult { const successfulTimes = items.filter((item) => item.success).map((item) => item.durationMs).sort((a,b) => a-b); return { ...makeCountResult(taskCode, items), metrics: { reussites: successfulTimes.length, erreurs: items.length - successfulTimes.length, tempsMedianMs: successfulTimes.length ? successfulTimes[Math.floor(successfulTimes.length / 2)]! : 0 } }; }
 function words(value: string) { return value.trim() ? value.trim().split(/\s+/u) : []; }
 function normalize(value: string) { return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/gi, "").toLowerCase(); }
 function round(value: number) { return Math.round(value * 10) / 10; }
-function metricLabel(value: string) { return ({ reussites: "Réussites", erreurs: "Erreurs", phases: "Phases", raccourcisReussis: "Raccourcis réussis", changementFenetre: "Changement de fenêtre", erreursActions: "Actions incorrectes", actionsAutonomes: "Actions autonomes", aides: "Aides", tempsMedianMs: "Temps médian (ms)", motsSaisis: "Mots saisis", motsCorrects: "Mots corrects", motsParMinute: "Mots/min", motsCorrectsParMinute: "Mots corrects/min", dureeSecondes: "Durée (s)" } as Record<string,string>)[value] ?? value; }
+function metricLabel(value: string) { return ({ reussites: "Réussites", erreurs: "Erreurs", phases: "Phases", raccourcisReussis: "Raccourcis réussis", changementFenetre: "Changement de fenêtre", erreursActions: "Actions incorrectes", actionsAutonomes: "Actions autonomes", aides: "Aides", cheminsTrouves: "Chemins trouvés", sansErreur: "Sans erreur", erreursNavigation: "Erreurs de navigation", tempsMedianMs: "Temps médian (ms)", motsSaisis: "Mots saisis", motsCorrects: "Mots corrects", motsParMinute: "Mots/min", motsCorrectsParMinute: "Mots corrects/min", dureeSecondes: "Durée (s)" } as Record<string,string>)[value] ?? value; }

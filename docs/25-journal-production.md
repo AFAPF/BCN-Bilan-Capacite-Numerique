@@ -96,3 +96,16 @@ Le premier module fonctionnel d’autonomie informatique est ajouté :
 - l’ordre visuel des réponses varie pour éviter que la première proposition soit systématiquement correcte ;
 - le bilan décrit des connaissances numériques et ne prétend plus mesurer une maîtrise pratique ou gestuelle ;
 - les anciennes passations restent lisibles dans l’historique local mais les anciennes épreuves ne sont plus proposées.
+
+## 21 octobre 2026 — missions visuelles et explorateur 0.6
+
+Après l’essai de la version 0.5, les questionnaires textuels jugés trop simples sont remplacés par des activités plus visuelles :
+
+- trente-cinq missions demandent de reconnaître une icône à partir d’une fonction ou d’une situation ;
+- les réponses utilisent des icônes SVG intégrées à l’application, identiques sur tous les systèmes ;
+- les catégories couvrent interface, traitement de texte, navigateur, messagerie, sécurité, dépannage et outils d’adaptation ;
+- une progression ludique affiche mission, contexte et avancement sans révéler la réussite pendant la passation ;
+- le module fichiers propose cinq chemins à suivre dans un explorateur simulé ;
+- l’élève ouvre les dossiers, sélectionne le document demandé puis utilise le bouton « Ouvrir » ;
+- les erreurs de navigation, chemins trouvés sans erreur et durées sont conservés dans le bilan ;
+- toutes les commandes restent réalisables par un toucher simple ou un clic.
