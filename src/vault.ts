@@ -1,5 +1,5 @@
 import { createVaultMaterial, decryptJson, encryptJson, sha256, unlockVaultMaterial, type VaultConfig } from "./crypto";
-import { createWorkspace, migrateWorkspace, type AuditEvent, type PersistenceStatus, type Workspace } from "./domain";
+import { APP_VERSION, createWorkspace, migrateWorkspace, type AuditEvent, type PersistenceStatus, type Workspace } from "./domain";
 import { readVault, writeVault, type StoredVault } from "./storage";
 
 export interface BackupContainer {
@@ -48,6 +48,7 @@ class VaultService {
       const key = await unlockVaultMaterial(password, stored.config);
       const value = migrateWorkspace(await decryptJson(stored.state, key));
       const now = new Date().toISOString();
+      value.appVersion = APP_VERSION;
       value.lastOpenedAt = now;
       value.profile.lastLoginAt = now;
       value.audit.push(audit("vault_unlocked"));
@@ -125,6 +126,7 @@ class VaultService {
     }
     const workspace = value as Workspace;
     const now = new Date().toISOString();
+    workspace.appVersion = APP_VERSION;
     workspace.updatedAt = now;
     workspace.lastOpenedAt = now;
     workspace.profile.lastLoginAt = now;
