@@ -3,16 +3,80 @@ import { APP_VERSION, type Assessment, type ItemResult, type Participant, type S
 import { vaultService } from "./vault";
 
 const TASKS: { code: TaskCode; title: string; description: string }[] = [
-  { code: "typing_copy", title: "Copie au clavier", description: "Vitesse, exactitude et corrections" },
-  { code: "pointing_click", title: "Clic simple", description: "10 cibles de tailles variées" },
-  { code: "pointing_double", title: "Double-clic", description: "Intervalle et reconnaissance" },
-  { code: "pointing_drag", title: "Glisser-déposer", description: "Dépôt du centre dans la cible" },
-  { code: "visual_search", title: "Repérage visuel", description: "15 icônes en trois phases" },
-  { code: "keyboard_shortcuts", title: "Raccourcis de base", description: "Deux fenêtres et huit actions guidées" },
-  { code: "file_management", title: "Fichiers et dossiers", description: "7 actions dans un explorateur simulé" },
-  { code: "comprehension", title: "Compréhension", description: "6 consignes numériques" },
-  { code: "navigation", title: "Navigation", description: "4 situations simulées" },
+  { code: "interface_knowledge", title: "Comprendre l’interface", description: "Écran, fenêtres, icônes et commandes" },
+  { code: "files_knowledge", title: "Fichiers et dossiers", description: "Classer, retrouver, enregistrer et supprimer" },
+  { code: "text_knowledge", title: "Traitement de texte", description: "Saisir, corriger, sélectionner et mettre en forme" },
+  { code: "web_knowledge", title: "Internet et navigation", description: "Adresse, liens, recherche et téléchargements" },
+  { code: "communication_knowledge", title: "Communication numérique", description: "Messages, pièces jointes et destinataires" },
+  { code: "safety_knowledge", title: "Sécurité numérique", description: "Mots de passe, données et contenus suspects" },
+  { code: "problem_solving", title: "Résoudre un problème", description: "Réagir à une erreur ou un blocage" },
+  { code: "accessibility_tools", title: "Outils d’adaptation", description: "Zoom, lecture vocale, dictée et affichage" },
 ];
+
+const LEGACY_TASK_TITLES: Partial<Record<TaskCode, string>> = {
+  typing_copy: "Copie au clavier", pointing_click: "Clic simple", pointing_double: "Double-clic", pointing_drag: "Glisser-déposer", visual_search: "Repérage visuel", keyboard_shortcuts: "Raccourcis de base", file_management: "Gestion des fichiers et dossiers", comprehension: "Compréhension", navigation: "Navigation",
+};
+
+interface ChoiceItem { prompt: string; choices: string[]; correct: number }
+const THEORY_BANKS = {
+  interface_knowledge: [
+    { prompt: "À quoi sert généralement une icône en forme de roue dentée ?", choices: ["Ouvrir les paramètres", "Imprimer", "Éteindre l’écran"], correct: 0 },
+    { prompt: "Quel symbole ferme généralement une fenêtre ?", choices: ["＋", "×", "?"], correct: 1 },
+    { prompt: "À quoi sert une barre de recherche ?", choices: ["Trouver un élément", "Augmenter le son", "Recharger la batterie"], correct: 0 },
+    { prompt: "Une fenêtre masque une autre fenêtre. Que peut-on faire ?", choices: ["Changer de fenêtre", "Supprimer les deux", "Couper Internet"], correct: 0 },
+    { prompt: "Que représente le plus souvent une icône en forme de maison ?", choices: ["L’accueil", "La corbeille", "Le volume"], correct: 0 },
+  ],
+  files_knowledge: [
+    { prompt: "À quoi sert un dossier ?", choices: ["Ranger des fichiers", "Écrire un mot de passe", "Augmenter la luminosité"], correct: 0 },
+    { prompt: "Tu veux conserver un document modifié. Quelle action choisis-tu ?", choices: ["Enregistrer", "Imprimer", "Actualiser"], correct: 0 },
+    { prompt: "Quel nom permet de retrouver facilement un devoir ?", choices: ["Document1", "Devoir français 21 octobre", "Nouveau"], correct: 1 },
+    { prompt: "Que se passe-t-il généralement quand on supprime un fichier ?", choices: ["Il va dans la corbeille", "Il est imprimé", "Il devient un dossier"], correct: 0 },
+    { prompt: "Où faut-il enregistrer un travail demandé dans le dossier Français ?", choices: ["Dans Français", "Dans Images", "Dans la corbeille"], correct: 0 },
+  ],
+  text_knowledge: [
+    { prompt: "Quelle commande permet de revenir sur la dernière modification ?", choices: ["Annuler", "Partager", "Télécharger"], correct: 0 },
+    { prompt: "À quoi sert la commande Copier ?", choices: ["Dupliquer un contenu sans supprimer l’original", "Effacer le contenu", "Fermer le document"], correct: 0 },
+    { prompt: "Quelle mise en forme fait ressortir un titre ?", choices: ["Le gras", "La corbeille", "Le mode avion"], correct: 0 },
+    { prompt: "Avant de modifier seulement une phrase, que faut-il faire ?", choices: ["La sélectionner", "Éteindre l’appareil", "Créer un dossier"], correct: 0 },
+    { prompt: "À quoi sert le correcteur orthographique ?", choices: ["Signaler certaines erreurs d’écriture", "Traduire toutes les pages", "Enregistrer automatiquement"], correct: 0 },
+  ],
+  web_knowledge: [
+    { prompt: "Où saisit-on l’adresse d’un site Internet ?", choices: ["Dans la barre d’adresse", "Dans la corbeille", "Dans le réglage du son"], correct: 0 },
+    { prompt: "Quel élément permet généralement d’ouvrir une autre page ?", choices: ["Un lien", "Une batterie", "Une horloge"], correct: 0 },
+    { prompt: "Tu veux revenir à la page précédente. Quelle commande utilises-tu ?", choices: ["La flèche Retour", "Supprimer", "Imprimer"], correct: 0 },
+    { prompt: "Que signifie télécharger un fichier ?", choices: ["Le recevoir sur l’appareil", "Le supprimer d’Internet", "Changer son nom"], correct: 0 },
+    { prompt: "Dans une liste de résultats, quel choix est le plus fiable ?", choices: ["Un résultat correspondant précisément à la recherche", "La première publicité", "Le résultat le plus coloré"], correct: 0 },
+  ],
+  communication_knowledge: [
+    { prompt: "À quoi sert une pièce jointe ?", choices: ["Ajouter un fichier à un message", "Bloquer l’écran", "Changer la police"], correct: 0 },
+    { prompt: "Avant d’envoyer un message, que faut-il vérifier ?", choices: ["Le destinataire", "La luminosité", "La batterie de la souris"], correct: 0 },
+    { prompt: "Que signifie Répondre à tous ?", choices: ["Répondre à tous les destinataires", "Supprimer tous les messages", "Partager sur Internet"], correct: 0 },
+    { prompt: "Quel objet de message est le plus clair ?", choices: ["Devoir de mathématiques du 21 octobre", "Bonjour", "Important !!!"], correct: 0 },
+    { prompt: "Que faire avant d’envoyer une photo d’une autre personne ?", choices: ["Vérifier qu’on peut la partager", "La publier immédiatement", "Modifier son nom"], correct: 0 },
+  ],
+  safety_knowledge: [
+    { prompt: "Quel mot de passe est le plus solide ?", choices: ["123456", "azerty", "Une phrase longue et personnelle"], correct: 2 },
+    { prompt: "Un inconnu demande ton mot de passe. Que fais-tu ?", choices: ["Je ne le donne pas", "Je l’envoie", "Je le publie"], correct: 0 },
+    { prompt: "Un message annonce un cadeau et demande de cliquer très vite. Que fais-tu ?", choices: ["Je vérifie avant d’agir", "Je clique immédiatement", "Je donne mon adresse"], correct: 0 },
+    { prompt: "Quelle information doit rester privée ?", choices: ["Un mot de passe", "Le titre d’un livre", "La météo"], correct: 0 },
+    { prompt: "Que faire si un contenu en ligne met mal à l’aise ?", choices: ["En parler à un adulte de confiance", "Le repartager", "Répondre avec son adresse"], correct: 0 },
+  ],
+  problem_solving: [
+    { prompt: "Une application ne répond plus. Quelle première réaction est raisonnable ?", choices: ["Attendre un instant puis essayer de la fermer", "Jeter l’appareil", "Supprimer tous les fichiers"], correct: 0 },
+    { prompt: "Tu as supprimé du texte par erreur. Quelle commande peux-tu essayer ?", choices: ["Annuler", "Imprimer", "Partager"], correct: 0 },
+    { prompt: "Le son ne fonctionne pas. Que vérifies-tu d’abord ?", choices: ["Le volume et le mode silencieux", "La corbeille", "Le nom du fichier"], correct: 0 },
+    { prompt: "Une page Internet ne charge pas. Quelle vérification est utile ?", choices: ["La connexion Internet", "La couleur du fond", "La taille du clavier"], correct: 0 },
+    { prompt: "Tu ne comprends pas un message d’erreur. Que fais-tu ?", choices: ["Je le lis et demande de l’aide si nécessaire", "Je clique partout", "Je donne mon mot de passe"], correct: 0 },
+  ],
+  accessibility_tools: [
+    { prompt: "Quel outil permet d’agrandir ce qui est affiché ?", choices: ["Le zoom", "La corbeille", "Le téléchargement"], correct: 0 },
+    { prompt: "À quoi sert la lecture vocale ?", choices: ["Lire un texte à voix haute", "Créer un dossier", "Éteindre Internet"], correct: 0 },
+    { prompt: "À quoi sert la dictée vocale ?", choices: ["Transformer la parole en texte", "Agrandir les icônes", "Supprimer les messages"], correct: 0 },
+    { prompt: "Quel réglage peut faciliter la lecture d’un texte peu visible ?", choices: ["Le contraste", "Le mode avion", "La corbeille"], correct: 0 },
+    { prompt: "Quel outil peut proposer la suite d’un mot pendant la saisie ?", choices: ["La prédiction de mots", "L’imprimante", "La calculatrice"], correct: 0 },
+  ],
+} satisfies Record<string, ChoiceItem[]>;
+type TheoryCode = keyof typeof THEORY_BANKS;
 
 type View = { page: "home" } | { page: "new-participant" } | { page: "select"; participantId: string } | { page: "run"; assessmentId: string } | { page: "report"; assessmentId: string };
 
@@ -97,16 +161,17 @@ function AssessmentRunner({ participant, assessment, onExit, onResult }: { parti
   const code = assessment.selectedTasks[index];
   const [started, setStarted] = useState(false);
   if (!code) return null;
-  const info = TASKS.find((task) => task.code === code)!;
+  const info = taskInfo(code);
   async function complete(result: TaskResult) { await onResult(result, index + 1 >= assessment.selectedTasks.length); setStarted(false); }
   if (!started) return <section className="flow-card task-intro"><button className="text-button" onClick={onExit}>← Quitter et reprendre plus tard</button><div className="task-progress"><span style={{ width: `${(index / assessment.selectedTasks.length) * 100}%` }} /></div><p className="eyebrow">Tâche {index + 1} sur {assessment.selectedTasks.length}</p><h2>{info.title}</h2><p>{instructionFor(code)}</p><div className="training-box"><strong>Essai d’entraînement</strong><p>Explique la consigne à {participant.firstName}. Cette version d’essai démarre directement quand vous êtes prêts.</p></div><button className="primary large-button" onClick={() => setStarted(true)}>Démarrer la tâche</button></section>;
+  if (code in THEORY_BANKS) return <ChoiceTask code={code as TheoryCode} items={THEORY_BANKS[code as TheoryCode]} onComplete={(result) => void complete(result)} />;
   if (code === "typing_copy") return <TypingTask onComplete={(result) => void complete(result)} />;
   if (code === "visual_search") return <VisualSearchTask onComplete={(result) => void complete(result)} />;
   if (code === "keyboard_shortcuts") return <KeyboardShortcutsTask onComplete={(result) => void complete(result)} />;
   if (code === "file_management") return <FileManagementTask onComplete={(result) => void complete(result)} />;
   if (code === "comprehension") return <ChoiceTask code={code} items={COMPREHENSION_ITEMS} onComplete={(result) => void complete(result)} />;
   if (code === "navigation") return <ChoiceTask code={code} items={NAVIGATION_ITEMS} onComplete={(result) => void complete(result)} />;
-  return <PointingTask mode={code} onComplete={(result) => void complete(result)} />;
+  return <PointingTask mode={code as "pointing_click" | "pointing_double" | "pointing_drag"} onComplete={(result) => void complete(result)} />;
 }
 
 function TypingTask({ onComplete }: { onComplete: (result: TaskResult) => void }) {
@@ -132,7 +197,7 @@ function PointingTask({ mode, onComplete }: { mode: "pointing_click" | "pointing
   function dragMove(event: React.PointerEvent) { if (!drag.active || !board.current) return; const rect = board.current.getBoundingClientRect(); setDrag({ x: ((event.clientX - rect.left) / rect.width) * 100, y: ((event.clientY - rect.top) / rect.height) * 100, active: true }); }
   function dragEnd() { if (!drag.active || !board.current) return; const target = TARGETS[index]!; const rect = board.current.getBoundingClientRect(); const dx = ((drag.x - target.x) / 100) * rect.width; const dy = ((drag.y - target.y) / 100) * rect.height; const radius = ((target.size / 2) / 25.4) * 96; record(Math.hypot(dx, dy) <= radius, "dépôt hors cible"); }
   const target = TARGETS[index]!;
-  return <section className="test-screen"><TestTop title={TASKS.find((task) => task.code === mode)!.title} counter={`${index + 1}/10`} /><p className="test-instruction">{mode === "pointing_click" ? "Clique une fois sur le cercle." : mode === "pointing_double" ? "Double-clique sur le cercle." : "Fais glisser le carré plein au centre du cercle."}</p><div ref={board} className={`point-board ${mode}`} onClick={boardActivation} onDoubleClick={boardActivation} onPointerMove={dragMove} onPointerUp={dragEnd}><div className="point-target" style={{ left: `${target.x}%`, top: `${target.y}%`, width: `${target.size}mm`, height: `${target.size}mm` }} />{mode === "pointing_drag" && <div className="drag-object" onPointerDown={(event) => { event.currentTarget.setPointerCapture(event.pointerId); setDrag((value) => ({ ...value, active: true })); }} style={{ left: `${drag.x}%`, top: `${drag.y}%` }} />}</div></section>;
+  return <section className="test-screen"><TestTop title={taskInfo(mode).title} counter={`${index + 1}/10`} /><p className="test-instruction">{mode === "pointing_click" ? "Clique une fois sur le cercle." : mode === "pointing_double" ? "Double-clique sur le cercle." : "Fais glisser le carré plein au centre du cercle."}</p><div ref={board} className={`point-board ${mode}`} onClick={boardActivation} onDoubleClick={boardActivation} onPointerMove={dragMove} onPointerUp={dragEnd}><div className="point-target" style={{ left: `${target.x}%`, top: `${target.y}%`, width: `${target.size}mm`, height: `${target.size}mm` }} />{mode === "pointing_drag" && <div className="drag-object" onPointerDown={(event) => { event.currentTarget.setPointerCapture(event.pointerId); setDrag((value) => ({ ...value, active: true })); }} style={{ left: `${drag.x}%`, top: `${drag.y}%` }} />}</div></section>;
 }
 
 const SEARCH_ICONS = [
@@ -290,7 +355,6 @@ function FileManagementTask({ onComplete }: { onComplete: (result: TaskResult) =
   </section>;
 }
 
-interface ChoiceItem { prompt: string; choices: string[]; correct: number }
 const COMPREHENSION_ITEMS: ChoiceItem[] = [
   { prompt: "Sélectionne l’action qui permet d’enregistrer un document.", choices: ["Enregistrer", "Imprimer", "Fermer"], correct: 0 },
   { prompt: "Quel bouton permet généralement de revenir en arrière ?", choices: ["Annuler", "Supprimer", "Partager"], correct: 0 },
@@ -306,20 +370,22 @@ const NAVIGATION_ITEMS: ChoiceItem[] = [
   { prompt: "Tu t’es trompé de dossier. Comment revenir ?", choices: ["Utiliser la flèche Retour", "Créer dix dossiers", "Fermer sans enregistrer"], correct: 0 },
 ];
 
-function ChoiceTask({ code, items: questions, onComplete }: { code: "comprehension" | "navigation"; items: ChoiceItem[]; onComplete: (result: TaskResult) => void }) {
+function ChoiceTask({ code, items: questions, onComplete }: { code: TaskCode; items: ChoiceItem[]; onComplete: (result: TaskResult) => void }) {
   const [index, setIndex] = useState(0); const [results, setResults] = useState<ItemResult[]>([]); const started = useRef(0); const item = questions[index]!;
+  const options = item.choices.map((choice, originalIndex) => ({ choice, originalIndex })); const offset = index % options.length; const displayedOptions = [...options.slice(offset), ...options.slice(0, offset)];
   useEffect(() => { started.current = performance.now(); }, [index]);
   function answer(choice: number, timeStamp: number) { const success = choice === item.correct; const next = [...results, { success, durationMs: Math.round(timeStamp - started.current), ...(success ? {} : { failureReason: "réponse incorrecte" }) }]; if (index === questions.length - 1) onComplete(makeCountResult(code, next)); else { setResults(next); setIndex((value) => value + 1); } }
-  return <section className="test-screen"><TestTop title={code === "comprehension" ? "Compréhension" : "Navigation"} counter={`${index + 1}/${questions.length}`} /><div className="question-card"><p className="eyebrow">Consigne</p><h2>{item.prompt}</h2><div className="choice-list">{item.choices.map((choice, choiceIndex) => <button key={choice} onClick={(event) => answer(choiceIndex, event.timeStamp)}>{choice}</button>)}</div></div></section>;
+  return <section className="test-screen"><TestTop title={taskInfo(code).title} counter={`${index + 1}/${questions.length}`} /><div className="question-card"><p className="eyebrow">Choisis une réponse</p><h2>{item.prompt}</h2><div className="choice-list">{displayedOptions.map((option) => <button key={option.choice} onClick={(event) => answer(option.originalIndex, event.timeStamp)}>{option.choice}</button>)}</div></div></section>;
 }
 
 function Report({ participant, assessment, onBack }: { participant: Participant; assessment: Assessment; onBack: () => void }) {
-  return <section className="flow-card report"><FlowHeader step="Bilan expérimental" title={`${participant.firstName} ${participant.lastName}`} onBack={onBack} /><div className="report-meta"><span>{participant.schoolLevel}</span><span>{participant.ageYears} ans {participant.ageMonths} mois</span><span>{new Date(assessment.completedAt ?? assessment.createdAt).toLocaleDateString("fr-FR")}</span></div><div className="report-warning">Résultats descriptifs de la version d’essai — aucune note globale ni interprétation diagnostique.</div><div className="result-table">{assessment.results.map((result) => { const successes = result.items.filter((item) => item.success).length; return <article key={result.taskCode}><div><h3>{TASKS.find((task) => task.code === result.taskCode)?.title}</h3><p>{successes} réussite(s) sur {result.items.length}</p></div><div className="metrics">{Object.entries(result.metrics).slice(0, 4).map(([key, value]) => <span key={key}><small>{metricLabel(key)}</small><strong>{value}</strong></span>)}</div></article>; })}</div><div className="form-actions"><button className="secondary" onClick={onBack}>Retour aux dossiers</button><button className="primary" onClick={() => window.print()}>Imprimer / enregistrer en PDF</button></div></section>;
+  return <section className="flow-card report"><FlowHeader step="Bilan expérimental" title={`${participant.firstName} ${participant.lastName}`} onBack={onBack} /><div className="report-meta"><span>{participant.schoolLevel}</span><span>{participant.ageYears} ans {participant.ageMonths} mois</span><span>{new Date(assessment.completedAt ?? assessment.createdAt).toLocaleDateString("fr-FR")}</span></div><div className="report-warning">Résultats descriptifs des connaissances numériques — aucune note globale, mesure pratique ni interprétation diagnostique.</div><div className="result-table">{assessment.results.map((result) => { const successes = result.items.filter((item) => item.success).length; return <article key={result.taskCode}><div><h3>{taskInfo(result.taskCode).title}</h3><p>{successes} réussite(s) sur {result.items.length}</p></div><div className="metrics">{Object.entries(result.metrics).slice(0, 4).map(([key, value]) => <span key={key}><small>{metricLabel(key)}</small><strong>{value}</strong></span>)}</div></article>; })}</div><div className="form-actions"><button className="secondary" onClick={onBack}>Retour aux dossiers</button><button className="primary" onClick={() => window.print()}>Imprimer / enregistrer en PDF</button></div></section>;
 }
 
 function FlowHeader({ step, title, onBack }: { step: string; title: string; onBack: () => void }) { return <header className="flow-header"><button className="back-button" onClick={onBack} aria-label="Retour">←</button><div><p className="eyebrow">{step}</p><h2>{title}</h2></div></header>; }
 function TestTop({ title, counter }: { title: string; counter: string }) { return <header className="test-top"><span>BCN</span><strong>{title}</strong><span>{counter}</span></header>; }
-function instructionFor(code: TaskCode) { const instructions: Record<TaskCode,string> = { typing_copy: "Recopier un texte pendant cinq minutes, sans aide à la correction.", pointing_click: "Cliquer ou toucher dix cibles.", pointing_double: "Double-cliquer ou double-toucher dix cibles.", pointing_drag: "Déplacer dix objets au centre de leur cible.", visual_search: "Repérer quinze icônes réparties entre Windows, traitement de texte et actions courantes.", keyboard_shortcuts: "Réaliser les raccourcis copier, couper, coller, tout sélectionner, annuler et rétablir dans deux fenêtres simulées.", file_management: "Réaliser sept actions dans un explorateur de fichiers simulé : créer, renommer, déplacer, rechercher, supprimer et enregistrer.", comprehension: "Répondre à six consignes numériques.", navigation: "Résoudre quatre situations de navigation." }; return instructions[code]; }
+function taskInfo(code: TaskCode) { return TASKS.find((task) => task.code === code) ?? { code, title: LEGACY_TASK_TITLES[code] ?? "Épreuve archivée", description: "Ancienne épreuve" }; }
+function instructionFor(code: TaskCode) { if (code in THEORY_BANKS) return "Répondre à cinq situations de connaissances numériques. Une seule réponse est attendue pour chaque question."; const instructions: Partial<Record<TaskCode,string>> = { typing_copy: "Recopier un texte pendant cinq minutes, sans aide à la correction.", pointing_click: "Cliquer ou toucher dix cibles.", pointing_double: "Double-cliquer ou double-toucher dix cibles.", pointing_drag: "Déplacer dix objets au centre de leur cible.", visual_search: "Repérer quinze icônes réparties entre Windows, traitement de texte et actions courantes.", keyboard_shortcuts: "Réaliser les raccourcis de base dans deux fenêtres simulées.", file_management: "Réaliser sept actions dans un explorateur de fichiers simulé.", comprehension: "Répondre à six consignes numériques.", navigation: "Résoudre quatre situations simulées." }; return instructions[code] ?? "Réaliser l’épreuve."; }
 function makeCountResult(taskCode: TaskCode, items: ItemResult[]): TaskResult { return { taskCode, completedAt: new Date().toISOString(), items, metrics: { reussites: items.filter((item) => item.success).length, erreurs: items.filter((item) => !item.success).length } }; }
 function makePointingResult(taskCode: TaskCode, items: ItemResult[]): TaskResult { const successfulTimes = items.filter((item) => item.success).map((item) => item.durationMs).sort((a,b) => a-b); return { ...makeCountResult(taskCode, items), metrics: { reussites: successfulTimes.length, erreurs: items.length - successfulTimes.length, tempsMedianMs: successfulTimes.length ? successfulTimes[Math.floor(successfulTimes.length / 2)]! : 0 } }; }
 function words(value: string) { return value.trim() ? value.trim().split(/\s+/u) : []; }

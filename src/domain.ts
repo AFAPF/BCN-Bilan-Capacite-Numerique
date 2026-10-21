@@ -1,5 +1,5 @@
 export const SCHEMA_VERSION = 2 as const;
-export const APP_VERSION = "0.4.0";
+export const APP_VERSION = "0.5.0";
 
 export type PersistenceStatus = "granted" | "denied" | "unknown";
 
@@ -37,7 +37,7 @@ export interface Workspace {
 }
 
 export type SchoolLevel = "CM1" | "CM2" | "6E" | "5E" | "4E" | "3E";
-export type TaskCode = "typing_copy" | "pointing_click" | "pointing_double" | "pointing_drag" | "visual_search" | "keyboard_shortcuts" | "file_management" | "comprehension" | "navigation";
+export type TaskCode = "interface_knowledge" | "files_knowledge" | "text_knowledge" | "web_knowledge" | "communication_knowledge" | "safety_knowledge" | "problem_solving" | "accessibility_tools" | "typing_copy" | "pointing_click" | "pointing_double" | "pointing_drag" | "visual_search" | "keyboard_shortcuts" | "file_management" | "comprehension" | "navigation";
 
 export interface Participant {
   id: string;

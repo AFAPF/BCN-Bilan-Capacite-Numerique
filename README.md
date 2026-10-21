@@ -56,13 +56,12 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 - sauvegarde locale chiffrée, contrôle d’intégrité et restauration confirmée ;
 - pipeline GitHub Actions : lint, tests, build et GitHub Pages.
 - création de dossiers fictifs ;
-- sélection indépendante des neuf tâches ;
-- copie au clavier avec premiers indicateurs ;
-- clic simple, double-clic et glisser-déposer ;
-- repérage visuel, compréhension et navigation simulée ;
-- repérage visuel en trois phases : Windows, traitement de texte et actions courantes ;
-- épreuve guidée des raccourcis de base dans deux fenêtres simulées ;
-- gestion de fichiers et dossiers en sept actions dans un explorateur simulé ;
+- sélection indépendante de huit modules de connaissances ;
+- interface, fichiers, traitement de texte et navigation Internet ;
+- communication, sécurité, résolution de problèmes et outils d’adaptation ;
+- mêmes questions et mêmes commandes au clic ou au toucher ;
+- aucun clavier, double-clic, glisser-déposer ou appui long obligatoire ;
+- grandes zones de réponse adaptées aux ordinateurs, tablettes et smartphones ;
 - bilan descriptif local imprimable en PDF.
 
 Cette version permet de tester le parcours complet mais n’est pas encore une version pilote qualifiée. Elle doit être utilisée uniquement avec des données fictives jusqu’à la recette prévue au backlog.

@@ -83,3 +83,16 @@ Le premier module fonctionnel d’autonomie informatique est ajouté :
 - comptage séparé des actions autonomes, erreurs d’action, aides et durée totale ;
 - bouton professionnel « Signaler une aide » : l’étape est enregistrée avec aide puis le scénario continue dans un état cohérent ;
 - aucune modification n’est effectuée sur les véritables fichiers de l’appareil.
+
+## 21 octobre 2026 — recentrage théorique et universel 0.5
+
+À la demande du porteur, les nouvelles passations ne contiennent plus d’épreuves pratiques dépendantes du matériel :
+
+- une seule version est utilisée sur ordinateur, tablette et smartphone ;
+- les réponses reposent uniquement sur de grands boutons activables au clic ou au toucher ;
+- huit modules : interface, fichiers, traitement de texte, Internet, communication, sécurité, résolution de problèmes et outils d’adaptation ;
+- cinq situations théoriques par module, soit quarante items lorsque tout est sélectionné ;
+- aucun clavier, double-clic, glisser-déposer, appui long ou raccourci n’est obligatoire ;
+- l’ordre visuel des réponses varie pour éviter que la première proposition soit systématiquement correcte ;
+- le bilan décrit des connaissances numériques et ne prétend plus mesurer une maîtrise pratique ou gestuelle ;
+- les anciennes passations restent lisibles dans l’historique local mais les anciennes épreuves ne sont plus proposées.

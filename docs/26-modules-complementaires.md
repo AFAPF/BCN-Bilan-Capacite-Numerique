@@ -1,7 +1,13 @@
-# Modules complémentaires proposés après le premier essai
+# Historique des modules et nouvelle orientation
 
 **Date :** 21 octobre 2026  
-**Statut :** proposition priorisée pour les prochains incréments
+**Statut :** orientation remplacée le 21 octobre 2026
+
+## Décision désormais applicable
+
+BCN évalue prioritairement les connaissances et la compréhension numériques. Toutes les épreuves proposées doivent être strictement réalisables de la même façon sur ordinateur, tablette et smartphone. Une épreuve dépendante d’un clavier, d’une souris ou d’un geste particulier doit être remplacée par une situation théorique universelle.
+
+Les propositions pratiques ci-dessous sont conservées uniquement comme historique de conception et ne constituent plus le périmètre actif.
 
 Le premier essai complet montre que les gestes élémentaires ne suffisent pas à représenter l’usage scolaire réel. Les modules suivants complètent le BCN sans produire de note globale.
 
