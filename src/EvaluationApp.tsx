@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from "react";
-import type { Assessment, ItemResult, Participant, SchoolLevel, TaskCode, TaskResult, Workspace } from "./domain";
+import { APP_VERSION, type Assessment, type ItemResult, type Participant, type SchoolLevel, type TaskCode, type TaskResult, type Workspace } from "./domain";
 import { vaultService } from "./vault";
 
 const TASKS: { code: TaskCode; title: string; description: string }[] = [
@@ -62,7 +62,7 @@ export default function EvaluationApp({ workspace, onChange }: { workspace: Work
   }
 
   return <section className="evaluation-home">
-    <div className="section-heading"><div><p className="eyebrow">Version d’essai 0.2</p><h2>Passations locales</h2><p>Crée un dossier fictif, choisis les tâches et teste le parcours complet.</p></div><button className="primary" onClick={() => setView({ page: "new-participant" })}>+ Nouveau dossier</button></div>
+    <div className="section-heading"><div><p className="eyebrow">Version d’essai {APP_VERSION}</p><h2>Passations locales</h2><p>Crée un dossier fictif, choisis les tâches et teste le parcours complet.</p></div><button className="primary" onClick={() => setView({ page: "new-participant" })}>+ Nouveau dossier</button></div>
     {workspace.participants.length === 0 ? <div className="empty-state"><span aria-hidden="true">◎</span><h3>Aucun dossier</h3><p>Commence avec une identité fictive pour découvrir le programme.</p><button className="primary" onClick={() => setView({ page: "new-participant" })}>Créer un dossier fictif</button></div> :
       <div className="participant-list">{workspace.participants.map((participant) => {
         const assessments = workspace.assessments.filter((item) => item.participantId === participant.id);
