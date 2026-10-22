@@ -176,3 +176,17 @@ La première version expérimentale complète améliore le réalisme des tâches
 - toutes les passations, terminées ou en cours, restent visibles dans le dossier de l’élève ;
 - chaque passation terminée dispose de son propre bilan et de son propre export PDF ;
 - une courbe présente l’évolution du pourcentage d’items réussis entre les passations terminées.
+
+## 22 octobre 2026 — proportions et suivi complet 1.1
+
+Les écrans de passation et le suivi des dossiers sont réorganisés :
+
+- la présentation précédant chaque tâche adopte une composition plein écran plus courte et mieux équilibrée ;
+- chaque mission active propose un bouton « Interrompre » permettant de revenir au dossier et de reprendre plus tard ;
+- les consignes occupent un panneau compact tandis que la simulation utilise la majorité de la surface disponible ;
+- les simulations Windows, Android, Chrome, Word, Gmail et Outlook sont étirées selon les proportions de leur interface réelle ;
+- l’explorateur dispose d’un volet d’accès rapide, d’une barre d’adresse, d’une recherche et de nouvelles catégories de dossiers ;
+- les tuiles des fichiers gardent une taille stable au lieu de s’étirer pour remplir artificiellement l’écran ;
+- chaque passation peut être supprimée séparément après confirmation ;
+- la courbe regroupe toutes les passations et distingue visuellement les passations encore en cours ;
+- les écrans d’épreuve conservent une hauteur fixe adaptée à la fenêtre, sans barre de défilement.

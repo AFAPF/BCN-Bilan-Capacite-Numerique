@@ -4,7 +4,7 @@
 
 ## Statut du projet
 
-**Phase : production — version expérimentale interactive 1.0.**
+**Phase : production — version expérimentale interactive 1.1.**
 
 BCN est actuellement un **projet personnel expérimental**. Son périmètre, son architecture, ses règles, ses contenus initiaux, ses maquettes, ses tests et son backlog sont définis. Les données et bilans restent localement sur l’appareil. Aucune diffusion à d’autres utilisateurs n’est encore décidée.
 
@@ -67,8 +67,12 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 - téléchargement PDF et suppression confirmée directement depuis chaque dossier ;
 - accueil compact et tableau de bord responsive dans la nouvelle identité BCN.
 - historique complet des passations avec bilans individuels et courbe de progression ;
+- suppression individuelle d’une passation sans supprimer le dossier de l’élève ;
+- courbe commune intégrant les passations terminées et celles encore en cours ;
 - consignes écrites et synthèse vocale française dans toutes les missions actives ;
 - épreuves en plein écran sans barre de défilement interne.
+- interruption disponible pendant une mission avec reprise ultérieure depuis le dossier ;
+- lancement des tâches et simulations entièrement reproportionnés.
 
 Cette version permet de tester le parcours complet mais n’est pas encore une version pilote qualifiée. Elle doit être utilisée uniquement avec des données fictives jusqu’à la recette prévue au backlog.
 

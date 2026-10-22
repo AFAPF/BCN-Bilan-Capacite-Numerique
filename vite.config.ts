@@ -4,6 +4,9 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   base: process.env.GITHUB_ACTIONS ? "/BCN-Bilan-Capacite-Numerique/" : "/",
+  server: {
+    allowedHosts: ["terminal.local"],
+  },
   build: {
     target: "es2022",
     sourcemap: true,

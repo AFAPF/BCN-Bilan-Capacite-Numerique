@@ -265,4 +265,60 @@ footer { padding: 1.5rem clamp(1rem, 5vw, 4.5rem); display: flex; justify-conten
 @media (max-width: 750px) { .windows-search, .windows-clock { display: none; }.chrome-toolbar { align-items: stretch; flex-wrap: wrap; }.chrome-toolbar .platform-controls { flex: 1 1 100%; order: 2; }.chrome-toolbar .platform-controls button { width: 3.2rem; height: 3.2rem; } }
 @media (max-width: 750px) { .assessment-history { grid-template-columns: 1fr; }.assessment-item { grid-template-columns: 1fr auto auto; }.mission-card { width: calc(100% - .7rem); margin: .35rem; padding: .65rem; }.mission-instruction { gap: .5rem; }.mission-instruction .speak-button span, .explorer-goal .speak-button span { display: none; }.mission-context { padding: .3rem .55rem; font-size: .7rem; }.mission-progress { padding-top: .35rem; }.explorer-goal { gap: .55rem; padding: .35rem .55rem; }.explorer-goal p:last-child { font-size: .78rem; line-height: 1.35; }.universal-explorer { margin: .35rem; }.universal-explorer-bar { grid-template-columns: auto 1fr; gap: .35rem; padding: .35rem; }.explorer-search-fake { display: none; }.universal-file-grid { min-height: 0; grid-template-columns: repeat(3, 1fr); gap: .3rem; padding: .35rem; }.universal-file-grid button { min-height: 5.25rem; padding: .25rem; font-size: .76rem; }.universal-file-grid .ui-icon { width: 2.1rem; height: 2.1rem; }.explorer-mission-actions { min-height: 3.8rem; display: grid; grid-template-columns: 1fr auto; align-items: center; padding: .4rem .55rem; }.explorer-mission-actions [role="status"] { font-size: .75rem; }.explorer-mission-actions .primary { width: auto; min-height: 2.8rem; }.question-heading { align-items: flex-start; }.question-heading .speak-button span { display: none; } }
 @media (max-height: 680px) { .test-top { height: 3.35rem; }.mission-card h2 { margin-top: .35rem; font-size: 1.15rem; }.mission-help { font-size: .8rem; }.platform-frame { margin-top: .35rem; }.explorer-titlebar { min-height: 1.8rem; }.universal-explorer-bar button { width: 2.35rem; height: 2.35rem; }.universal-explorer-bar span { padding: .5rem; }.universal-file-grid button { min-height: 4.65rem; }.explorer-mission-actions { min-height: 3.4rem; } }
+/* Proportions 1.1 : lancement, simulations et historique */
+.delete-assessment { width: 2.85rem; padding: .65rem; justify-content: center; border-color: #edc9c0; background: #fff8f6; color: #a43c23; }
+.progress-chart .active-point circle { fill: #fff; stroke: var(--bcn-orange); stroke-width: 4; }
+.progress-chart .active-point .point-score { fill: var(--bcn-orange); }
+.assessment-item { grid-template-columns: minmax(10rem, 1fr) auto auto auto; }
+
+.task-intro { display: flex; flex-direction: column; align-items: stretch; justify-content: stretch; padding: 0; background: linear-gradient(145deg, #f4f9fa, #fff 55%, #fff3e8); }
+.task-intro-top { min-height: 4rem; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1rem, 4vw, 3rem); border-bottom: 1px solid #d9e5e8; background: rgba(255,255,255,.86); color: #597078; font-weight: 700; }
+.task-intro .task-progress { width: 100%; height: .38rem; margin: 0; border-radius: 0; }
+.task-launch { width: min(100% - 2rem, 74rem); min-height: 0; flex: 1; display: grid; grid-template-columns: minmax(11rem, .55fr) minmax(22rem, 1.45fr); align-items: center; gap: clamp(2rem, 6vw, 6rem); margin: 0 auto; padding: clamp(1.5rem, 5vh, 4rem) 0; }
+.task-number { align-self: stretch; display: grid; place-items: center; border-radius: 2rem; background: var(--bcn-petrol); color: var(--bcn-yellow); font-size: clamp(6rem, 15vw, 12rem); font-weight: 900; letter-spacing: -.09em; box-shadow: 0 24px 60px rgba(0,82,106,.2); }
+.task-launch-copy { max-width: 44rem; }.task-launch-copy h2 { margin: 0; color: var(--bcn-petrol); font-size: clamp(2.4rem, 5vw, 4.7rem); letter-spacing: -.055em; }.task-launch-copy > p:not(.eyebrow) { margin: 1.25rem 0; color: #526b73; font-size: clamp(1rem, 1.7vw, 1.2rem); line-height: 1.65; }
+.task-launch-note { display: flex; flex-wrap: wrap; gap: .65rem; }.task-launch-note span { padding: .5rem .75rem; border-radius: 99px; background: #e6f2ef; color: #246757; font-size: .82rem; font-weight: 750; }
+.task-launch-actions { display: flex; gap: .75rem; margin-top: 1.5rem; }
+
+.test-top { height: 3.7rem; min-height: 3.7rem; padding: 0 1rem; }
+.interrupt-button { justify-self: start; min-height: 2.45rem; padding: .5rem .8rem; border: 1px solid rgba(255,255,255,.42); border-radius: .6rem; background: rgba(255,255,255,.08); color: #fff; font-weight: 750; }
+.interrupt-button:hover { background: rgba(255,255,255,.17); }
+.mission-progress { min-height: 1.7rem; align-items: center; padding: .25rem 1rem 0; }
+.mission-progress span { width: .65rem; height: .65rem; }
+.mission-card { display: grid; grid-template-columns: minmax(15rem, 25rem) minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: clamp(1rem, 2vw, 2rem); align-items: stretch; margin: .35rem auto .65rem; padding: .8rem; text-align: left; }
+.mission-context { grid-column: 1; align-self: start; justify-self: start; }
+.mission-instruction { grid-column: 1; grid-row: 2; min-height: 0; flex-direction: column; align-items: flex-start; justify-content: center; padding: 1rem; }
+.mission-instruction > div { flex: 0 0 auto; }.mission-instruction .speak-button { margin-top: 1rem; }.mission-card h2 { margin: .6rem 0; font-size: clamp(1.35rem, 2.2vw, 2rem); line-height: 1.2; }.mission-help { line-height: 1.5; }
+.mission-card > .platform-frame { grid-column: 2; grid-row: 1 / 3; width: 100%; height: 100%; margin: 0; }
+.windows-scene, .chrome-scene, .word-scene, .mail-scene, .android-scene { display: flex; flex-direction: column; }
+.windows-wallpaper, .chrome-page, .android-panel, .mail-layout { min-height: 0; flex: 1; }
+.word-page { width: min(78%, 42rem); min-height: 0; flex: 1; margin: 1rem auto; }
+.android-scene { width: min(100%, 30rem); height: 100%; margin: 0 auto; border: 7px solid #263238; border-radius: 1.8rem; box-shadow: 0 14px 32px rgba(20,35,40,.2); }
+.android-status { border-radius: 1.15rem 1.15rem 0 0; }
+
+.explorer-goal { min-height: 5.7rem; padding: .45rem 1rem; }.explorer-goal > div { max-width: 62rem; }.explorer-goal p:last-child { font-size: .86rem; }
+.universal-explorer { margin: .45rem .65rem .6rem; }
+.explorer-content { min-height: 0; flex: 1; display: grid; grid-template-columns: 12rem minmax(0, 1fr); }
+.explorer-content aside { display: grid; align-content: start; gap: .15rem; padding: .8rem .55rem; border-right: 1px solid #d5dfe3; background: #f6f8f9; color: #4f646c; }
+.explorer-content aside strong { padding: .35rem .55rem .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; }.explorer-content aside span { padding: .45rem .55rem; border-radius: .35rem; font-size: .82rem; }.explorer-content aside span:first-of-type { background: #e3edf2; color: #174f62; font-weight: 700; }.explorer-content aside hr { width: 100%; border: 0; border-top: 1px solid #dce3e6; }
+.universal-file-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(7rem, 8.2rem)); grid-auto-rows: minmax(5.8rem, 6.6rem); justify-content: start; align-content: start; gap: .35rem; padding: .65rem; }
+.universal-file-grid button { min-height: 0; height: 100%; gap: .2rem; padding: .35rem; }.universal-file-grid .ui-icon { width: 2.45rem; height: 2.45rem; }
+.explorer-mission-actions { min-height: 3.75rem; padding: .45rem .75rem; }
+
+@media (max-width: 850px) {
+  .task-launch { grid-template-columns: minmax(7rem, .45fr) minmax(0, 1.55fr); gap: 1.4rem; }
+  .task-number { font-size: clamp(4.5rem, 18vw, 8rem); }
+  .mission-card { grid-template-columns: 1fr; grid-template-rows: auto auto minmax(0, 1fr); }
+  .mission-context, .mission-instruction, .mission-card > .platform-frame { grid-column: 1; }
+  .mission-context { grid-row: 1; }.mission-instruction { grid-row: 2; display: grid; grid-template-columns: 1fr auto; gap: .5rem; padding: .25rem .35rem .45rem; }.mission-instruction .speak-button { margin: 0; }.mission-card > .platform-frame { grid-row: 3; }
+  .mission-card h2 { margin: .2rem 0; font-size: 1.15rem; }.mission-help { margin: 0; font-size: .78rem; }
+  .explorer-content { grid-template-columns: 1fr; }.explorer-content aside { display: none; }
+}
+@media (max-width: 600px) {
+  .task-intro-top { min-height: 3.4rem; }.task-launch { width: calc(100% - 1.2rem); grid-template-columns: 1fr; grid-template-rows: 7rem 1fr; gap: 1rem; padding: .7rem 0; }.task-number { font-size: 4.5rem; border-radius: 1rem; }.task-launch-copy h2 { font-size: 2rem; }.task-launch-copy > p:not(.eyebrow) { margin: .65rem 0; font-size: .9rem; }.task-launch-note { gap: .35rem; }.task-launch-note span { padding: .35rem .55rem; font-size: .7rem; }.task-launch-actions { margin-top: .7rem; }.task-launch-actions .primary { flex: 1; }
+  .test-top { grid-template-columns: auto 1fr auto; gap: .5rem; padding: 0 .45rem; }.test-top strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: center; font-size: .82rem; }.interrupt-button { padding: .45rem .55rem; font-size: .75rem; }
+  .explorer-goal { min-height: 5rem; }.universal-file-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(4.5rem, 5.1rem); }.universal-file-grid button { font-size: .7rem; }.universal-file-grid small { display: none; }
+}
+@media (max-height: 680px) and (min-width: 851px) { .task-launch { padding-block: 1rem; }.task-number { font-size: 7rem; }.task-launch-copy h2 { font-size: 3rem; }.mission-instruction { padding-block: .35rem; }.mission-card h2 { font-size: 1.35rem; }.explorer-goal { min-height: 4.5rem; }.explorer-goal p:last-child { font-size: .75rem; }.universal-file-grid { grid-auto-rows: 4.8rem; }.universal-file-grid .ui-icon { width: 2rem; height: 2rem; } }
+
 @media print { .topbar, footer, .backup-panel, .form-actions, .back-button { display: none !important; } body { background: #fff; } .dashboard { width: 100%; padding: 0; } .heading-row, .dashboard-hero, .evaluation-home { display: none; } .flow-card { border: 0; box-shadow: none; } }
