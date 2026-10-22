@@ -155,7 +155,7 @@ const ICON_CHALLENGES: Record<Exclude<TheoryCode, "files_knowledge">, IconChalle
   ],
 };
 
-type View = { page: "home" } | { page: "new-participant" } | { page: "select"; participantId: string } | { page: "run"; assessmentId: string } | { page: "report"; assessmentId: string };
+type View = { page: "home" } | { page: "new-participant" } | { page: "select"; participantId: string } | { page: "run"; assessmentId: string } | { page: "report"; assessmentId: string; autoPrint?: boolean };
 
 export default function EvaluationApp({ workspace, onChange }: { workspace: Workspace; onChange: (workspace: Workspace) => void }) {
   const [view, setView] = useState<View>({ page: "home" });
@@ -200,7 +200,7 @@ export default function EvaluationApp({ workspace, onChange }: { workspace: Work
     const assessment = workspace.assessments.find((item) => item.id === view.assessmentId);
     const participant = assessment ? workspace.participants.find((item) => item.id === assessment.participantId) : undefined;
     if (!assessment || !participant) return null;
-    return <Report participant={participant} assessment={assessment} onBack={() => setView({ page: "home" })} />;
+    return <Report participant={participant} assessment={assessment} autoPrint={view.autoPrint} onBack={() => setView({ page: "home" })} />;
   }
 
   return <section className="evaluation-home">
@@ -208,7 +208,9 @@ export default function EvaluationApp({ workspace, onChange }: { workspace: Work
     {workspace.participants.length === 0 ? <div className="empty-state"><span aria-hidden="true">◎</span><h3>Aucun dossier</h3><p>Commence avec une identité fictive pour découvrir le programme.</p><button className="primary" onClick={() => setView({ page: "new-participant" })}>Créer un dossier fictif</button></div> :
       <div className="participant-list">{workspace.participants.map((participant) => {
         const assessments = workspace.assessments.filter((item) => item.participantId === participant.id);
-        return <article className="participant-row" key={participant.id}><div className="avatar">{participant.firstName[0]}{participant.lastName[0]}</div><div><h3>{participant.firstName} {participant.lastName}</h3><p>{participant.schoolLevel} · {participant.ageYears} ans {participant.ageMonths} mois · {assessments.length} passation(s)</p></div><div className="row-actions"><button className="secondary" onClick={() => setView({ page: "select", participantId: participant.id })}>Nouvelle passation</button>{assessments.at(-1) && <button className="text-button" onClick={() => setView({ page: assessments.at(-1)?.status === "completed" ? "report" : "run", assessmentId: assessments.at(-1)!.id })}>{assessments.at(-1)?.status === "completed" ? "Voir le bilan" : "Reprendre"}</button>}</div></article>;
+        const latest = assessments.at(-1);
+        const latestCompleted = [...assessments].reverse().find((item) => item.status === "completed");
+        return <article className="participant-row" key={participant.id}><div className="avatar">{participant.firstName[0]}{participant.lastName[0]}</div><div className="participant-summary"><h3>{participant.firstName} {participant.lastName}</h3><p>{participant.schoolLevel} · {participant.ageYears} ans {participant.ageMonths} mois · {assessments.length} passation(s)</p></div><div className="row-actions"><button className="secondary" onClick={() => setView({ page: "select", participantId: participant.id })}>Nouvelle passation</button>{latest && <button className="text-button" onClick={() => setView({ page: latest.status === "completed" ? "report" : "run", assessmentId: latest.id })}>{latest.status === "completed" ? "Voir le bilan" : "Reprendre"}</button>}{latestCompleted && <button className="icon-action pdf-action" title="Télécharger ou enregistrer le dernier bilan en PDF" aria-label={`Télécharger le bilan de ${participant.firstName} ${participant.lastName} en PDF`} onClick={() => setView({ page: "report", assessmentId: latestCompleted.id, autoPrint: true })}><ArrowDownload24Regular /><span>PDF</span></button>}<button className="icon-action delete-action" title="Supprimer ce dossier" aria-label={`Supprimer le dossier de ${participant.firstName} ${participant.lastName}`} onClick={() => { if (!window.confirm(`Supprimer le dossier de ${participant.firstName} ${participant.lastName} et toutes ses passations ?\n\nCette action est définitive.`)) return; void update((current) => { current.participants = current.participants.filter((item) => item.id !== participant.id); current.assessments = current.assessments.filter((item) => item.participantId !== participant.id); }); }}><Delete24Regular /><span>Supprimer</span></button></div></article>;
       })}</div>}
   </section>;
 }
@@ -539,7 +541,12 @@ function ChoiceTask({ code, items: questions, onComplete }: { code: TaskCode; it
   return <section className="test-screen"><TestTop title={taskInfo(code).title} counter={`${index + 1}/${questions.length}`} /><div className="question-card"><p className="eyebrow">Choisis une réponse</p><h2>{item.prompt}</h2><div className="choice-list">{displayedOptions.map((option) => <button key={option.choice} onClick={(event) => answer(option.originalIndex, event.timeStamp)}>{option.choice}</button>)}</div></div></section>;
 }
 
-function Report({ participant, assessment, onBack }: { participant: Participant; assessment: Assessment; onBack: () => void }) {
+function Report({ participant, assessment, autoPrint = false, onBack }: { participant: Participant; assessment: Assessment; autoPrint?: boolean | undefined; onBack: () => void }) {
+  useEffect(() => {
+    if (!autoPrint) return;
+    const timer = window.setTimeout(() => window.print(), 250);
+    return () => window.clearTimeout(timer);
+  }, [autoPrint]);
   return <section className="flow-card report"><FlowHeader step="Bilan expérimental" title={`${participant.firstName} ${participant.lastName}`} onBack={onBack} /><div className="report-meta"><span>{participant.schoolLevel}</span><span>{participant.ageYears} ans {participant.ageMonths} mois</span><span>{new Date(assessment.completedAt ?? assessment.createdAt).toLocaleDateString("fr-FR")}</span></div><div className="report-warning">Résultats descriptifs des connaissances numériques — aucune note globale, mesure pratique ni interprétation diagnostique.</div><div className="result-table">{assessment.results.map((result) => { const successes = result.items.filter((item) => item.success).length; return <article key={result.taskCode}><div><h3>{taskInfo(result.taskCode).title}</h3><p>{successes} réussite(s) sur {result.items.length}</p></div><div className="metrics">{Object.entries(result.metrics).slice(0, 4).map(([key, value]) => <span key={key}><small>{metricLabel(key)}</small><strong>{value}</strong></span>)}</div></article>; })}</div><div className="form-actions"><button className="secondary" onClick={onBack}>Retour aux dossiers</button><button className="primary" onClick={() => window.print()}>Imprimer / enregistrer en PDF</button></div></section>;
 }
 

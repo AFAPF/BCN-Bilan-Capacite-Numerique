@@ -4,7 +4,7 @@
 
 ## Statut du projet
 
-**Phase : production — version d’essai interactive 0.9.**
+**Phase : production — version d’essai interactive 0.10.**
 
 BCN est actuellement un **projet personnel expérimental**. Son périmètre, son architecture, ses règles, ses contenus initiaux, ses maquettes, ses tests et son backlog sont définis. Les données et bilans restent localement sur l’appareil. Aucune diffusion à d’autres utilisateurs n’est encore décidée.
 
@@ -52,7 +52,6 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 - stockage IndexedDB local sur l’appareil ;
 - accès direct sans écran de verrouillage pendant la phase expérimentale ;
 - migration unique proposée aux appareils utilisant encore l’ancien mot de passe ;
-- sauvegarde locale avec contrôle d’intégrité et restauration confirmée ;
 - pipeline GitHub Actions : lint, tests, build et GitHub Pages.
 - création de dossiers fictifs ;
 - sélection indépendante de huit modules de connaissances ;
@@ -64,6 +63,8 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 - aucun clavier, double-clic, glisser-déposer ou appui long obligatoire ;
 - grandes zones de réponse adaptées aux ordinateurs, tablettes et smartphones ;
 - bilan descriptif local imprimable en PDF.
+- téléchargement PDF et suppression confirmée directement depuis chaque dossier ;
+- accueil compact et tableau de bord responsive dans la nouvelle identité BCN.
 
 Cette version permet de tester le parcours complet mais n’est pas encore une version pilote qualifiée. Elle doit être utilisée uniquement avec des données fictives jusqu’à la recette prévue au backlog.
 

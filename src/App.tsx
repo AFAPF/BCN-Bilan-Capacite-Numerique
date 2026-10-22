@@ -64,52 +64,15 @@ function LegacyMigration({ onReady, message }: { onReady: (workspace: Workspace)
 }
 
 function WorkspaceView({ workspace, onWorkspaceChange }: { workspace: Workspace; onWorkspaceChange: (value: Workspace) => void }) {
-  const [notice, setNotice] = useState("");
-
-  async function backup() {
-    try {
-      const { json, hash } = await vaultService.exportBackup();
-      const url = URL.createObjectURL(new Blob([json], { type: "application/json" }));
-      const anchor = document.createElement("a");
-      anchor.href = url; anchor.download = `BCN-sauvegarde-${new Date().toISOString().slice(0, 10)}.bcn.json`; anchor.click();
-      URL.revokeObjectURL(url);
-      if (vaultService.current) onWorkspaceChange({ ...vaultService.current });
-      setNotice(`Sauvegarde locale créée et vérifiée (${hash.slice(0, 10)}…).`);
-    } catch (cause) { setNotice(errorMessage(cause)); }
-  }
-
-  async function inspectBackup(event: React.ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files?.[0];
-    if (!file) return;
-    try {
-      const json = await file.text();
-      const candidate = await vaultService.verifyBackup(json);
-      if (!window.confirm(`Sauvegarde valide du ${new Date(candidate.exportedAt).toLocaleString("fr-FR")}\n\nLa restauration remplacera entièrement les données BCN présentes sur cet appareil. Continuer ?`)) {
-        setNotice("Sauvegarde valide. Restauration annulée, aucune donnée modifiée.");
-        return;
-      }
-      let restored: Workspace;
-      if (candidate.version === 2) {
-        restored = await vaultService.restoreBackup(json);
-      } else {
-        const password = window.prompt("Cette sauvegarde provient d’une ancienne version protégée. Saisissez son ancienne phrase secrète :");
-        if (!password) { setNotice("Restauration annulée, aucune donnée modifiée."); return; }
-        restored = await vaultService.restoreBackup(json, password);
-        await vaultService.migrateToLocal(password);
-      }
-      onWorkspaceChange({ ...restored });
-      setNotice("Sauvegarde vérifiée et restaurée avec succès.");
-    } catch (cause) { setNotice(errorMessage(cause)); }
-    event.target.value = "";
-  }
-
   return <div className="app-shell">
-    <header className="topbar"><Brand /><div className="top-actions"><span className="user-chip">{workspace.profile.displayName}</span><span className="local-chip">Données locales</span></div></header>
+    <header className="topbar"><Brand /><span className="local-chip"><i aria-hidden="true" /> Données locales</span></header>
     <main className="dashboard">
-      <div className="heading-row"><div><p className="eyebrow">Espace d’évaluation</p><h1>Bonjour {workspace.profile.displayName}</h1><p className="muted">Sélectionne un dossier ou commence une nouvelle passation BCN.</p></div><span className="status-pill"><span aria-hidden="true">●</span> Stockage local</span></div>
-      {notice && <div className="notice" role="status">{notice}</div>}
+      <section className="dashboard-hero">
+        <div className="hero-copy"><p className="eyebrow">Tableau de bord</p><h1>Passations BCN</h1><p>Crée un dossier, lance une évaluation et retrouve les bilans enregistrés sur cet appareil.</p></div>
+        <div className="hero-stats" aria-label="Résumé des passations"><span><strong>{workspace.participants.length}</strong><small>Dossier{workspace.participants.length > 1 ? "s" : ""}</small></span><span><strong>{workspace.assessments.length}</strong><small>Passation{workspace.assessments.length > 1 ? "s" : ""}</small></span><span className="hero-local"><strong>Local</strong><small>Stockage</small></span></div>
+        <span className="hero-shape hero-shape-one" aria-hidden="true" /><span className="hero-shape hero-shape-two" aria-hidden="true" />
+      </section>
       <EvaluationApp workspace={workspace} onChange={onWorkspaceChange} />
-      <section className="backup-panel"><div><p className="eyebrow">Continuité</p><h2>Sauvegarde locale</h2><p>Télécharge régulièrement une copie des données et conserve-la sur un support local distinct.</p></div><div className="backup-actions"><button className="primary" onClick={() => void backup()}>Télécharger une sauvegarde</button><label className="file-button">Restaurer une sauvegarde<input type="file" accept=".json,.bcn" onChange={(event) => void inspectBackup(event)} /></label></div></section>
     </main>
     <footer><span>BCN {workspace.appVersion} · Bilan de Connaissance Numérique</span><span>Créé par FOURCADE Arnaud © 2026</span></footer>
   </div>;

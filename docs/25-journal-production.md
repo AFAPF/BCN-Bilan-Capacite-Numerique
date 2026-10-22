@@ -149,3 +149,15 @@ L’identité de BCN et son écran d’entrée sont entièrement revus :
 - les appareils possédant un ancien coffre protégé bénéficient d’une migration unique afin de conserver leurs données ;
 - les nouvelles installations créent automatiquement leur espace local sans demander de mot de passe ;
 - les sauvegardes de la nouvelle version sont restaurées sans demande de mot de passe.
+
+## 22 octobre 2026 — tableau de bord et gestion des dossiers 0.10
+
+L’accueil et l’espace des passations sont simplifiés pour rendre les actions principales immédiatement visibles :
+
+- l’accueil tient sur un écran d’ordinateur courant, sans défilement vertical ;
+- le tableau de bord adopte une composition graphique épurée, géométrique et animée avec la palette BCN existante ;
+- la salutation nominative est remplacée par un en-tête fonctionnel et un résumé des dossiers et passations ;
+- l’encart de sauvegarde est retiré de la page principale ;
+- chaque dossier terminé propose un accès direct à l’enregistrement du dernier bilan en PDF ;
+- chaque dossier peut être supprimé avec toutes ses passations après une confirmation explicite ;
+- les actions restent accessibles au clic comme au toucher sur ordinateur, tablette et smartphone.
