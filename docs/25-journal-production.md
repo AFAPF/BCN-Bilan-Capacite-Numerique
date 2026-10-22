@@ -161,3 +161,18 @@ L’accueil et l’espace des passations sont simplifiés pour rendre les action
 - chaque dossier terminé propose un accès direct à l’enregistrement du dernier bilan en PDF ;
 - chaque dossier peut être supprimé avec toutes ses passations après une confirmation explicite ;
 - les actions restent accessibles au clic comme au toucher sur ordinateur, tablette et smartphone.
+
+## 22 octobre 2026 — passations, accessibilité et explorateur 1.0
+
+La première version expérimentale complète améliore le réalisme des tâches et le suivi longitudinal :
+
+- les dossiers de la mission explorateur s’ouvrent par double-clic à la souris ou double-toucher sur écran tactile ;
+- le document final est sélectionné puis validé avec le bouton « Ouvrir le document » ;
+- chaque dossier simulé contient davantage de documents distracteurs aux noms et formats réalistes ;
+- les zones d’épreuve utilisent tout l’écran disponible et ne présentent plus de barre de défilement interne ;
+- les simulations Windows, Android, Chrome, Word, Gmail et Outlook sont agrandies ;
+- l’encart d’essai d’entraînement est supprimé ;
+- les consignes sont reformulées et peuvent être lues par la synthèse vocale française du navigateur ;
+- toutes les passations, terminées ou en cours, restent visibles dans le dossier de l’élève ;
+- chaque passation terminée dispose de son propre bilan et de son propre export PDF ;
+- une courbe présente l’évolution du pourcentage d’items réussis entre les passations terminées.

@@ -4,7 +4,7 @@
 
 ## Statut du projet
 
-**Phase : production — version d’essai interactive 0.10.**
+**Phase : production — version expérimentale interactive 1.0.**
 
 BCN est actuellement un **projet personnel expérimental**. Son périmètre, son architecture, ses règles, ses contenus initiaux, ses maquettes, ses tests et son backlog sont définis. Les données et bilans restent localement sur l’appareil. Aucune diffusion à d’autres utilisateurs n’est encore décidée.
 
@@ -59,12 +59,16 @@ Les contenus devront être adaptés aux tranches 8–10 ans, 11–14 ans et 15�
 - dix situations de traitement de texte couvrant enregistrer, gras, listes, annuler, rétablir, copier, couper, coller, souligner et imprimer ;
 - icônes cohérentes avec chaque environnement grâce à Material Symbols et Fluent UI System Icons ;
 - cinq recherches de documents à partir d’un chemin dans un explorateur simulé ;
+- ouverture réaliste des dossiers par double-clic ou double-toucher et fichiers distracteurs ;
 - mêmes questions et mêmes commandes au clic ou au toucher ;
 - aucun clavier, double-clic, glisser-déposer ou appui long obligatoire ;
 - grandes zones de réponse adaptées aux ordinateurs, tablettes et smartphones ;
 - bilan descriptif local imprimable en PDF.
 - téléchargement PDF et suppression confirmée directement depuis chaque dossier ;
 - accueil compact et tableau de bord responsive dans la nouvelle identité BCN.
+- historique complet des passations avec bilans individuels et courbe de progression ;
+- consignes écrites et synthèse vocale française dans toutes les missions actives ;
+- épreuves en plein écran sans barre de défilement interne.
 
 Cette version permet de tester le parcours complet mais n’est pas encore une version pilote qualifiée. Elle doit être utilisée uniquement avec des données fictives jusqu’à la recette prévue au backlog.
 
